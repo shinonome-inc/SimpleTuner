@@ -45,8 +45,11 @@ class Tuner: NSObject {
     
     func stopTuner() {
         //チューナー終了
-        tracker.stop()
-        microphone.stop()
+        do{
+            try AudioKit.stop()
+        }catch{
+            return
+        }
         timer?.invalidate()
     }
     
@@ -56,7 +59,8 @@ class Tuner: NSObject {
         let frequency = Double(tracker.frequency)
         let amplitude = Double(tracker.amplitude)
         
-        print(frequency)
+        print("frequency is \(frequency). amplitude is \(amplitude) ")
+        
         
     }
     
