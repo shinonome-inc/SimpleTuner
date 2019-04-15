@@ -9,19 +9,19 @@
 import Foundation
 import AudioKit
 
-protocol TunerDelegate {
+protocol TunerDelegate : class {
     //pitchは一番近い音階、distanceは実際の周波数とその音階の周波数との差、amplitudeは音量
     func tunerDidMesure(distance: Double, amplitude: Double)
 }
 
     //NSObjectは全てのクラスに継承出来る大元みたいなやつ。
 class Tuner: NSObject {
-    var delegate: TunerDelegate?
+    weak var delegate: TunerDelegate?
     
     /* Private instance variables. */
-    fileprivate var timer:      Timer?
+    fileprivate var timer: Timer?
     fileprivate let microphone: AKMicrophone
-    fileprivate let tracker:   AKFrequencyTracker
+    fileprivate let tracker: AKFrequencyTracker
     fileprivate let silence: AKBooster
     
     override init() {
@@ -31,12 +31,13 @@ class Tuner: NSObject {
         
     }
     
-    func startTuner(){
+    func startTuner() {
         //チューナー起動
         AudioKit.output = silence
         do{
             try AudioKit.start()
         }catch{
+            print("failed to start AudioKit")
             return
         }
         //タイマー作成
@@ -48,6 +49,7 @@ class Tuner: NSObject {
         do{
             try AudioKit.stop()
         }catch{
+            print("failed to stop AudioKit")
             return
         }
         timer?.invalidate()
