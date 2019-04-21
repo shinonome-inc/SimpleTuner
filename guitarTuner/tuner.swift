@@ -11,7 +11,7 @@ import AudioKit
 
 protocol TunerDelegate : class {
     //pitchは一番近い音階、distanceは実際の周波数とその音階の周波数との差、amplitudeは音量
-    func tunerDidMesure(distance: Double, amplitude: Double)
+    func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double)
 }
 
     //NSObjectは全てのクラスに継承出来る大元みたいなやつ。
@@ -61,7 +61,11 @@ class Tuner: NSObject {
         let frequency = Double(tracker.frequency)
         let amplitude = Double(tracker.amplitude)
         
-        print("frequency is \(frequency). amplitude is \(amplitude) ")
+        let pitch = Pitch.nearest(frequency)
+        
+        let distance = frequency - pitch.frequency
+        
+        self.delegate?.tunerDidMesure(pitch: pitch, distance: distance, amplitude: amplitude)
         
         
     }
