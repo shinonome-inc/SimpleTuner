@@ -9,8 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController{
-   
-    let materView = MaterView(frame: CGRect(x: 0, y: 0, width: 245, height: 245))
+    
+    let materView = MaterView()
+    
+    
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label3: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,10 +23,11 @@ class ViewController: UIViewController{
         let tuner = Tuner()
         tuner.startTuner()
         
-        MaterView.frame = CGRect(
-            origin: CGPoint(x: round(self.view.bounds.width -141) / 2, y: round(self.view.bounds.height - 141) / 2)
+        /*MaterView.frame = CGRect(
+            origin: CGPoint(x: round(self.view.bounds.width - 141) / 2, y: round(self.view.bounds.height - 141) / 2)
             size: CGSize(width: 141, height: 141)
-        )
+        )*/
+       self.view.addSubview(materView)
     
 
     }

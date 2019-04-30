@@ -16,8 +16,8 @@
 		7822C0F62257027C00361EC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */; };
 		7822C1012257027C00361EC5 /* guitarTunerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C1002257027C00361EC5 /* guitarTunerTests.swift */; };
 		7822C10C2257027C00361EC5 /* guitarTunerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C10B2257027C00361EC5 /* guitarTunerUITests.swift */; };
+		786C8C8A2272C6AF00591D69 /* TunerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786C8C892272C6AF00591D69 /* TunerUI.swift */; };
 		78702629225B591700E32781 /* tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78702628225B591700E32781 /* tuner.swift */; };
-		78E49F72226BF3C7001015BD /* MaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E49F71226BF3C7001015BD /* MaterView.swift */; };
 		78E63EF62266C97900D882CA /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E63EF52266C97900D882CA /* Pitch.swift */; };
 		78E773E6225DFD85006C8C4B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E773E5225DFD85006C8C4B /* Note.swift */; };
 		8C678ED7584719A971684B49 /* Pods_guitarTunerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85612D780DD8D9A9EFFA54EC /* Pods_guitarTunerTests.framework */; };
@@ -58,8 +58,8 @@
 		7822C1072257027C00361EC5 /* guitarTunerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = guitarTunerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7822C10B2257027C00361EC5 /* guitarTunerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guitarTunerUITests.swift; sourceTree = "<group>"; };
 		7822C10D2257027C00361EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		786C8C892272C6AF00591D69 /* TunerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerUI.swift; sourceTree = "<group>"; };
 		78702628225B591700E32781 /* tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tuner.swift; sourceTree = "<group>"; };
-		78E49F71226BF3C7001015BD /* MaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterView.swift; sourceTree = "<group>"; };
 		78E63EF52266C97900D882CA /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		78E773E5225DFD85006C8C4B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		85612D780DD8D9A9EFFA54EC /* Pods_guitarTunerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guitarTunerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,11 +127,11 @@
 				78702628225B591700E32781 /* tuner.swift */,
 				78E773E5225DFD85006C8C4B /* Note.swift */,
 				78E63EF52266C97900D882CA /* Pitch.swift */,
+				786C8C892272C6AF00591D69 /* TunerUI.swift */,
 				7822C0EF2257027B00361EC5 /* Main.storyboard */,
 				7822C0F22257027C00361EC5 /* Assets.xcassets */,
 				7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */,
 				7822C0F72257027C00361EC5 /* Info.plist */,
-				78E49F71226BF3C7001015BD /* MaterView.swift */,
 			);
 			path = guitarTuner;
 			sourceTree = "<group>";
@@ -380,9 +380,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78E49F72226BF3C7001015BD /* MaterView.swift in Sources */,
 				7822C0EE2257027B00361EC5 /* ViewController.swift in Sources */,
 				78702629225B591700E32781 /* tuner.swift in Sources */,
+				786C8C8A2272C6AF00591D69 /* TunerUI.swift in Sources */,
 				7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */,
 				78E773E6225DFD85006C8C4B /* Note.swift in Sources */,
 				78E63EF62266C97900D882CA /* Pitch.swift in Sources */,
