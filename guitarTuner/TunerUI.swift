@@ -9,26 +9,32 @@
 import UIKit
 
 class MaterView: UIView {
-    private let thinLayer = CAShapeLayer()
+    private let thinLayer = CAShapeLayer.init()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         let strokeColor = UIColor.black.cgColor
+        let frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        let startAngle: CGFloat = CGFloat(0.0)
+        let endAngle: CGFloat = CGFloat(Double.pi * 2.0)
         
+        let path: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         
-        let path = UIBezierPath(arcCenter: CGPoint(x: 200, y: 200), radius: 100, startAngle: 0, endAngle: CGFloat(Double.pi)*1/2, clockwise: true).cgPath
-        thinLayer.path = path
+        thinLayer.path = path.cgPath
+        thinLayer.frame = frame
         thinLayer.strokeColor = strokeColor
         thinLayer.lineWidth = 16.0
         thinLayer.fillColor = UIColor.clear.cgColor
         thinLayer.lineDashPattern = [ 0.5, 5.5 ]
         thinLayer.lineDashPhase = 0.25
-        thinLayer.addSublayer(thinLayer)
+        self.layer.addSublayer(thinLayer)
+        
+       
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
+    
 }
