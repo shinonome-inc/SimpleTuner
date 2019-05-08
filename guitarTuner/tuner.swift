@@ -11,7 +11,7 @@ import AudioKit
 
 protocol TunerDelegate : class {
     //pitchは一番近い音階、distanceは実際の周波数とその音階の周波数との差、amplitudeは音量
-    func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double)
+    func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double)
 }
 
     //NSObjectは全てのクラスに継承出来る大元みたいなやつ。
@@ -41,7 +41,7 @@ class Tuner: NSObject {
             return
         }
         //タイマー作成
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(Tuner.tick), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(Tuner.tick), userInfo: nil, repeats: true)
     }
     
     func stopTuner() {
@@ -65,7 +65,7 @@ class Tuner: NSObject {
         
         let distance = frequency - pitch.frequency
         
-        self.delegate?.tunerDidMesure(pitch: pitch, distance: distance, amplitude: amplitude)
+        self.delegate?.tunerDidMesure(pitch: pitch, distance: distance, amplitude: amplitude, frequency: frequency)
         
         
     }
