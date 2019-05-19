@@ -12,6 +12,7 @@ class MaterView: UIView {
     private let thinLayer = CAShapeLayer.init()
     private let thickLayer = CAShapeLayer.init()
     private let arrowLayer = CAShapeLayer.init()
+    private let moveLayer = CALayer.init()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,8 +42,9 @@ class MaterView: UIView {
         thickLayer.lineDashPhase = 0.75
         self.layer.addSublayer(thickLayer)
         
-        let arrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2)
-        let arrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: arrowStartAngel, endAngle: endAngle, clockwise: true)
+        /*let arrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2)
+        let arrowEndAngel: CGFloat = arrowStartAngel + CGFloat(Double.pi / 180)
+        let arrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: arrowStartAngel, endAngle: arrowEndAngel, clockwise: true)
         
         
         arrowLayer.path = arrowPath.cgPath
@@ -52,8 +54,48 @@ class MaterView: UIView {
         arrowLayer.fillColor = UIColor.clear.cgColor
         arrowLayer.lineDashPattern = [ 1.5, 718.5 ]
         arrowLayer.lineDashPhase = 0.75
-        self.layer.addSublayer(arrowLayer)
+        self.layer.addSublayer(arrowLayer)*/
         
+    }
+    
+    func makeArrowLayer() {
+        let arrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2)
+        let arrowEndAngel: CGFloat = arrowStartAngel + CGFloat(Double.pi / 180)
+        let arrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: arrowStartAngel, endAngle: arrowEndAngel, clockwise: true)
+        
+        
+        arrowLayer.path = arrowPath.cgPath
+        arrowLayer.frame = frame
+        arrowLayer.strokeColor = UIColor.red.cgColor
+        arrowLayer.lineWidth = 32.0
+        arrowLayer.fillColor = UIColor.clear.cgColor
+        arrowLayer.lineDashPattern = [ 1.5, 718.5 ]
+        arrowLayer.lineDashPhase = 0.75
+        moveLayer.addSublayer(arrowLayer)
+        
+        self.layer.addSublayer(moveLayer)
+    }
+    
+    func moveArrowLayer(pitch: Pitch, frequency: Double) {
+        let moveArrow = CABasicAnimation(keyPath: "path")
+        let arrowRate: Double
+        if pitch.frequency < frequency{
+            let nextPitch = pitch + 1
+            arrowRate = (frequency - pitch.frequency) / ((nextPitch.frequency - pitch.frequency) / 2)
+        }else {
+            let beforePitch = pitch - 1
+            arrowRate = (frequency - pitch.frequency) / ((beforePitch.frequency - pitch.frequency) / 2)
+        }
+        let movedArrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2 + ((-1 * Double.pi) / 2 ) * arrowRate)
+        let movedArrowEndAngel: CGFloat = movedArrowStartAngel + CGFloat(Double.pi / 180)
+        let movedArrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: arrowLayer.frame.size.width / 2.0, y: arrowLayer.frame.size.height / 2.0), radius: arrowLayer.frame.size.width / 2.0, startAngle: movedArrowStartAngel, endAngle: movedArrowEndAngel, clockwise: true)
+        
+        moveArrow.fromValue = arrowLayer.path
+        moveArrow.toValue = movedArrowPath.cgPath
+        moveArrow.duration = 0.1
+    
+        arrowLayer.add(moveArrow, forKey: nil)
+        self.layer.addSublayer(arrowLayer)
     }
     
     required init?(coder aDecoder: NSCoder) {

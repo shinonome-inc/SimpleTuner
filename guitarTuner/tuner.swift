@@ -20,7 +20,7 @@ class Tuner: NSObject {
     
     /* Private instance variables. */
     fileprivate var timer: Timer?
-    fileprivate let microphone: AKMicrophone
+    fileprivate let microphone: AKMicrophone?
     fileprivate let tracker: AKFrequencyTracker
     fileprivate let silence: AKBooster
     
