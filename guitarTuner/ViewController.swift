@@ -34,13 +34,20 @@ class ViewController: UIViewController,TunerDelegate{
     }
     
     
+    /// レイアウト系のセットアップ
     func setupLayout() {
+
+        materView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: (self.view.bounds.height - 300) / 2, width: 300, height: 300)
+
+        self.view.addSubview(materView)
+
         frequencyLabel.textAlignment = NSTextAlignment.center
         frequencyLabel.numberOfLines = 1
         frequencyLabel.font = UIFont.systemFont(ofSize: 22)
         frequencyLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(frequencyLabel)
         
+
         frequencyLabel.rightAnchor.constraint(equalTo: materView.centerXAnchor).isActive = true
         frequencyLabel.topAnchor.constraint(equalTo: materView.bottomAnchor).isActive = true
         frequencyLabel.widthAnchor.constraint(equalTo: materView.widthAnchor, multiplier: 0.5).isActive = true
@@ -67,9 +74,15 @@ class ViewController: UIViewController,TunerDelegate{
         pitchFrequencyLabel.topAnchor.constraint(equalTo: materView.bottomAnchor).isActive = true
         pitchFrequencyLabel.widthAnchor.constraint(equalTo: materView.widthAnchor, multiplier: 0.5).isActive = true
         pitchFrequencyLabel.heightAnchor.constraint(equalTo: materView.heightAnchor, multiplier: 0.3).isActive = true
-        
     }
     
+    /// メジャーの更新
+    ///
+    /// - Parameters:
+    ///   - pitch: Pitch
+    ///   - distance: 距離
+    ///   - amplitude: 振幅
+    ///   - frequency: 周波数
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double) {
         if amplitude < 0.01 {
             return
