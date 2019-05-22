@@ -77,15 +77,16 @@ class MaterView: UIView {
             arrowRate = (frequency - pitch.frequency) / ((nextPitch.frequency - pitch.frequency) / 2)
         }else {
             let beforePitch = pitch - 1
-            arrowRate = (frequency - pitch.frequency) / ((beforePitch.frequency - pitch.frequency) / 2)
+            arrowRate = (frequency - pitch.frequency) / ((pitch.frequency - beforePitch.frequency) / 2)
         }
-        let movedArrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2 + ((-1 * Double.pi) / 2 ) * arrowRate)
+        let movedArrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2 + ( Double.pi / 2 ) * arrowRate)
         let movedArrowEndAngel: CGFloat = movedArrowStartAngel + CGFloat(Double.pi / 180)
         let movedArrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: arrowLayer.frame.size.width / 2.0, y: arrowLayer.frame.size.height / 2.0), radius: arrowLayer.frame.size.width / 2.0, startAngle: movedArrowStartAngel, endAngle: movedArrowEndAngel, clockwise: true)
 
         moveArrow.fromValue = arrowLayer.path
         moveArrow.toValue = movedArrowPath.cgPath
-        moveArrow.duration = 0.1
+        moveArrow.duration = 0.2
+        arrowLayer.path = movedArrowPath.cgPath
     
         arrowLayer.add(moveArrow, forKey: nil)
         self.layer.addSublayer(arrowLayer)
