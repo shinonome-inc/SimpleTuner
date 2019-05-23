@@ -23,6 +23,12 @@ class ViewController: UIViewController,TunerDelegate{
         // Do any additional setup after loading the view, typically from a nib.
         tuner.delegate = self
         tuner.startTuner()
+        
+        materView.makeArrowLayer()
+        materView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: (self.view.bounds.height - 300) / 2, width: 300, height: 300)
+        
+        self.view.addSubview(materView)
+        
         setupLayout()
         
     }
@@ -41,28 +47,29 @@ class ViewController: UIViewController,TunerDelegate{
         frequencyLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(frequencyLabel)
         
-        frequencyLabel.leftAnchor.constraint(equalTo: materView.centerXAnchor).isActive = true
+
+        frequencyLabel.rightAnchor.constraint(equalTo: materView.centerXAnchor).isActive = true
         frequencyLabel.topAnchor.constraint(equalTo: materView.bottomAnchor).isActive = true
         frequencyLabel.widthAnchor.constraint(equalTo: materView.widthAnchor, multiplier: 0.5).isActive = true
         frequencyLabel.heightAnchor.constraint(equalTo: materView.heightAnchor, multiplier: 0.3).isActive = true
-
+        
         pitchLabel.textAlignment = NSTextAlignment.center
         pitchLabel.numberOfLines = 1
-        pitchLabel.font = UIFont.systemFont(ofSize: 46)
+        pitchLabel.font = UIFont.systemFont(ofSize: 50)
         pitchLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pitchLabel)
-
+        
         pitchLabel.centerXAnchor.constraint(equalTo: materView.centerXAnchor).isActive = true
         pitchLabel.topAnchor.constraint(equalTo: materView.centerYAnchor).isActive = true
         pitchLabel.widthAnchor.constraint(equalTo: materView.widthAnchor, multiplier: 0.5).isActive = true
         pitchLabel.heightAnchor.constraint(equalTo: materView.heightAnchor, multiplier: 0.5).isActive = true
-
+        
         pitchFrequencyLabel.textAlignment = NSTextAlignment.center
         pitchFrequencyLabel.numberOfLines = 1
-        pitchFrequencyLabel.font = UIFont.systemFont(ofSize: 60)
+        pitchFrequencyLabel.font = UIFont.systemFont(ofSize: 50)
         pitchFrequencyLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pitchFrequencyLabel)
-
+        
         pitchFrequencyLabel.leftAnchor.constraint(equalTo: materView.centerXAnchor).isActive = true
         pitchFrequencyLabel.topAnchor.constraint(equalTo: materView.bottomAnchor).isActive = true
         pitchFrequencyLabel.widthAnchor.constraint(equalTo: materView.widthAnchor, multiplier: 0.5).isActive = true
@@ -80,7 +87,13 @@ class ViewController: UIViewController,TunerDelegate{
         if amplitude < 0.01 {
             return
         }
-        frequencyLabel.text = "\(frequency)"
+        let frequencyText = String(format: "%.1f", frequency)
+        let pitchFrequencyText = String(format: "%.1f", pitch.frequency)
+        frequencyLabel.text = frequencyText
+        pitchFrequencyLabel.text = pitchFrequencyText
+        pitchLabel.text = "\(pitch.note)"
+        materView.moveArrowLayer(pitch: pitch, frequency: frequency)
+        
     
     }
     

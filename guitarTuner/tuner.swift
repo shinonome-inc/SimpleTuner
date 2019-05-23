@@ -20,7 +20,7 @@ class Tuner: NSObject {
     
     /* Private instance variables. */
     fileprivate var timer: Timer?
-    fileprivate let microphone: AKMicrophone
+    fileprivate let microphone: AKMicrophone?
     fileprivate let tracker: AKFrequencyTracker
     fileprivate let silence: AKBooster
     
@@ -41,7 +41,7 @@ class Tuner: NSObject {
             return
         }
         //タイマー作成
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(Tuner.tick), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(Tuner.tick), userInfo: nil, repeats: true)
     }
     
     func stopTuner() {

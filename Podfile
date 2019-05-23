@@ -4,7 +4,7 @@
 target 'guitarTuner' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-	pod 'AudioKit'
+	pod 'AudioKit','~>4.7'
   # Pods for guitarTuner
 
   target 'guitarTunerTests' do
