@@ -41,7 +41,6 @@ class MaterView: UIView {
         thickLayer.lineDashPattern = [ 1.5, 58.5 ]
         thickLayer.lineDashPhase = 0.75
         self.layer.addSublayer(thickLayer)
-
     }
 
     /// 針のレイヤーを作成する
@@ -54,7 +53,7 @@ class MaterView: UIView {
         arrowLayer.path = arrowPath.cgPath
         arrowLayer.frame = frame
         arrowLayer.strokeColor = UIColor.red.cgColor
-        arrowLayer.lineWidth = 32.0
+        arrowLayer.lineWidth = 100
         arrowLayer.fillColor = UIColor.clear.cgColor
         arrowLayer.lineDashPattern = [ 1.5, 718.5 ]
         arrowLayer.lineDashPhase = 0.75
@@ -69,7 +68,7 @@ class MaterView: UIView {
     ///   - pitch: Pitch
     ///   - frequency: 周波数
 
-    func moveArrowLayer(pitch: Pitch, frequency: Double) {
+    /*func moveArrowLayer(pitch: Pitch, frequency: Double) {
         let moveArrow = CABasicAnimation(keyPath: "path")
         let arrowRate: Double
         if pitch.frequency < frequency{
@@ -83,6 +82,7 @@ class MaterView: UIView {
         let movedArrowEndAngel: CGFloat = movedArrowStartAngel + CGFloat(Double.pi / 180)
         let movedArrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: arrowLayer.frame.size.width / 2.0, y: arrowLayer.frame.size.height / 2.0), radius: arrowLayer.frame.size.width / 2.0, startAngle: movedArrowStartAngel, endAngle: movedArrowEndAngel, clockwise: true)
 
+        moveArrow.isRemovedOnCompletion = false
         moveArrow.fromValue = arrowLayer.path
         moveArrow.toValue = movedArrowPath.cgPath
         moveArrow.duration = 0.2
@@ -90,7 +90,23 @@ class MaterView: UIView {
     
         arrowLayer.add(moveArrow, forKey: nil)
         self.layer.addSublayer(arrowLayer)
-    }
+    }*/
+    
+    /*func moveArrowLayer(pitch: Pitch, frequency: Double) {
+        let arrowRate: Double
+        
+        if pitch.frequency < frequency{
+            let nextPitch = pitch + 1
+            arrowRate = (frequency - pitch.frequency) / ((nextPitch.frequency - pitch.frequency) / 2)
+        }else {
+            let beforePitch = pitch - 1
+            arrowRate = (frequency - pitch.frequency) / ((pitch.frequency - beforePitch.frequency) / 2)
+        }
+        let movedArrowAngel: CGFloat = CGFloat((-1 * Double.pi) / 2 + ( Double.pi / 2 ) * arrowRate)
+        UIView.animate(withDuration: 0.2, animations: {
+            moveLayer.transform = CGAffineTransform(rotationAngle: movedArrowAngel)
+        }, completion: )
+    }*/
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -15,6 +15,7 @@ class ViewController: UIViewController,TunerDelegate{
     let pitchLabel = UILabel()
     let pitchFrequencyLabel = UILabel()
     let materView = MaterView(frame: CGRect.init(x: 0, y: 0, width: 300, height: 300))
+    let arrowView = ArrowView()
     let tuner = Tuner()
     
     
@@ -24,10 +25,12 @@ class ViewController: UIViewController,TunerDelegate{
         tuner.delegate = self
         tuner.startTuner()
         
-        materView.makeArrowLayer()
         materView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: (self.view.bounds.height - 300) / 2, width: 300, height: 300)
-        
         self.view.addSubview(materView)
+        
+        arrowView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: (self.view.bounds.height - 300) / 2, width: 300, height: 300)
+        arrowView.makeArrowLayer()
+        self.view.addSubview(arrowView)
         
         setupLayout()
         
@@ -92,7 +95,7 @@ class ViewController: UIViewController,TunerDelegate{
         frequencyLabel.text = frequencyText
         pitchFrequencyLabel.text = pitchFrequencyText
         pitchLabel.text = "\(pitch.note)"
-        materView.moveArrowLayer(pitch: pitch, frequency: frequency)
+        arrowView.moveArrowLayer(pitch: pitch, frequency: frequency)
         
     
     }
