@@ -23,6 +23,7 @@ class MaterView: UIView {
         let endAngle: CGFloat = CGFloat(0.0)
         
         let path: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+    
         
         thinLayer.path = path.cgPath
         thinLayer.frame = frame
@@ -36,7 +37,7 @@ class MaterView: UIView {
         thickLayer.path = path.cgPath
         thickLayer.frame = frame
         thickLayer.strokeColor = strokeColor
-        thickLayer.lineWidth = 16.0
+        thickLayer.lineWidth = 16.5
         thickLayer.fillColor = UIColor.clear.cgColor
         thickLayer.lineDashPattern = [ 1.5, 58.5 ]
         thickLayer.lineDashPhase = 0.75
@@ -56,7 +57,6 @@ class MaterView: UIView {
         arrowLayer.lineWidth = 100
         arrowLayer.fillColor = UIColor.clear.cgColor
         arrowLayer.lineDashPattern = [ 1.5, 718.5 ]
-        arrowLayer.lineDashPhase = 0.75
 
         moveLayer.addSublayer(arrowLayer)
         self.layer.addSublayer(moveLayer)

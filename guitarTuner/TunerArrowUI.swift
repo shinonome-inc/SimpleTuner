@@ -11,9 +11,18 @@ import UIKit
 class ArrowView: UIView {
     private let arrowLayer = CAShapeLayer.init()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func makeArrowLayer() {
+        let frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         let arrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2)
-        let arrowEndAngel: CGFloat = arrowStartAngel + CGFloat(Double.pi / 180)
+        let arrowEndAngel: CGFloat = arrowStartAngel + CGFloat(Double.pi * 2)
         let arrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: arrowStartAngel, endAngle: arrowEndAngel, clockwise: true)
         
         arrowLayer.path = arrowPath.cgPath
@@ -21,8 +30,8 @@ class ArrowView: UIView {
         arrowLayer.strokeColor = UIColor.red.cgColor
         arrowLayer.lineWidth = 100
         arrowLayer.fillColor = UIColor.clear.cgColor
-        arrowLayer.lineDashPattern = [ 1.5, 718.5 ]
-        arrowLayer.lineDashPhase = 0.75
+        arrowLayer.lineDashPattern = [ 1.5, 958.5 ]
+
         
         self.layer.addSublayer(arrowLayer)
     }
@@ -37,7 +46,7 @@ class ArrowView: UIView {
             let beforePitch = pitch - 1
             arrowRate = (frequency - pitch.frequency) / ((pitch.frequency - beforePitch.frequency) / 2)
         }
-        let movedArrowAngel: CGFloat = CGFloat((-1 * Double.pi) / 2 + ( Double.pi / 2 ) * arrowRate)
+        let movedArrowAngel: CGFloat = CGFloat(( Double.pi / 2 ) * arrowRate)
         UIView.animate(withDuration: 0.2, animations: {
             self.transform = CGAffineTransform(rotationAngle: movedArrowAngel)
         })

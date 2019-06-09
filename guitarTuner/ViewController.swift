@@ -15,7 +15,7 @@ class ViewController: UIViewController,TunerDelegate{
     let pitchLabel = UILabel()
     let pitchFrequencyLabel = UILabel()
     let materView = MaterView(frame: CGRect.init(x: 0, y: 0, width: 300, height: 300))
-    let arrowView = ArrowView()
+    let arrowView = ArrowView(frame: CGRect.init(x: 0, y: 0, width: 300, height: 300))
     let tuner = Tuner()
     
     
@@ -43,6 +43,11 @@ class ViewController: UIViewController,TunerDelegate{
         materView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: (self.view.bounds.height - 300) / 2, width: 300, height: 300)
 
         self.view.addSubview(materView)
+        
+        arrowView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: (self.view.bounds.height - 300) / 2, width: 300, height: 300)
+        arrowView.makeArrowLayer()
+        self.view.addSubview(arrowView)
+        
 
         frequencyLabel.textAlignment = NSTextAlignment.center
         frequencyLabel.numberOfLines = 1
