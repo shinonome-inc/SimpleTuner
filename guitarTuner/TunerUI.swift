@@ -39,7 +39,7 @@ class MaterView: UIView {
         thickLayer.strokeColor = strokeColor
         thickLayer.lineWidth = 16.5
         thickLayer.fillColor = UIColor.clear.cgColor
-        thickLayer.lineDashPattern = [ 1.5, 58.5 ]
+        thickLayer.lineDashPattern = [ 1.5, 78.8 ]
         thickLayer.lineDashPhase = 0.75
         self.layer.addSublayer(thickLayer)
     }
