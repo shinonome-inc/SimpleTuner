@@ -60,9 +60,7 @@ class Tuner: NSObject {
         
         let frequency = Double(tracker.frequency)
         let amplitude = Double(tracker.amplitude)
-        
         let pitch = Pitch.nearest(frequency)
-        
         let distance = frequency - pitch.frequency
         
         self.delegate?.tunerDidMesure(pitch: pitch, distance: distance, amplitude: amplitude, frequency: frequency)

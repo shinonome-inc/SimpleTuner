@@ -37,7 +37,7 @@ class ArrowView: UIView {
     }
     
     func moveArrowLayer(pitch: Pitch, frequency: Double) {
-        let arrowRate: Double
+        var arrowRate: Double
         
         if pitch.frequency < frequency{
             let nextPitch = pitch + 1
@@ -45,6 +45,13 @@ class ArrowView: UIView {
         }else {
             let beforePitch = pitch - 1
             arrowRate = (frequency - pitch.frequency) / ((pitch.frequency - beforePitch.frequency) / 2)
+        }
+        
+        if arrowRate > 1 {
+            arrowRate = 1
+        }
+        if arrowRate < -1 {
+            arrowRate = -1
         }
         let movedArrowAngel: CGFloat = CGFloat(( Double.pi / 2 ) * arrowRate)
         UIView.animate(withDuration: 0.2, animations: {
