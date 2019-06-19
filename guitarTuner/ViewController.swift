@@ -175,27 +175,45 @@ class ViewController: UIViewController,TunerDelegate{
         print("foo")
     }
 
+    var previousValue = ""
 
     func setPitchColor(from pitch: String) {
-        //"♭""♯"
 
-        let views = [cView, cPlusView, dView, eMinusView, eView, fPlusView, fView, gView, aMinusView, aView, bView, bMinusView]
-        _ = views.map({ $0?.backgroundColor = #colorLiteral(red: 0.3333333333, green: 0.3333333333, blue: 0.3333333333, alpha: 1) })
+        guard previousValue != pitch else {
+            return
+        }
+        previousValue = pitch
 
-        switch pitch {
-        case "C": cView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "C♯": cPlusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "D": dView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "E♭": eMinusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "E": eView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "F": fView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "F♯": fPlusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "G": gView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "A♭": aMinusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "A": aView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "B♭": bMinusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        case "B": bView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        default: return
+        UIView.animate(withDuration: 0.1) { [unowned self] in
+            let views = [self.cView,
+                         self.cPlusView,
+                         self.dView,
+                         self.eMinusView,
+                         self.eView,
+                         self.fPlusView,
+                         self.fView,
+                         self.gView,
+                         self.aMinusView,
+                         self.aView,
+                         self.bView,
+                         self.bMinusView]
+            _ = views.map({ $0?.backgroundColor = #colorLiteral(red: 0.3333333333, green: 0.3333333333, blue: 0.3333333333, alpha: 1) })
+
+            switch pitch {
+            case "C": self.cView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "C♯": self.cPlusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "D": self.dView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "E♭": self.eMinusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "E": self.eView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "F": self.fView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "F♯": self.fPlusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "G": self.gView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "A♭": self.aMinusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "A": self.aView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "B♭": self.bMinusView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            case "B": self.bView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            default: return
+            }
         }
     }
     
