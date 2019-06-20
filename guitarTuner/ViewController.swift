@@ -80,12 +80,6 @@ class ViewController: UIViewController,TunerDelegate{
     /// レイアウト系のセットアップ
     func setupLayout() {
         
-//        gradientLayer.colors = [ UIColor.black.cgColor, UIColor.clear.cgColor, UIColor.black.cgColor ]
-//        gradientLayer.frame = self.view.bounds
-//        gradientLayer.startPoint = CGPoint.zero
-//        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
-//        self.view.layer.addSublayer(gradientLayer)
-
         materView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: baseView.frame.origin.y + 75, width: 300, height: 300)
         self.view.addSubview(materView)
 
@@ -93,54 +87,6 @@ class ViewController: UIViewController,TunerDelegate{
         arrowView.makeArrowLayer()
         self.view.addSubview(arrowView)
         
-        /*barLabel.textAlignment = NSTextAlignment.center
-        barLabel.numberOfLines = 1
-        barLabel.font = UIFont.systemFont(ofSize: 50)
-        barLabel.translatesAutoresizingMaskIntoConstraints = false
-        barLabel.textColor = UIColor.white
-        barLabel.text = "/"
-        self.view.addSubview(barLabel)
-        
-        barLabel.rightAnchor.constraint(equalTo: materView.centerXAnchor).isActive = true
-        barLabel.topAnchor.constraint(equalTo: materView.bottomAnchor).isActive = true
-        barLabel.widthAnchor.constraint(equalTo: materView.widthAnchor, multiplier: 0.2).isActive = true
-        barLabel.heightAnchor.constraint(equalTo: materView.heightAnchor, multiplier: 0.3).isActive = true*/
-        
-//        frequencyLabel.textAlignment = NSTextAlignment.center
-//        frequencyLabel.numberOfLines = 1
-//        frequencyLabel.font = UIFont.systemFont(ofSize: 50)
-//        frequencyLabel.translatesAutoresizingMaskIntoConstraints = false
-//        frequencyLabel.textColor = UIColor.red
-//        self.view.addSubview(frequencyLabel)
-
-//        frequencyLabel.rightAnchor.constraint(equalTo: materView.centerXAnchor).isActive = true
-//        frequencyLabel.topAnchor.constraint(equalTo: materView.bottomAnchor).isActive = true
-//        frequencyLabel.widthAnchor.constraint(equalTo: materView.widthAnchor, multiplier: 0.6).isActive = true
-//        frequencyLabel.heightAnchor.constraint(equalTo: materView.heightAnchor, multiplier: 0.3).isActive = true
-
-//        pitchLabel.textAlignment = NSTextAlignment.center
-//        pitchLabel.numberOfLines = 1
-//        pitchLabel.font = UIFont(name: "HiraMinProN-W3", size: 100)
-//        pitchLabel.translatesAutoresizingMaskIntoConstraints = false
-//        pitchLabel.textColor = UIColor.blue
-//        self.view.addSubview(pitchLabel)
-
-//        pitchLabel.centerXAnchor.constraint(equalTo: materView.centerXAnchor).isActive = true
-//        pitchLabel.topAnchor.constraint(equalTo: materView.centerYAnchor).isActive = true
-//        pitchLabel.widthAnchor.constraint(equalTo: materView.widthAnchor, multiplier: 0.7).isActive = true
-//        pitchLabel.heightAnchor.constraint(equalTo: materView.heightAnchor, multiplier: 0.5).isActive = true
-//
-//        pitchFrequencyLabel.textAlignment = NSTextAlignment.center
-//        pitchFrequencyLabel.numberOfLines = 1
-//        pitchFrequencyLabel.font = UIFont.systemFont(ofSize: 25)
-//        pitchFrequencyLabel.translatesAutoresizingMaskIntoConstraints = false
-//        pitchFrequencyLabel.textColor = UIColor.white
-//        self.view.addSubview(pitchFrequencyLabel)
-//
-//        pitchFrequencyLabel.leftAnchor.constraint(equalTo: materView.centerXAnchor).isActive = true
-//        pitchFrequencyLabel.bottomAnchor.constraint(equalTo: frequencyLabel.bottomAnchor).isActive = true
-//        pitchFrequencyLabel.widthAnchor.constraint(equalTo: materView.widthAnchor, multiplier: 0.5).isActive = true
-//        pitchFrequencyLabel.heightAnchor.constraint(equalTo: frequencyLabel.heightAnchor, multiplier: 0.8).isActive = true
     }
     
     /// メジャーの更新
