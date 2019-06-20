@@ -101,7 +101,7 @@ class ViewController: UIViewController,TunerDelegate{
         guard amplitude > 0.01 else{
             return
         }
-        guard frequency > Pitch.all[0].frequency || frequency < Pitch.all[60].frequency else {
+        guard frequency > Pitch.all[0].frequency, frequency < Pitch.all[60].frequency else {
             return
         }
         let frequencyText = String(format: "%.1f", frequency)

@@ -427,7 +427,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tuner" id="cln-6Z-sqL">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="6WY-Ad-8pf">
+                        <barButtonItem key="rightBarButtonItem" title="edit" id="6WY-Ad-8pf">
                             <connections>
                                 <action selector="didTapBArButtonItem:" destination="BYZ-38-t0r" id="p4U-EP-4A0"/>
                             </connections>
