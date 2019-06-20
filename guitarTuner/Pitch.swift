@@ -20,7 +20,7 @@ class Pitch: CustomStringConvertible {
         self.frequency = note.frequency * pow(2, Double(octave) - 4)
     }
     
-    static let all = Array((2 ... 6).map { octave -> [Pitch] in
+    static let all = Array((1 ... 6).map { octave -> [Pitch] in
         Note.all.map { note -> Pitch in
             Pitch(note: note, octave: octave)
         }
