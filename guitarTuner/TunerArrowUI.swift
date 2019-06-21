@@ -11,13 +11,6 @@ import UIKit
 class ArrowView: UIView {
     private let arrowLayer = CAShapeLayer.init()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     func makeArrowLayer() {
         let frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)

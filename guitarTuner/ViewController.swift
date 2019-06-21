@@ -16,6 +16,7 @@ class ViewController: UIViewController,TunerDelegate{
     @IBOutlet weak var pitchTextLabel: UILabel!
     @IBOutlet weak var frequencyTextLabel: UILabel!
 
+    @IBOutlet weak var materView: MaterView!
     @IBOutlet weak var cPlusView: UIView!
     @IBOutlet weak var cView: UIView!
     @IBOutlet weak var dView: UIView!
@@ -34,8 +35,8 @@ class ViewController: UIViewController,TunerDelegate{
     let pitchFrequencyLabel = UILabel()
     let barLabel = UILabel()
     let gradientLayer = CAGradientLayer()
-    let materView = MaterView(frame: CGRect.init(x: 0, y: 0, width: 300, height: 300))
-    let arrowView = ArrowView(frame: CGRect.init(x: 0, y: 0, width: 300, height: 300))
+    //let materView = MaterView()
+    let arrowView = ArrowView()
     let tuner = Tuner()
     
     //テスト用
@@ -81,6 +82,7 @@ class ViewController: UIViewController,TunerDelegate{
     func setupLayout() {
         
         materView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: baseView.frame.origin.y + 75, width: 300, height: 300)
+        materView.makeMaterView()
         self.view.addSubview(materView)
 
         arrowView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: baseView.frame.origin.y + 75, width: 300, height: 300)
