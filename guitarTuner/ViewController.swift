@@ -81,13 +81,27 @@ class ViewController: UIViewController,TunerDelegate{
     /// レイアウト系のセットアップ
     func setupLayout() {
         
-        materView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: baseView.frame.origin.y + 75, width: 300, height: 300)
+        print(baseView.frame.origin.y)
+        print(baseView.frame.height)
+        print(baseView.bounds.height)
+        print(baseView.center.y)
+        
+        /*materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         materView.makeMaterView()
         self.view.addSubview(materView)
-
-        arrowView.frame = CGRect(x: (self.view.bounds.width - 300) / 2, y: baseView.frame.origin.y + 75, width: 300, height: 300)
+        
+        materView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.8 / 150, y: baseView.frame.height * 0.8 / 150)
+        materView.translatesAutoresizingMaskIntoConstraints = false
+        materView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        materView.centerYAnchor.constraint(equalTo: baseView.bottomAnchor).isActive = true*/
+        
+        arrowView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         arrowView.makeArrowLayer()
         self.view.addSubview(arrowView)
+        
+        /*arrowView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.8 / 150, y: baseView.frame.height * 0.8 / 150)
+        arrowView.center = CGPoint(x: baseView.frame.width / 2, y: baseView.center.y + baseView.bounds.height / 2)*/
+        
         
     }
     

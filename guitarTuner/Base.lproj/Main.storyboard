@@ -21,10 +21,10 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feB-MJ-9bk">
                                 <rect key="frame" x="0.0" y="64" width="375" height="190.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vgY-3P-bN2" customClass="MaterView" customModule="guitarTuner" customModuleProvider="target">
-                                        <rect key="frame" x="67" y="62" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HQ7-BQ-3G8" customClass="MaterView" customModule="guitarTuner" customModuleProvider="target">
+                                        <rect key="frame" x="37" y="8" width="300" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12549019610000001" green="0.13725490200000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -456,7 +456,7 @@
                         <outlet property="frequencyTextLabel" destination="SKU-EW-WVp" id="Szj-78-8A2"/>
                         <outlet property="gView" destination="Fcu-L9-4cV" id="LTF-XR-kcr"/>
                         <outlet property="headerLabel" destination="wPt-BM-tn5" id="IDe-8f-2Jb"/>
-                        <outlet property="materView" destination="vgY-3P-bN2" id="dJZ-GD-UIT"/>
+                        <outlet property="materView" destination="HQ7-BQ-3G8" id="zEo-Z0-GTI"/>
                         <outlet property="pitchTextLabel" destination="d64-ov-ZBJ" id="siE-hk-Qda"/>
                     </connections>
                 </viewController>
