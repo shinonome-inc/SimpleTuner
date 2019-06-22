@@ -86,9 +86,9 @@ class ViewController: UIViewController,TunerDelegate{
         print(baseView.bounds.height)
         print(baseView.center.y)
         
-        /*materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        //materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         materView.makeMaterView()
-        self.view.addSubview(materView)
+        /*self.view.addSubview(materView)
         
         materView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.8 / 150, y: baseView.frame.height * 0.8 / 150)
         materView.translatesAutoresizingMaskIntoConstraints = false
