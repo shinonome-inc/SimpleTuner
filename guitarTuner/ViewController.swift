@@ -16,7 +16,6 @@ class ViewController: UIViewController,TunerDelegate{
     @IBOutlet weak var pitchTextLabel: UILabel!
     @IBOutlet weak var frequencyTextLabel: UILabel!
 
-    @IBOutlet weak var materView: MaterView!
     @IBOutlet weak var cPlusView: UIView!
     @IBOutlet weak var cView: UIView!
     @IBOutlet weak var dView: UIView!
@@ -35,7 +34,7 @@ class ViewController: UIViewController,TunerDelegate{
     let pitchFrequencyLabel = UILabel()
     let barLabel = UILabel()
     let gradientLayer = CAGradientLayer()
-    //let materView = MaterView()
+    let materView = MaterView()
     let arrowView = ArrowView()
     let tuner = Tuner()
     
@@ -51,12 +50,28 @@ class ViewController: UIViewController,TunerDelegate{
         tuner.delegate = self
         tuner.startTuner()
         
-        setupLayout()
+        //setupLayout()
         //testSetupLayout()
+        materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        materView.makeMaterView()
+        
+        arrowView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        arrowView.makeArrowLayer()
         
         
     }
     
+    //こいつが呼ばれるときにはオートレイアウト後のフレームが決定している.
+    //逆にviewDidLoadではまだ決定していない
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        _ = self.initViewLayout
+    }
+    
+    private lazy var initViewLayout : Void = {
+        setupLayout()
+    }()
     //テスト用図形レイアウト
     func testSetupLayout(){
         let centerPath = UIBezierPath()
@@ -87,16 +102,15 @@ class ViewController: UIViewController,TunerDelegate{
         print(baseView.center.y)
         
         //materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        materView.makeMaterView()
-        /*self.view.addSubview(materView)
+        //materView.makeMaterView()
+        //self.view.addSubview(materView)
         
-        materView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.8 / 150, y: baseView.frame.height * 0.8 / 150)
-        materView.translatesAutoresizingMaskIntoConstraints = false
-        materView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        materView.centerYAnchor.constraint(equalTo: baseView.bottomAnchor).isActive = true*/
+        materView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.7 / 150, y: baseView.frame.height * 0.7 / 150)
+        materView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + baseView.frame.height / 2 - 10)
+        self.view.addSubview(materView)
         
-        arrowView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        arrowView.makeArrowLayer()
+        arrowView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.7 / 150, y: baseView.frame.height * 0.7 / 150)
+        arrowView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + baseView.frame.height / 2 - 10)
         self.view.addSubview(arrowView)
         
         /*arrowView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.8 / 150, y: baseView.frame.height * 0.8 / 150)

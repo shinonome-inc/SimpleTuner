@@ -13,6 +13,7 @@ class MaterView: UIView {
     private let thickLayer = CAShapeLayer.init()
     private let justPitchLayer = CAShapeLayer.init()
     private let propLayer = CAShapeLayer.init()
+    //let arrowView = ArrowView()
     
     /*override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,6 +105,8 @@ class MaterView: UIView {
         justPitchLayer.lineDashPattern = [ 3.0, 300]
         justPitchLayer.lineDashPhase = 1.5
         self.layer.addSublayer(justPitchLayer)
+        
+        //self.addSubview(arrowView)
     }
 
 
