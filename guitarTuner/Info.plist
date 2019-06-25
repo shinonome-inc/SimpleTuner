@@ -25,6 +25,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>ヒラギノ明朝 ProN.ttc</string>
+		<string>Font Awesome 5 Free-Solid-900.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

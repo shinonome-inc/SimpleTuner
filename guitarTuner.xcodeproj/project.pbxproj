@@ -16,12 +16,14 @@
 		7822C0F62257027C00361EC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */; };
 		7822C1012257027C00361EC5 /* guitarTunerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C1002257027C00361EC5 /* guitarTunerTests.swift */; };
 		7822C10C2257027C00361EC5 /* guitarTunerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C10B2257027C00361EC5 /* guitarTunerUITests.swift */; };
+		783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C81CD22C24757004FEB7E /* SettingViewController.swift */; };
 		786C8C8A2272C6AF00591D69 /* TunerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786C8C892272C6AF00591D69 /* TunerUI.swift */; };
 		78702629225B591700E32781 /* tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78702628225B591700E32781 /* tuner.swift */; };
 		78E1743122B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 78E1743022B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc */; };
 		78E57F9822A0D6C0004EADE0 /* TunerArrowUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */; };
 		78E63EF62266C97900D882CA /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E63EF52266C97900D882CA /* Pitch.swift */; };
 		78E773E6225DFD85006C8C4B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E773E5225DFD85006C8C4B /* Note.swift */; };
+		78E81C0D22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78E81C0C22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf */; };
 		8C678ED7584719A971684B49 /* Pods_guitarTunerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85612D780DD8D9A9EFFA54EC /* Pods_guitarTunerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,12 +62,14 @@
 		7822C1072257027C00361EC5 /* guitarTunerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = guitarTunerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7822C10B2257027C00361EC5 /* guitarTunerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guitarTunerUITests.swift; sourceTree = "<group>"; };
 		7822C10D2257027C00361EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		783C81CD22C24757004FEB7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		786C8C892272C6AF00591D69 /* TunerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerUI.swift; sourceTree = "<group>"; };
 		78702628225B591700E32781 /* tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tuner.swift; sourceTree = "<group>"; };
 		78E1743022B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ明朝 ProN.ttc"; sourceTree = "<group>"; };
 		78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerArrowUI.swift; sourceTree = "<group>"; };
 		78E63EF52266C97900D882CA /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		78E773E5225DFD85006C8C4B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		78E81C0C22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
 		85612D780DD8D9A9EFFA54EC /* Pods_guitarTunerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guitarTunerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93CAC1CD406C051FC0FD1AF /* Pods_guitarTunerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guitarTunerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCEE302DE0C18940DD3ED3B /* Pods-guitarTunerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guitarTunerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-guitarTunerTests/Pods-guitarTunerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				7822C0ED2257027B00361EC5 /* ViewController.swift */,
 				78702628225B591700E32781 /* tuner.swift */,
 				78E773E5225DFD85006C8C4B /* Note.swift */,
+				78E81C0C22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf */,
 				78E63EF52266C97900D882CA /* Pitch.swift */,
 				786C8C892272C6AF00591D69 /* TunerUI.swift */,
 				78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */,
@@ -138,6 +143,7 @@
 				7822C0F22257027C00361EC5 /* Assets.xcassets */,
 				7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */,
 				7822C0F72257027C00361EC5 /* Info.plist */,
+				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
 			);
 			path = guitarTuner;
 			sourceTree = "<group>";
@@ -194,6 +200,7 @@
 				7822C0E42257027B00361EC5 /* Sources */,
 				7822C0E52257027B00361EC5 /* Frameworks */,
 				7822C0E62257027B00361EC5 /* Resources */,
+				D0C365FF57CCA3CA58E839B4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -294,6 +301,7 @@
 				7822C0F32257027C00361EC5 /* Assets.xcassets in Resources */,
 				78E1743122B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc in Resources */,
 				7822C0F12257027B00361EC5 /* Main.storyboard in Resources */,
+				78E81C0D22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +388,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D0C365FF57CCA3CA58E839B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-guitarTuner/Pods-guitarTuner-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-guitarTuner/Pods-guitarTuner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -390,6 +420,7 @@
 				7822C0EE2257027B00361EC5 /* ViewController.swift in Sources */,
 				78702629225B591700E32781 /* tuner.swift in Sources */,
 				78E57F9822A0D6C0004EADE0 /* TunerArrowUI.swift in Sources */,
+				783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */,
 				786C8C8A2272C6AF00591D69 /* TunerUI.swift in Sources */,
 				7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */,
 				78E773E6225DFD85006C8C4B /* Note.swift in Sources */,

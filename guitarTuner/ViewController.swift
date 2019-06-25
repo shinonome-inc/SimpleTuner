@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 
 class ViewController: UIViewController,TunerDelegate{
@@ -15,7 +16,9 @@ class ViewController: UIViewController,TunerDelegate{
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var pitchTextLabel: UILabel!
     @IBOutlet weak var frequencyTextLabel: UILabel!
-
+    
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
     @IBOutlet weak var cPlusView: UIView!
     @IBOutlet weak var cView: UIView!
     @IBOutlet weak var dView: UIView!
@@ -53,8 +56,11 @@ class ViewController: UIViewController,TunerDelegate{
         tuner.delegate = self
         tuner.startTuner()
         
-        //setupLayout()
-        //testSetupLayout()
+        //FontAwesome.swift大活躍。感動。
+        let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.fontAwesome(ofSize: 30, style: .solid)]
+        editButton.setTitleTextAttributes(attribute, for: .normal)
+        editButton.title = String.fontAwesomeIcon(name: .cog)
+        
         materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         materView.makeMaterView()
         
@@ -65,10 +71,11 @@ class ViewController: UIViewController,TunerDelegate{
     }
     
     //こいつが呼ばれるときにはオートレイアウト後のフレームが決定している.
-    //逆にviewDidLoadではまだ決定していない
+    //逆にviewDidLoadではまだ決定していない。なんかめちゃくちゃ呼ばれるっぽいので注意。
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        //これ+下のlazyってやつで初回の一回のみsetupLayoutを呼べる。詳しくは不明。
         _ = self.initViewLayout
     }
     
@@ -99,10 +106,6 @@ class ViewController: UIViewController,TunerDelegate{
     /// レイアウト系のセットアップ
     func setupLayout() {
         
-        //materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        //materView.makeMaterView()
-        //self.view.addSubview(materView)
-        
         scaleAffine = CGAffineTransform(scaleX: baseView.frame.height * 0.7 / 150, y: baseView.frame.height * 0.7 / 150)
         guard scaleAffine != nil else {
             return
@@ -114,10 +117,6 @@ class ViewController: UIViewController,TunerDelegate{
         arrowView.transform = scaleAffine!
         arrowView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + baseView.frame.height / 2 - 10)
         self.view.addSubview(arrowView)
-        
-       
-        /*arrowView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.8 / 150, y: baseView.frame.height * 0.8 / 150)
-        arrowView.center = CGPoint(x: baseView.frame.width / 2, y: baseView.center.y + baseView.bounds.height / 2)*/
         
     }
     

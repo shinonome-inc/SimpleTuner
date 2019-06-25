@@ -427,9 +427,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tuner" id="cln-6Z-sqL">
-                        <barButtonItem key="rightBarButtonItem" title="edit" id="6WY-Ad-8pf">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="v62-jJ-YpU">
                             <connections>
-                                <action selector="didTapBArButtonItem:" destination="BYZ-38-t0r" id="p4U-EP-4A0"/>
+                                <segue destination="c6Y-SR-i0c" kind="show" id="5eu-VB-Wza"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -444,6 +444,7 @@
                         <outlet property="dView" destination="MRd-Ry-brA" id="Oht-2F-CMd"/>
                         <outlet property="eMinusView" destination="sao-Lx-Rxk" id="zgK-qq-Cfz"/>
                         <outlet property="eView" destination="Vix-03-uqI" id="Lp7-3J-3bH"/>
+                        <outlet property="editButton" destination="v62-jJ-YpU" id="zPU-fv-2X6"/>
                         <outlet property="fPlusView" destination="F2H-tQ-HNB" id="WA0-R5-WhZ"/>
                         <outlet property="fView" destination="YxF-K2-jNg" id="DwM-SD-NMV"/>
                         <outlet property="frequencyTextLabel" destination="SKU-EW-WVp" id="Szj-78-8A2"/>
@@ -455,6 +456,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1074.4000000000001" y="120.98950524737631"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pAa-CM-HDW">
+            <objects>
+                <viewController id="c6Y-SR-i0c" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pL4-Lp-ucO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KAw-Y2-hA8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3p-na-5zp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1843" y="118"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CHd-Ly-tXQ">
