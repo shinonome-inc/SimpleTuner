@@ -38,6 +38,9 @@ class ViewController: UIViewController,TunerDelegate{
     let arrowView = ArrowView()
     let tuner = Tuner()
     
+    var scaleAffine: CGAffineTransform?
+    
+    
     //テスト用
     let centerLine = CAShapeLayer()
     let holizenLine = CAShapeLayer()
@@ -96,26 +99,25 @@ class ViewController: UIViewController,TunerDelegate{
     /// レイアウト系のセットアップ
     func setupLayout() {
         
-        print(baseView.frame.origin.y)
-        print(baseView.frame.height)
-        print(baseView.bounds.height)
-        print(baseView.center.y)
-        
         //materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         //materView.makeMaterView()
         //self.view.addSubview(materView)
         
-        materView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.7 / 150, y: baseView.frame.height * 0.7 / 150)
+        scaleAffine = CGAffineTransform(scaleX: baseView.frame.height * 0.7 / 150, y: baseView.frame.height * 0.7 / 150)
+        guard scaleAffine != nil else {
+            return
+        }
+        materView.transform = scaleAffine!
         materView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + baseView.frame.height / 2 - 10)
         self.view.addSubview(materView)
         
-        arrowView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.7 / 150, y: baseView.frame.height * 0.7 / 150)
+        arrowView.transform = scaleAffine!
         arrowView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + baseView.frame.height / 2 - 10)
         self.view.addSubview(arrowView)
         
+       
         /*arrowView.transform = CGAffineTransform(scaleX: baseView.frame.height * 0.8 / 150, y: baseView.frame.height * 0.8 / 150)
         arrowView.center = CGPoint(x: baseView.frame.width / 2, y: baseView.center.y + baseView.bounds.height / 2)*/
-        
         
     }
     
@@ -134,12 +136,16 @@ class ViewController: UIViewController,TunerDelegate{
         guard frequency > Pitch.all[0].frequency, frequency < Pitch.all[60].frequency else {
             return
         }
+        guard scaleAffine != nil else {
+            return
+        }
+        
         let frequencyText = String(format: "%.1f", frequency)
         let pitchFrequencyText = String(format: "%.1f", pitch.frequency)
         frequencyTextLabel.text = frequencyText
         pitchTextLabel.text = pitchFrequencyText
         headerLabel.text = "\(pitch.note)"
-        arrowView.moveArrowLayer(pitch: pitch, frequency: frequency)
+        arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine!)
         
         if fabs(distance) < 0.1 {
             headerLabel.textColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)

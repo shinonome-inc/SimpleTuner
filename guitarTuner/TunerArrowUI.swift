@@ -11,17 +11,16 @@ import UIKit
 class ArrowView: UIView {
     private let arrowLayer = CAShapeLayer.init()
     
-    
     func makeArrowLayer() {
         let frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         let arrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2)
         let arrowEndAngel: CGFloat = arrowStartAngel + CGFloat(Double.pi * 2)
-        let arrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: arrowStartAngel, endAngle: arrowEndAngel, clockwise: true)
+        let arrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width * 5.0 / 12.0, startAngle: arrowStartAngel, endAngle: arrowEndAngel, clockwise: true)
         
         arrowLayer.path = arrowPath.cgPath
         arrowLayer.frame = frame
         arrowLayer.strokeColor = UIColor.red.cgColor
-        arrowLayer.lineWidth = 100
+        arrowLayer.lineWidth = frame.size.width / 6.0
         arrowLayer.fillColor = UIColor.clear.cgColor
         arrowLayer.lineDashPattern = [ 1.5, 958.5 ]
 
@@ -29,7 +28,7 @@ class ArrowView: UIView {
         self.layer.addSublayer(arrowLayer)
     }
     
-    func moveArrowLayer(pitch: Pitch, frequency: Double) {
+    func moveArrowLayer(pitch: Pitch, frequency: Double, scaleAffine: CGAffineTransform) {
         var arrowRate: Double
         
         if pitch.frequency < frequency{
@@ -48,7 +47,11 @@ class ArrowView: UIView {
         }
         let movedArrowAngel: CGFloat = CGFloat(( Double.pi / 2 ) * arrowRate)
         UIView.animate(withDuration: 0.2, animations: {
-            self.transform = CGAffineTransform(rotationAngle: movedArrowAngel)
+            let rotateAffine = CGAffineTransform(rotationAngle: movedArrowAngel)
+            let affine = scaleAffine.concatenating(rotateAffine)
+            
+            self.transform = affine
+            
         })
     }
 }

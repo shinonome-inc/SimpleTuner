@@ -70,7 +70,7 @@ class MaterView: UIView {
         let justPitchAngle = CGFloat((-1 * Double.pi) / 2)
         
         let path: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        let propPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width / 2.0) - 50, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        let propPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width / 2.0) - frame.size.width / 6.0, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         let justPitchPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: justPitchAngle, endAngle: endAngle, clockwise: true)
         
         thinLayer.path = path.cgPath
