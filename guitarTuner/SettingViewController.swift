@@ -12,13 +12,13 @@ import UIKit
 class SettingViewController: UITableViewController {
     
     let pickerView = UIPickerView()
-    let pickerViewHeight: CGFloat = 400
-    let pickerToolBar = UIToolbar()
-    let pickerToolBarHeight: CGFloat = 30
+    let pickerViewHeight: CGFloat = 200
     
     var pickerIndexPath :IndexPath?
+    let underMargin: CGFloat = 40
     
     private let frequencyArray = ["440", "441", "442"]
+    var baseFrequency = 440
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,17 +26,12 @@ class SettingViewController: UITableViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
         
-        pickerView.frame = CGRect(x: 0, y: height + pickerToolBarHeight, width: width, height: pickerViewHeight)
+        pickerView.frame = CGRect(x: 0, y: height, width: width, height: pickerViewHeight)
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.backgroundColor = UIColor.white
+        //pickerView.transform = CGAffineTransform(scaleX: 1, y: )
         self.view.addSubview(pickerView)
-        
-        pickerToolBar.frame = CGRect(x: 0, y: height, width: width, height: pickerToolBarHeight)
-        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let doneBtn = UIBarButtonItem(title: "完了", style: .plain, target: self, action: #selector(self.doneTapped))
-        pickerToolBar.items = [flexible,doneBtn]
-        self.view.addSubview(pickerToolBar)
         
     }
     
@@ -46,17 +41,16 @@ class SettingViewController: UITableViewController {
         let height = self.view.frame.height
     
         pickerIndexPath = indexPath
+        let index = frequencyArray.findIndex{$0 == String(baseFrequency)}
+        pickerView.selectRow(index[0], inComponent: 0, animated: true)
         pickerView.reloadAllComponents()
         
-        UIView.animate(withDuration: 0.2, animations:{
-            self.pickerToolBar.frame = CGRect(x:0, y:height - self.pickerViewHeight - self.pickerToolBarHeight, width:width, height:self.pickerToolBarHeight)
-            self.pickerView.frame = CGRect(x:0, y:height - self.pickerViewHeight, width:width, height:self.pickerViewHeight)}
+        if indexPath.section == 0{
+            UIView.animate(withDuration: 0.2, animations:{
+                self.pickerView.frame = CGRect(x:0, y:height - self.pickerViewHeight, width:width, height:self.pickerViewHeight)}
         )
+        }
         
-        
-        
-        print(pickerView.frame)
-        print(pickerToolBar.frame)
     }
     
     
@@ -88,7 +82,7 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         cell?.detailTextLabel?.text = "\(frequencyArray[row])Hz"
     }
     
-    @objc func doneTapped() {
+    /*@objc func doneTapped() {
         
         UIView.animate(withDuration: 0.2) {
             let width = self.view.frame.width
@@ -100,7 +94,17 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         print(pickerView.frame)
         print(pickerToolBar.frame)
         print(self.view.frame)
-    }
+    }*/
 }
 
-
+extension Array {
+    func findIndex(includeElement: (Element) -> Bool) -> [Int] {
+        var indexArray:[Int] = []
+        for (index, element) in enumerated() {
+            if includeElement(element) {
+                indexArray.append(index)
+            }
+        }
+        return indexArray
+    }
+}
