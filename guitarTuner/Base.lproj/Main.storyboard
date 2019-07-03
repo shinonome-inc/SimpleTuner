@@ -429,7 +429,7 @@
                     <navigationItem key="navigationItem" title="Tuner" id="cln-6Z-sqL">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="v62-jJ-YpU">
                             <connections>
-                                <segue destination="wTV-29-U55" kind="show" id="Z8k-Ij-t7a"/>
+                                <segue destination="wTV-29-U55" kind="show" identifier="toSettingSegue" id="Z8k-Ij-t7a"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -528,6 +528,9 @@
                             <outlet property="delegate" destination="wTV-29-U55" id="46w-iZ-Pa4"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="baseFrequencyLable" destination="qbN-fr-F3I" id="05Y-6i-7GE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lu3-GU-lgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

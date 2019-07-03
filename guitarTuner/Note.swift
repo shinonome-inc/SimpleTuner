@@ -34,12 +34,18 @@ enum Note: CustomStringConvertible {
         b(.Flat), b(nil)
     ]
     
+    //周波数の計算をPItchクラスでさせるためにこちらではIndexまでを計算。基準周波数を変えれるようにしたい
+    var index: Int {
+        let index = Note.all.index(where: { $0 == self})! - Note.all.index(where: { $0 == Note.a(nil)})!
+        return index
+    }
     //$0は内部引数名を省略した時に使うやつ、だけど、そもそもこの場合引数とは。。。多分
-    var frequency: Double {
+    //使ってないナウ
+    /*var frequency: Double {
         let index = Note.all.index(where: { $0 == self})! - Note.all.index(where: { $0 == Note.a(nil)})!
         
         return 440 * pow(2, Double(index) / 12.0)
-    }
+    }*/
     
     var description: String {
         let concat = { (letter: String, accidental: Accidental?) in

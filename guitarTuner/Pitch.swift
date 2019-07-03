@@ -13,18 +13,32 @@ class Pitch: CustomStringConvertible {
     let note: Note
     let octave: Int
     let frequency: Double
+    static var baseFrequency: Double = 440
     
     private init(note: Note, octave: Int) {
         self.note = note
         self.octave = octave
-        self.frequency = note.frequency * pow(2, Double(octave) - 4)
+        let baseFerequency = Pitch.baseFrequency
+        self.frequency = (baseFerequency * pow(2, Double(note.index) / 12.0)) * pow(2, Double(octave) - 4)
+        //self.frequency = note.frequency * pow(2, Double(octave) - 4)
     }
     
-    static let all = Array((1 ... 6).map { octave -> [Pitch] in
+    static var all = Array((1 ... 6).map { octave -> [Pitch] in
         Note.all.map { note -> Pitch in
             Pitch(note: note, octave: octave)
         }
     }.joined())
+    
+    //配列allを更新。結構無理やりなのかも。
+    class func renewAll(){
+        Pitch.all = Array((1 ... 6).map { octave -> [Pitch] in
+            Note.all.map { note -> Pitch in
+                Pitch(note: note, octave: octave)
+            }
+        }.joined())
+        
+    }
+    
     
     class func nearest(_ frequency: Double) -> Pitch {
         var results = all.map { pitch -> (pitch: Pitch, distance: Double) in

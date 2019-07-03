@@ -54,7 +54,6 @@ class ViewController: UIViewController,TunerDelegate{
         
         self.view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         tuner.delegate = self
-        tuner.startTuner()
         
         //FontAwesome.swift大活躍。感動。
         let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.fontAwesome(ofSize: 30, style: .solid)]
@@ -70,6 +69,12 @@ class ViewController: UIViewController,TunerDelegate{
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        Pitch.renewAll()
+        tuner.startTuner()
+        print("strat")
+    }
+    
     //こいつが呼ばれるときにはオートレイアウト後のフレームが決定している.
     //逆にviewDidLoadではまだ決定していない。なんかめちゃくちゃ呼ばれるっぽいので注意。
     override func viewDidLayoutSubviews() {
@@ -82,6 +87,11 @@ class ViewController: UIViewController,TunerDelegate{
     private lazy var initViewLayout : Void = {
         setupLayout()
     }()
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        tuner.stopTuner()
+        print("stop")
+    }
     //テスト用図形レイアウト
     func testSetupLayout(){
         let centerPath = UIBezierPath()
@@ -128,7 +138,8 @@ class ViewController: UIViewController,TunerDelegate{
     ///   - amplitude: 振幅
     ///   - frequency: 周波数
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double) {
-        
+        print(Pitch.baseFrequency)
+        print(Pitch.all[45].frequency)
         guard amplitude > 0.01 else{
             return
         }
@@ -155,10 +166,6 @@ class ViewController: UIViewController,TunerDelegate{
         setPitchColor(from: "\(pitch.note)")
     }
 
-    @IBAction func didTapBArButtonItem(_ sender: Any) {
-
-        print("foo")
-    }
 
     var previousValue = ""
 
@@ -201,6 +208,10 @@ class ViewController: UIViewController,TunerDelegate{
             }
         }
     }
+    
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

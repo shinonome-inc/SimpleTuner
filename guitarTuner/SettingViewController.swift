@@ -6,19 +6,16 @@
 //  Copyright © 2019 大谷悦志. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class SettingViewController: UITableViewController {
     
     let pickerView = UIPickerView()
-    let pickerViewHeight: CGFloat = 200
-    
+    let pickerViewHeight: CGFloat = 300
     var pickerIndexPath :IndexPath?
-    let underMargin: CGFloat = 40
-    
     private let frequencyArray = ["440", "441", "442"]
-    var baseFrequency = 440
+    
+    @IBOutlet weak var baseFrequencyLable: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +27,10 @@ class SettingViewController: UITableViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.backgroundColor = UIColor.white
-        //pickerView.transform = CGAffineTransform(scaleX: 1, y: )
         self.view.addSubview(pickerView)
+        
+        let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
+        baseFrequencyLable.text = baseFrequencyText
         
     }
     
@@ -41,8 +40,13 @@ class SettingViewController: UITableViewController {
         let height = self.view.frame.height
     
         pickerIndexPath = indexPath
-        let index = frequencyArray.findIndex{$0 == String(baseFrequency)}
-        pickerView.selectRow(index[0], inComponent: 0, animated: true)
+        let index = frequencyArray.findIndex{$0 == String(Pitch.baseFrequency)}
+        if index.count != 0 {
+            pickerView.selectRow(index[0], inComponent: 0, animated: true)
+        }
+        else{
+            pickerView.selectRow(0, inComponent: 0, animated: true)
+        }
         pickerView.reloadAllComponents()
         
         if indexPath.section == 0{
@@ -78,8 +82,13 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         guard let pickerIndexPath = pickerIndexPath else {
             return
         }
+        guard let baseFrequency = Double(frequencyArray[row]) else {
+            return
+        }
         let cell = tableView.cellForRow(at:pickerIndexPath )
-        cell?.detailTextLabel?.text = "\(frequencyArray[row])Hz"
+        Pitch.baseFrequency = baseFrequency
+        let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
+        cell?.detailTextLabel?.text = baseFrequencyText
     }
     
     /*@objc func doneTapped() {
