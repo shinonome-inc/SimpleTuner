@@ -209,10 +209,6 @@ class ViewController: UIViewController,TunerDelegate{
         }
     }
     
-    
-    
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
