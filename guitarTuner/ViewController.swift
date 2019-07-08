@@ -55,9 +55,10 @@ class ViewController: UIViewController,TunerDelegate{
         tuner.delegate = self
         
         //FontAwesome.swift大活躍。感動。
-        let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.fontAwesome(ofSize: 30, style: .solid)]
+        /*let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.fontAwesome(ofSize: 30, style: .solid)]
         editButton.setTitleTextAttributes(attribute, for: .normal)
-        editButton.title = String.fontAwesomeIcon(name: .cog)
+        editButton.title = String.fontAwesomeIcon(name: .cog)*/
+        editButton.image = UIImage.fontAwesomeIcon(name: .cog, style: .solid, textColor: .gray, size: CGSize(width: 30, height: 30))
         
         materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         materView.makeMaterView()
@@ -206,6 +207,12 @@ class ViewController: UIViewController,TunerDelegate{
             default: return
             }
         }
+    }
+    
+    @IBAction func editButtonTaped(_ sender: Any) {
+        let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.fontAwesome(ofSize: 30, style: .regular)]
+        editButton.setTitleTextAttributes(attribute, for: .normal)
+        editButton.title = String.fontAwesomeIcon(name: .cog)
     }
     
     override func didReceiveMemoryWarning() {

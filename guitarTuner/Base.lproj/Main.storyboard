@@ -429,6 +429,7 @@
                     <navigationItem key="navigationItem" title="Tuner" id="cln-6Z-sqL">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="v62-jJ-YpU">
                             <connections>
+                                <action selector="editButtonTaped:" destination="BYZ-38-t0r" id="iCp-S7-AuD"/>
                                 <segue destination="wTV-29-U55" kind="show" identifier="toSettingSegue" id="Z8k-Ij-t7a"/>
                             </connections>
                         </barButtonItem>
