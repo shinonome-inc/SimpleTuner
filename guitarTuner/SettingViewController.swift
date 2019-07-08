@@ -30,9 +30,28 @@ class SettingViewController: UITableViewController {
         self.view.addSubview(pickerView)
         
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
-        baseFrequencyLable.text = baseFrequencyText
+        baseFrequencyLable.text = baseFrequencyText + "Hz"
         
     }
+    
+    /*override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        if indexPath.section == 1{
+            cell.selectionStyle = .none
+        }
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        switch indexPath.section {
+        case 0:
+            return indexPath
+        case 1:
+            return nil
+        default:
+            return indexPath
+        }
+    }*/
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -79,16 +98,13 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        guard let pickerIndexPath = pickerIndexPath else {
-            return
-        }
         guard let baseFrequency = Double(frequencyArray[row]) else {
             return
         }
-        let cell = tableView.cellForRow(at:pickerIndexPath )
+        
         Pitch.baseFrequency = baseFrequency
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
-        cell?.detailTextLabel?.text = baseFrequencyText
+        baseFrequencyLable.text = baseFrequencyText + "Hz"
     }
     
     /*@objc func doneTapped() {

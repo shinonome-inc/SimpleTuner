@@ -9,7 +9,6 @@
 import UIKit
 import FontAwesome_swift
 
-
 class ViewController: UIViewController,TunerDelegate{
 
     @IBOutlet weak var baseView: UIView!

@@ -496,7 +496,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="その他" id="Zge-oU-gw7">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="EhW-qU-Nt6" detailTextLabel="mT7-bQ-tBl" style="IBUITableViewCellStyleValue1" id="vnF-Yo-Cgc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="EhW-qU-Nt6" detailTextLabel="mT7-bQ-tBl" style="IBUITableViewCellStyleValue1" id="vnF-Yo-Cgc">
                                         <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vnF-Yo-Cgc" id="8R8-3E-8aD">
