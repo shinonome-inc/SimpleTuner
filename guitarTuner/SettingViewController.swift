@@ -16,12 +16,16 @@ class SettingViewController: UITableViewController {
     private let frequencyArray = ["440", "441", "442"]
     
     @IBOutlet weak var baseFrequencyLable: UILabel!
+    @IBOutlet weak var clearView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let width = self.view.frame.width
         let height = self.view.frame.height
+        
+        clearView.isUserInteractionEnabled = true
+        clearView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapView)))
         
         pickerView.frame = CGRect(x: 0, y: height, width: width, height: pickerViewHeight)
         pickerView.delegate = self
@@ -33,25 +37,6 @@ class SettingViewController: UITableViewController {
         baseFrequencyLable.text = baseFrequencyText + "Hz"
         
     }
-    
-    /*override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if indexPath.section == 1{
-            cell.selectionStyle = .none
-        }
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        switch indexPath.section {
-        case 0:
-            return indexPath
-        case 1:
-            return nil
-        default:
-            return indexPath
-        }
-    }*/
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -75,12 +60,27 @@ class SettingViewController: UITableViewController {
         }
         
     }
-    
+    //
+    @objc func tapView(sender: UITapGestureRecognizer){
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        
+        //ハイライト解除
+        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow{
+            tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.pickerView.frame = CGRect(x: 0, y: height, width: width, height: self.pickerViewHeight)
+        })
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
+
+
 
 extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -107,20 +107,9 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         baseFrequencyLable.text = baseFrequencyText + "Hz"
     }
     
-    /*@objc func doneTapped() {
-        
-        UIView.animate(withDuration: 0.2) {
-            let width = self.view.frame.width
-            let height = self.view.frame.height
-            
-            self.pickerView.frame = CGRect(x: 0, y: height + self.pickerToolBarHeight, width: width, height: self.pickerViewHeight)
-            self.pickerToolBar.frame = CGRect(x: 0, y: height, width: width, height: self.pickerToolBarHeight)
-        }
-        print(pickerView.frame)
-        print(pickerToolBar.frame)
-        print(self.view.frame)
-    }*/
 }
+
+
 
 extension Array {
     func findIndex(includeElement: (Element) -> Bool) -> [Int] {

@@ -466,6 +466,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="4QN-uT-MDh">
+                            <rect key="frame" x="0.0" y="217.5" width="375" height="390"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="設定" id="fOs-Dm-bPp">
                                 <cells>
@@ -531,11 +536,12 @@
                     </tableView>
                     <connections>
                         <outlet property="baseFrequencyLable" destination="qbN-fr-F3I" id="05Y-6i-7GE"/>
+                        <outlet property="clearView" destination="4QN-uT-MDh" id="hYe-dK-3Nb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lu3-GU-lgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="117"/>
+            <point key="canvasLocation" x="1908" y="116.49175412293854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CHd-Ly-tXQ">
