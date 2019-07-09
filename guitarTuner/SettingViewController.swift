@@ -24,6 +24,7 @@ class SettingViewController: UITableViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
         
+        //関係ないとこタッチでpickerが閉じるよ。ハイライトも解除するよ
         clearView.isUserInteractionEnabled = true
         clearView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapView)))
         
@@ -44,15 +45,15 @@ class SettingViewController: UITableViewController {
         let height = self.view.frame.height
     
         pickerIndexPath = indexPath
-        let index = frequencyArray.findIndex{$0 == String(Pitch.baseFrequency)}
-        if index.count != 0 {
-            pickerView.selectRow(index[0], inComponent: 0, animated: true)
+        //現在の値までpickerが回転
+        let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
+        let selectedIndex = frequencyArray.index(of: baseFrequencyText)
+        guard let index = selectedIndex else {
+            return
         }
-        else{
-            pickerView.selectRow(0, inComponent: 0, animated: true)
-        }
+        pickerView.selectRow(index, inComponent: 0, animated: true)
         pickerView.reloadAllComponents()
-        
+        //湧き出すpicker
         if indexPath.section == 0{
             UIView.animate(withDuration: 0.2, animations:{
                 self.pickerView.frame = CGRect(x:0, y:height - self.pickerViewHeight, width:width, height:self.pickerViewHeight)}
@@ -69,7 +70,7 @@ class SettingViewController: UITableViewController {
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow{
             tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
         }
-        
+        //沈むpicker
         UIView.animate(withDuration: 0.2, animations: {
             self.pickerView.frame = CGRect(x: 0, y: height, width: width, height: self.pickerViewHeight)
         })
@@ -107,18 +108,4 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         baseFrequencyLable.text = baseFrequencyText + "Hz"
     }
     
-}
-
-
-
-extension Array {
-    func findIndex(includeElement: (Element) -> Bool) -> [Int] {
-        var indexArray:[Int] = []
-        for (index, element) in enumerated() {
-            if includeElement(element) {
-                indexArray.append(index)
-            }
-        }
-        return indexArray
-    }
 }
