@@ -9,7 +9,6 @@
 import UIKit
 import FontAwesome_swift
 
-
 class ViewController: UIViewController,TunerDelegate{
 
     @IBOutlet weak var baseView: UIView!
@@ -56,9 +55,13 @@ class ViewController: UIViewController,TunerDelegate{
         tuner.delegate = self
         
         //FontAwesome.swift大活躍。感動。
-        let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.fontAwesome(ofSize: 30, style: .solid)]
+        //これだとタッチ時の挙動がおかしい。for: .heighlightedでいけそう
+        /*let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.fontAwesome(ofSize: 30, style: .solid)]
         editButton.setTitleTextAttributes(attribute, for: .normal)
-        editButton.title = String.fontAwesomeIcon(name: .cog)
+        editButton.title = String.fontAwesomeIcon(name: .cog)*/
+        
+        //こっちだといけた。
+        editButton.image = UIImage.fontAwesomeIcon(name: .cog, style: .solid, textColor: .gray, size: CGSize(width: 30, height: 30))
         
         materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         materView.makeMaterView()
@@ -117,14 +120,14 @@ class ViewController: UIViewController,TunerDelegate{
     func setupLayout() {
         
         scaleAffine = CGAffineTransform(scaleX: baseView.frame.height * 0.7 / 150, y: baseView.frame.height * 0.7 / 150)
-        guard scaleAffine != nil else {
+        guard let scaleAffine = scaleAffine else {
             return
         }
-        materView.transform = scaleAffine!
+        materView.transform = scaleAffine
         materView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + baseView.frame.height / 2 - 10)
         self.view.addSubview(materView)
         
-        arrowView.transform = scaleAffine!
+        arrowView.transform = scaleAffine
         arrowView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + baseView.frame.height / 2 - 10)
         self.view.addSubview(arrowView)
         
@@ -146,7 +149,7 @@ class ViewController: UIViewController,TunerDelegate{
         guard frequency > Pitch.all[0].frequency, frequency < Pitch.all[60].frequency else {
             return
         }
-        guard scaleAffine != nil else {
+        guard let scaleAffine = scaleAffine else {
             return
         }
         
@@ -155,7 +158,7 @@ class ViewController: UIViewController,TunerDelegate{
         frequencyTextLabel.text = frequencyText
         pitchTextLabel.text = pitchFrequencyText
         headerLabel.text = "\(pitch.note)"
-        arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine!)
+        arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine)
         
         if fabs(distance) < 0.1 {
             headerLabel.textColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
@@ -207,6 +210,12 @@ class ViewController: UIViewController,TunerDelegate{
             default: return
             }
         }
+    }
+    
+    @IBAction func editButtonTaped(_ sender: Any) {
+        let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.fontAwesome(ofSize: 30, style: .regular)]
+        editButton.setTitleTextAttributes(attribute, for: .normal)
+        editButton.title = String.fontAwesomeIcon(name: .cog)
     }
     
     override func didReceiveMemoryWarning() {

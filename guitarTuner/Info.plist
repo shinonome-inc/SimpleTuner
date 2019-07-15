@@ -24,6 +24,7 @@
 	<string>音声を取得します</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Font Awesome 5 Free-Regular-400.otf</string>
 		<string>ヒラギノ明朝 ProN.ttc</string>
 		<string>Font Awesome 5 Free-Solid-900.otf</string>
 	</array>

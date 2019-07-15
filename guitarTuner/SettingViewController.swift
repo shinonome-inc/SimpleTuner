@@ -16,12 +16,17 @@ class SettingViewController: UITableViewController {
     private let frequencyArray = ["440", "441", "442"]
     
     @IBOutlet weak var baseFrequencyLable: UILabel!
+    @IBOutlet weak var clearView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let width = self.view.frame.width
         let height = self.view.frame.height
+        
+        //関係ないとこタッチでpickerが閉じるよ。ハイライトも解除するよ
+        clearView.isUserInteractionEnabled = true
+        clearView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapView)))
         
         pickerView.frame = CGRect(x: 0, y: height, width: width, height: pickerViewHeight)
         pickerView.delegate = self
@@ -30,7 +35,7 @@ class SettingViewController: UITableViewController {
         self.view.addSubview(pickerView)
         
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
-        baseFrequencyLable.text = baseFrequencyText
+        baseFrequencyLable.text = baseFrequencyText + "Hz"
         
     }
     
@@ -40,15 +45,15 @@ class SettingViewController: UITableViewController {
         let height = self.view.frame.height
     
         pickerIndexPath = indexPath
-        let index = frequencyArray.findIndex{$0 == String(Pitch.baseFrequency)}
-        if index.count != 0 {
-            pickerView.selectRow(index[0], inComponent: 0, animated: true)
+        //現在の値までpickerが回転
+        let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
+        let selectedIndex = frequencyArray.index(of: baseFrequencyText)
+        guard let index = selectedIndex else {
+            return
         }
-        else{
-            pickerView.selectRow(0, inComponent: 0, animated: true)
-        }
+        pickerView.selectRow(index, inComponent: 0, animated: true)
         pickerView.reloadAllComponents()
-        
+        //湧き出すpicker
         if indexPath.section == 0{
             UIView.animate(withDuration: 0.2, animations:{
                 self.pickerView.frame = CGRect(x:0, y:height - self.pickerViewHeight, width:width, height:self.pickerViewHeight)}
@@ -56,12 +61,27 @@ class SettingViewController: UITableViewController {
         }
         
     }
-    
+    //
+    @objc func tapView(sender: UITapGestureRecognizer){
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        
+        //ハイライト解除
+        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow{
+            tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
+        //沈むpicker
+        UIView.animate(withDuration: 0.2, animations: {
+            self.pickerView.frame = CGRect(x: 0, y: height, width: width, height: self.pickerViewHeight)
+        })
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
+
+
 
 extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -79,41 +99,13 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        guard let pickerIndexPath = pickerIndexPath else {
-            return
-        }
         guard let baseFrequency = Double(frequencyArray[row]) else {
             return
         }
-        let cell = tableView.cellForRow(at:pickerIndexPath )
+        
         Pitch.baseFrequency = baseFrequency
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
-        cell?.detailTextLabel?.text = baseFrequencyText
+        baseFrequencyLable.text = baseFrequencyText + "Hz"
     }
     
-    /*@objc func doneTapped() {
-        
-        UIView.animate(withDuration: 0.2) {
-            let width = self.view.frame.width
-            let height = self.view.frame.height
-            
-            self.pickerView.frame = CGRect(x: 0, y: height + self.pickerToolBarHeight, width: width, height: self.pickerViewHeight)
-            self.pickerToolBar.frame = CGRect(x: 0, y: height, width: width, height: self.pickerToolBarHeight)
-        }
-        print(pickerView.frame)
-        print(pickerToolBar.frame)
-        print(self.view.frame)
-    }*/
-}
-
-extension Array {
-    func findIndex(includeElement: (Element) -> Bool) -> [Int] {
-        var indexArray:[Int] = []
-        for (index, element) in enumerated() {
-            if includeElement(element) {
-                indexArray.append(index)
-            }
-        }
-        return indexArray
-    }
 }

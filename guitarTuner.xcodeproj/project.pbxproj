@@ -24,6 +24,7 @@
 		78E63EF62266C97900D882CA /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E63EF52266C97900D882CA /* Pitch.swift */; };
 		78E773E6225DFD85006C8C4B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E773E5225DFD85006C8C4B /* Note.swift */; };
 		78E81C0D22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78E81C0C22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf */; };
+		78ED274322D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78ED274222D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf */; };
 		8C678ED7584719A971684B49 /* Pods_guitarTunerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85612D780DD8D9A9EFFA54EC /* Pods_guitarTunerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		78E63EF52266C97900D882CA /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		78E773E5225DFD85006C8C4B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		78E81C0C22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		78ED274222D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		85612D780DD8D9A9EFFA54EC /* Pods_guitarTunerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guitarTunerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93CAC1CD406C051FC0FD1AF /* Pods_guitarTunerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guitarTunerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCEE302DE0C18940DD3ED3B /* Pods-guitarTunerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guitarTunerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-guitarTunerTests/Pods-guitarTunerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				78702628225B591700E32781 /* tuner.swift */,
 				78E773E5225DFD85006C8C4B /* Note.swift */,
 				78E81C0C22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf */,
+				78ED274222D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf */,
 				78E63EF52266C97900D882CA /* Pitch.swift */,
 				786C8C892272C6AF00591D69 /* TunerUI.swift */,
 				78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */,
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7822C0F62257027C00361EC5 /* LaunchScreen.storyboard in Resources */,
+				78ED274322D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				7822C0F32257027C00361EC5 /* Assets.xcassets in Resources */,
 				78E1743122B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc in Resources */,
 				7822C0F12257027B00361EC5 /* Main.storyboard in Resources */,

@@ -429,6 +429,7 @@
                     <navigationItem key="navigationItem" title="Tuner" id="cln-6Z-sqL">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="v62-jJ-YpU">
                             <connections>
+                                <action selector="editButtonTaped:" destination="BYZ-38-t0r" id="iCp-S7-AuD"/>
                                 <segue destination="wTV-29-U55" kind="show" identifier="toSettingSegue" id="Z8k-Ij-t7a"/>
                             </connections>
                         </barButtonItem>
@@ -465,6 +466,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="4QN-uT-MDh">
+                            <rect key="frame" x="0.0" y="217.5" width="375" height="390"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="設定" id="fOs-Dm-bPp">
                                 <cells>
@@ -496,7 +502,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="その他" id="Zge-oU-gw7">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="EhW-qU-Nt6" detailTextLabel="mT7-bQ-tBl" style="IBUITableViewCellStyleValue1" id="vnF-Yo-Cgc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="EhW-qU-Nt6" detailTextLabel="mT7-bQ-tBl" style="IBUITableViewCellStyleValue1" id="vnF-Yo-Cgc">
                                         <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vnF-Yo-Cgc" id="8R8-3E-8aD">
@@ -530,11 +536,12 @@
                     </tableView>
                     <connections>
                         <outlet property="baseFrequencyLable" destination="qbN-fr-F3I" id="05Y-6i-7GE"/>
+                        <outlet property="clearView" destination="4QN-uT-MDh" id="hYe-dK-3Nb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lu3-GU-lgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="117"/>
+            <point key="canvasLocation" x="1908" y="116.49175412293854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CHd-Ly-tXQ">
