@@ -54,20 +54,20 @@ class SettingViewController: UITableViewController {
         pickerView.selectRow(index, inComponent: 0, animated: true)
         pickerView.reloadAllComponents()
         //湧き出すpicker
-        if indexPath.section == 0{
-            UIView.animate(withDuration: 0.2, animations:{
-                self.pickerView.frame = CGRect(x:0, y:height - self.pickerViewHeight, width:width, height:self.pickerViewHeight)}
-        )
+        if indexPath.section == 0 {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.pickerView.frame = CGRect(x:0, y:height - self.pickerViewHeight, width:width, height:self.pickerViewHeight)
+                })
         }
         
     }
     //
-    @objc func tapView(sender: UITapGestureRecognizer){
+    @objc func tapView(sender: UITapGestureRecognizer) {
         let width = self.view.frame.width
         let height = self.view.frame.height
         
         //ハイライト解除
-        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow{
+        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
         }
         //沈むpicker
@@ -80,8 +80,6 @@ class SettingViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 }
-
-
 
 extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
