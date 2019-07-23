@@ -30,7 +30,7 @@ class Pitch: CustomStringConvertible {
     }.joined())
     
     //配列allを更新。結構無理やりなのかも。
-    class func renewAll(){
+    class func renewAll() {
         Pitch.all = Array((1 ... 6).map { octave -> [Pitch] in
             Note.all.map { note -> Pitch in
                 Pitch(note: note, octave: octave)

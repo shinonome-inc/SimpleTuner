@@ -9,7 +9,7 @@
 import UIKit
 import FontAwesome_swift
 
-class ViewController: UIViewController,TunerDelegate{
+class ViewController: UIViewController,TunerDelegate {
 
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var headerLabel: UILabel!
@@ -69,7 +69,6 @@ class ViewController: UIViewController,TunerDelegate{
         arrowView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         arrowView.makeArrowLayer()
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,7 +95,7 @@ class ViewController: UIViewController,TunerDelegate{
         print("stop")
     }
     //テスト用図形レイアウト
-    func testSetupLayout(){
+    func testSetupLayout() {
         let centerPath = UIBezierPath()
         centerPath.move(to: CGPoint(x: self.view.bounds.width / 2, y: 0))
         centerPath.addLine(to: CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height))
@@ -118,7 +117,6 @@ class ViewController: UIViewController,TunerDelegate{
     
     /// レイアウト系のセットアップ
     func setupLayout() {
-        
         scaleAffine = CGAffineTransform(scaleX: baseView.frame.height * 0.7 / 150, y: baseView.frame.height * 0.7 / 150)
         guard let scaleAffine = scaleAffine else {
             return
