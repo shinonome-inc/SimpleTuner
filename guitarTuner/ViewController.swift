@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FontAwesome_swift
+import SVGKit
 
 class ViewController: UIViewController,TunerDelegate {
 
@@ -61,7 +61,9 @@ class ViewController: UIViewController,TunerDelegate {
         editButton.title = String.fontAwesomeIcon(name: .cog)*/
         
         //こっちだといけた。
-        editButton.image = UIImage.fontAwesomeIcon(name: .cog, style: .solid, textColor: .gray, size: CGSize(width: 30, height: 30))
+        let buttonImage = SVGKImage(named: "cog")
+        buttonImage?.size = CGSize(width: 25, height: 25)
+        editButton.image = buttonImage?.uiImage
         
         materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         materView.makeMaterView()
@@ -208,12 +210,6 @@ class ViewController: UIViewController,TunerDelegate {
             default: return
             }
         }
-    }
-    
-    @IBAction func editButtonTaped(_ sender: Any) {
-        let attribute: [NSAttributedString.Key : Any] = [.font : UIFont.fontAwesome(ofSize: 30, style: .regular)]
-        editButton.setTitleTextAttributes(attribute, for: .normal)
-        editButton.title = String.fontAwesomeIcon(name: .cog)
     }
     
     override func didReceiveMemoryWarning() {

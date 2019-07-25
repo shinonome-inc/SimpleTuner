@@ -1,25 +1,31 @@
 PODS:
-  - AudioKit (4.7.2):
-    - AudioKit/Core (= 4.7.2)
-    - AudioKit/UI (= 4.7.2)
-  - AudioKit/Core (4.7.2)
-  - AudioKit/UI (4.7.2):
+  - AudioKit (4.8):
+    - AudioKit/Core (= 4.8)
+    - AudioKit/UI (= 4.8)
+  - AudioKit/Core (4.8)
+  - AudioKit/UI (4.8):
     - AudioKit/Core
-  - FontAwesome.swift (1.7.0)
+  - CocoaLumberjack (3.5.3):
+    - CocoaLumberjack/Core (= 3.5.3)
+  - CocoaLumberjack/Core (3.5.3)
+  - SVGKit (2.1.1):
+    - CocoaLumberjack (~> 3.0)
 
 DEPENDENCIES:
   - AudioKit (~> 4.7)
-  - FontAwesome.swift
+  - SVGKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AudioKit
-    - FontAwesome.swift
+    - CocoaLumberjack
+    - SVGKit
 
 SPEC CHECKSUMS:
-  AudioKit: ee4ab79e2fffe42e52b8fd8d214eaaea968c368e
-  FontAwesome.swift: 9f377615aa61381796dca143cddfd2a388723ea1
+  AudioKit: 04ecf14d5ca795b16fc92c76fc84e2421ade7df0
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
+  SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
 
-PODFILE CHECKSUM: 33bce46c1e3e703e6b13ba9ad68a65f8db3eacc5
+PODFILE CHECKSUM: f4be1dd33be9a1d6d21c4e4a172932e8b1e293d4
 
 COCOAPODS: 1.5.3
