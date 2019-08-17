@@ -19,10 +19,15 @@ class ViewController: UIViewController,TunerDelegate {
     @IBOutlet weak var frequencyTitleLabel: UILabel!
     @IBOutlet weak var pitchLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
+    @IBOutlet weak var pitchView: UIView!
+    @IBOutlet weak var frequencyView: UIView!
+    @IBOutlet weak var noteView: UIView!
+    @IBOutlet weak var materView: MaterView!
     
     let tuner = Tuner()
     
     var scaleAffine: CGAffineTransform?
+    let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +64,7 @@ class ViewController: UIViewController,TunerDelegate {
     }
     
     private lazy var initViewLayout : Void = {
-        //setupLayout()
+        materView.makeMaterView()
     }()
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,6 +77,9 @@ class ViewController: UIViewController,TunerDelegate {
         noteTitleLabel.text = "Note"
         pitchTitleLabel.text = "Pitch"
         frequencyTitleLabel.text = "Frequency"
+        noteView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: 2, lineColor: underLineColor, UI: noteView))
+        pitchView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: 2, lineColor: underLineColor, UI: pitchView))
+        frequencyView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: 2, lineColor: underLineColor, UI: frequencyView))
     }
     
     /// レイアウト系のセットアップ
@@ -106,9 +114,9 @@ class ViewController: UIViewController,TunerDelegate {
         guard frequency > Pitch.all[0].frequency, frequency < Pitch.all[60].frequency else {
             return
         }
-        guard let scaleAffine = scaleAffine else {
+        /*guard let scaleAffine = scaleAffine else {
             return
-        }
+        }*/
         
         let frequencyText = String(format: "%.1f", frequency)
         let pitchFrequencyText = String(format: "%.1f", pitch.frequency)
@@ -116,11 +124,11 @@ class ViewController: UIViewController,TunerDelegate {
         pitchLabel.text = pitchFrequencyText
         noteLabel.text = "\(pitch.note)"
         //arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine)
-        
+        print("complete")
         if fabs(distance) < 0.1 {
             noteLabel.textColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
         }else{
-            noteLabel.textColor = UIColor.white
+            noteLabel.textColor = UIColor.black
         }
 
     }
@@ -131,11 +139,11 @@ class ViewController: UIViewController,TunerDelegate {
 
 }
 
-/*extension CALayer {
+extension CALayer {
     class func drawUnderLine(lineWidth: CGFloat, lineColor: UIColor, UI:AnyObject) -> CALayer{
         let line = CALayer()
         line.frame = CGRect(x: 0.0, y: (UI.frame?.size.height)! - lineWidth, width: (UI.frame?.size.width)!, height: lineWidth)
         line.backgroundColor = lineColor.cgColor
         return line
     }
- }*/
+ }

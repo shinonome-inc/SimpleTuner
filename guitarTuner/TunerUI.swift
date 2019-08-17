@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MaterView: UIView {
+class materView: UIView {
     private let thinLayer = CAShapeLayer.init()
     private let thickLayer = CAShapeLayer.init()
     private let justPitchLayer = CAShapeLayer.init()

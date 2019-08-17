@@ -21,6 +21,7 @@
 		78702629225B591700E32781 /* tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78702628225B591700E32781 /* tuner.swift */; };
 		7894BFAF22E854E8005D8906 /* cog.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7894BFAE22E854E7005D8906 /* cog.svg */; };
 		78C6CCC622DDA7400086CDD1 /* tunerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C6CCC522DDA7400086CDD1 /* tunerIcon.png */; };
+		78DB12E02306A399005F416D /* Mater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DB12DF2306A399005F416D /* Mater.swift */; };
 		78E1743122B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 78E1743022B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc */; };
 		78E57F9822A0D6C0004EADE0 /* TunerArrowUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */; };
 		78E63EF62266C97900D882CA /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E63EF52266C97900D882CA /* Pitch.swift */; };
@@ -70,6 +71,7 @@
 		78702628225B591700E32781 /* tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tuner.swift; sourceTree = "<group>"; };
 		7894BFAE22E854E7005D8906 /* cog.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cog.svg; path = "../../../便利グッズ/fontawesome-free-5.9.0-desktop/svgs/solid/cog.svg"; sourceTree = "<group>"; };
 		78C6CCC522DDA7400086CDD1 /* tunerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tunerIcon.png; sourceTree = "<group>"; };
+		78DB12DF2306A399005F416D /* Mater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mater.swift; sourceTree = "<group>"; };
 		78E1743022B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ明朝 ProN.ttc"; sourceTree = "<group>"; };
 		78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerArrowUI.swift; sourceTree = "<group>"; };
 		78E63EF52266C97900D882CA /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */,
 				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
 				7822C0EF2257027B00361EC5 /* Main.storyboard */,
+				78DB12DF2306A399005F416D /* Mater.swift */,
 				7822C0F22257027C00361EC5 /* Assets.xcassets */,
 				7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */,
 				78C6CCC522DDA7400086CDD1 /* tunerIcon.png */,
@@ -439,6 +442,7 @@
 				7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */,
 				78E773E6225DFD85006C8C4B /* Note.swift in Sources */,
 				78E63EF62266C97900D882CA /* Pitch.swift in Sources */,
+				78DB12E02306A399005F416D /* Mater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
