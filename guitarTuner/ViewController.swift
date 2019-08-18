@@ -9,10 +9,9 @@
 import UIKit
 import SVGKit
 
-class ViewController: UIViewController,TunerDelegate {
+class ViewController: UIViewController, TunerDelegate {
 
     @IBOutlet weak var baseFrequencyLabel: UILabel!
-   
     @IBOutlet weak var noteTitleLabel: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var pitchTitleLabel: UILabel!
@@ -23,6 +22,7 @@ class ViewController: UIViewController,TunerDelegate {
     @IBOutlet weak var frequencyView: UIView!
     @IBOutlet weak var noteView: UIView!
     @IBOutlet weak var materView: MaterView!
+    @IBOutlet weak var tunerTabBarItem: UITabBarItem!
     
     let tuner = Tuner()
     

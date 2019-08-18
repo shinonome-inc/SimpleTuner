@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="Yhd-3D-ErP">
             <objects>
                 <viewController id="N2Q-2H-uM0" sceneMemberID="viewController">
@@ -20,13 +20,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="OA1-wI-lF6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="nD6-Gg-afY"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-metronome-50.png" id="nD6-Gg-afY">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-1"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjE-nA-2As" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1118" y="239"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="hwT-0q-I0W">
             <objects>
                 <viewController id="VbJ-My-v1t" customClass="ViewController" customModule="guitarTuner" customModuleProvider="target" sceneMemberID="viewController">
@@ -169,7 +171,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jZU-5L-1hx"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="UdB-Aj-AQr"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-tuning-fork-50.png" id="UdB-Aj-AQr">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="baseFrequencyLabel" destination="WkB-9J-EeK" id="OPL-Ej-rfO"/>
                         <outlet property="frequencyLabel" destination="cbJ-Fg-S8A" id="xvE-QT-EX8"/>
@@ -182,6 +186,7 @@
                         <outlet property="pitchLabel" destination="SD1-X9-XwZ" id="bxO-EV-5NM"/>
                         <outlet property="pitchTitleLabel" destination="D7F-sp-DHJ" id="VVG-FM-9Mh"/>
                         <outlet property="pitchView" destination="90M-ey-hKK" id="icp-CM-LGR"/>
+                        <outlet property="tunerTabBarItem" destination="UdB-Aj-AQr" id="LTQ-17-T0n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlz-bg-8BP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -207,7 +212,7 @@
             </objects>
             <point key="canvasLocation" x="200" y="-86"/>
         </scene>
-        <!--Item-->
+        <!--Setting View Controller-->
         <scene sceneID="mm7-7b-Iei">
             <objects>
                 <tableViewController id="wTV-29-U55" customClass="SettingViewController" customModule="guitarTuner" customModuleProvider="target" sceneMemberID="viewController">
@@ -283,7 +288,10 @@
                             <outlet property="delegate" destination="wTV-29-U55" id="46w-iZ-Pa4"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="57H-RM-aPG"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-automation-26.png" id="57H-RM-aPG">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="baseFrequencyLable" destination="qbN-fr-F3I" id="05Y-6i-7GE"/>
                         <outlet property="clearView" destination="4QN-uT-MDh" id="hYe-dK-3Nb"/>
@@ -294,4 +302,9 @@
             <point key="canvasLocation" x="1908" y="116.49175412293854"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-automation-26.png" width="26" height="26"/>
+        <image name="icons8-metronome-50.png" width="50" height="50"/>
+        <image name="icons8-tuning-fork-50.png" width="50" height="50"/>
+    </resources>
 </document>

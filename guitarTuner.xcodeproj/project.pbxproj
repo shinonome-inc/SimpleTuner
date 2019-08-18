@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2A885E6BBB2DDAD8D3CFA49F /* Pods_guitarTuner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8DEAC7CC3ABC449088B71D /* Pods_guitarTuner.framework */; };
 		5AB489CD6E93F64CBBF2343B /* Pods_guitarTunerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A93CAC1CD406C051FC0FD1AF /* Pods_guitarTunerUITests.framework */; };
+		780E15D0230905FC00ED0A98 /* icons8-tuning-fork-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 780E15CF230905FC00ED0A98 /* icons8-tuning-fork-50.png */; };
+		780E15D223090F9D00ED0A98 /* icons8-automation-26.png in Resources */ = {isa = PBXBuildFile; fileRef = 780E15D123090F9D00ED0A98 /* icons8-automation-26.png */; };
+		780E15D42309105B00ED0A98 /* icons8-metronome-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 780E15D32309105A00ED0A98 /* icons8-metronome-50.png */; };
 		7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C0EB2257027B00361EC5 /* AppDelegate.swift */; };
 		7822C0EE2257027B00361EC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C0ED2257027B00361EC5 /* ViewController.swift */; };
 		7822C0F12257027B00361EC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7822C0EF2257027B00361EC5 /* Main.storyboard */; };
@@ -53,6 +56,9 @@
 		2EB5619603E9C2E6290695EB /* Pods-guitarTunerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guitarTunerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-guitarTunerUITests/Pods-guitarTunerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		467535DACE0ADF3C5230F824 /* Pods-guitarTuner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guitarTuner.release.xcconfig"; path = "Pods/Target Support Files/Pods-guitarTuner/Pods-guitarTuner.release.xcconfig"; sourceTree = "<group>"; };
 		6CDF654ED7F132C84964616B /* Pods-guitarTunerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guitarTunerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-guitarTunerUITests/Pods-guitarTunerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		780E15CF230905FC00ED0A98 /* icons8-tuning-fork-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-tuning-fork-50.png"; sourceTree = "<group>"; };
+		780E15D123090F9D00ED0A98 /* icons8-automation-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-automation-26.png"; sourceTree = "<group>"; };
+		780E15D32309105A00ED0A98 /* icons8-metronome-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-metronome-50.png"; sourceTree = "<group>"; };
 		7822C0E82257027B00361EC5 /* guitarTuner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = guitarTuner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7822C0EB2257027B00361EC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7822C0ED2257027B00361EC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +161,9 @@
 				7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */,
 				78C6CCC522DDA7400086CDD1 /* tunerIcon.png */,
 				7894BFAE22E854E7005D8906 /* cog.svg */,
+				780E15CF230905FC00ED0A98 /* icons8-tuning-fork-50.png */,
+				780E15D123090F9D00ED0A98 /* icons8-automation-26.png */,
+				780E15D32309105A00ED0A98 /* icons8-metronome-50.png */,
 				7822C0F72257027C00361EC5 /* Info.plist */,
 			);
 			path = guitarTuner;
@@ -311,9 +320,12 @@
 			files = (
 				7822C0F62257027C00361EC5 /* LaunchScreen.storyboard in Resources */,
 				78ED274322D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
+				780E15D0230905FC00ED0A98 /* icons8-tuning-fork-50.png in Resources */,
 				7822C0F32257027C00361EC5 /* Assets.xcassets in Resources */,
+				780E15D42309105B00ED0A98 /* icons8-metronome-50.png in Resources */,
 				78E1743122B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc in Resources */,
 				7822C0F12257027B00361EC5 /* Main.storyboard in Resources */,
+				780E15D223090F9D00ED0A98 /* icons8-automation-26.png in Resources */,
 				78E81C0D22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf in Resources */,
 				7894BFAF22E854E8005D8906 /* cog.svg in Resources */,
 				78C6CCC622DDA7400086CDD1 /* tunerIcon.png in Resources */,
