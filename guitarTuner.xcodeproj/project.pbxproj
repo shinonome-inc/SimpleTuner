@@ -22,15 +22,12 @@
 		783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C81CD22C24757004FEB7E /* SettingViewController.swift */; };
 		786C8C8A2272C6AF00591D69 /* TunerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786C8C892272C6AF00591D69 /* TunerUI.swift */; };
 		78702629225B591700E32781 /* tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78702628225B591700E32781 /* tuner.swift */; };
-		7894BFAF22E854E8005D8906 /* cog.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7894BFAE22E854E7005D8906 /* cog.svg */; };
 		78C6CCC622DDA7400086CDD1 /* tunerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C6CCC522DDA7400086CDD1 /* tunerIcon.png */; };
 		78DB12E02306A399005F416D /* Mater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DB12DF2306A399005F416D /* Mater.swift */; };
-		78E1743122B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 78E1743022B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc */; };
+		78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E36056230A67750084DFA1 /* CircleLayer.swift */; };
 		78E57F9822A0D6C0004EADE0 /* TunerArrowUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */; };
 		78E63EF62266C97900D882CA /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E63EF52266C97900D882CA /* Pitch.swift */; };
 		78E773E6225DFD85006C8C4B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E773E5225DFD85006C8C4B /* Note.swift */; };
-		78E81C0D22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78E81C0C22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf */; };
-		78ED274322D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78ED274222D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf */; };
 		8C678ED7584719A971684B49 /* Pods_guitarTunerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85612D780DD8D9A9EFFA54EC /* Pods_guitarTunerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,15 +72,12 @@
 		783C81CD22C24757004FEB7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		786C8C892272C6AF00591D69 /* TunerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerUI.swift; sourceTree = "<group>"; };
 		78702628225B591700E32781 /* tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tuner.swift; sourceTree = "<group>"; };
-		7894BFAE22E854E7005D8906 /* cog.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cog.svg; path = "../../../便利グッズ/fontawesome-free-5.9.0-desktop/svgs/solid/cog.svg"; sourceTree = "<group>"; };
 		78C6CCC522DDA7400086CDD1 /* tunerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tunerIcon.png; sourceTree = "<group>"; };
 		78DB12DF2306A399005F416D /* Mater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mater.swift; sourceTree = "<group>"; };
-		78E1743022B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ明朝 ProN.ttc"; sourceTree = "<group>"; };
+		78E36056230A67750084DFA1 /* CircleLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLayer.swift; sourceTree = "<group>"; };
 		78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerArrowUI.swift; sourceTree = "<group>"; };
 		78E63EF52266C97900D882CA /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		78E773E5225DFD85006C8C4B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		78E81C0C22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
-		78ED274222D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		85612D780DD8D9A9EFFA54EC /* Pods_guitarTunerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guitarTunerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93CAC1CD406C051FC0FD1AF /* Pods_guitarTunerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guitarTunerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCEE302DE0C18940DD3ED3B /* Pods-guitarTunerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guitarTunerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-guitarTunerTests/Pods-guitarTunerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,23 +138,20 @@
 		7822C0EA2257027B00361EC5 /* guitarTuner */ = {
 			isa = PBXGroup;
 			children = (
-				78E1743022B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc */,
 				7822C0EB2257027B00361EC5 /* AppDelegate.swift */,
 				7822C0ED2257027B00361EC5 /* ViewController.swift */,
 				78702628225B591700E32781 /* tuner.swift */,
 				78E773E5225DFD85006C8C4B /* Note.swift */,
-				78E81C0C22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf */,
-				78ED274222D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf */,
 				78E63EF52266C97900D882CA /* Pitch.swift */,
 				786C8C892272C6AF00591D69 /* TunerUI.swift */,
 				78E57F9722A0D6BF004EADE0 /* TunerArrowUI.swift */,
 				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
 				7822C0EF2257027B00361EC5 /* Main.storyboard */,
 				78DB12DF2306A399005F416D /* Mater.swift */,
+				78E36056230A67750084DFA1 /* CircleLayer.swift */,
 				7822C0F22257027C00361EC5 /* Assets.xcassets */,
 				7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */,
 				78C6CCC522DDA7400086CDD1 /* tunerIcon.png */,
-				7894BFAE22E854E7005D8906 /* cog.svg */,
 				780E15CF230905FC00ED0A98 /* icons8-tuning-fork-50.png */,
 				780E15D123090F9D00ED0A98 /* icons8-automation-26.png */,
 				780E15D32309105A00ED0A98 /* icons8-metronome-50.png */,
@@ -319,15 +310,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7822C0F62257027C00361EC5 /* LaunchScreen.storyboard in Resources */,
-				78ED274322D313AD009BB1B7 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				780E15D0230905FC00ED0A98 /* icons8-tuning-fork-50.png in Resources */,
 				7822C0F32257027C00361EC5 /* Assets.xcassets in Resources */,
 				780E15D42309105B00ED0A98 /* icons8-metronome-50.png in Resources */,
-				78E1743122B23A2E003C4E85 /* ヒラギノ明朝 ProN.ttc in Resources */,
 				7822C0F12257027B00361EC5 /* Main.storyboard in Resources */,
 				780E15D223090F9D00ED0A98 /* icons8-automation-26.png in Resources */,
-				78E81C0D22C215470066FE27 /* Font Awesome 5 Free-Solid-900.otf in Resources */,
-				7894BFAF22E854E8005D8906 /* cog.svg in Resources */,
 				78C6CCC622DDA7400086CDD1 /* tunerIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +436,7 @@
 				7822C0EE2257027B00361EC5 /* ViewController.swift in Sources */,
 				78702629225B591700E32781 /* tuner.swift in Sources */,
 				78E57F9822A0D6C0004EADE0 /* TunerArrowUI.swift in Sources */,
+				78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */,
 				783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */,
 				786C8C8A2272C6AF00591D69 /* TunerUI.swift in Sources */,
 				7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */,

@@ -10,13 +10,13 @@ import UIKit
 
 class MaterView: UIView {
     
-    private let westCircle = CAShapeLayer.init()
-    private let westNorthWestCircle = CAShapeLayer.init()
-    private let northNorthWestCircle = CAShapeLayer.init()
-    private let northCircle = CAShapeLayer.init()
-    private let northNorthEastCircle = CAShapeLayer.init()
-    private let eastNorthEastCircle = CAShapeLayer.init()
-    private let eastCircle = CAShapeLayer.init()
+    private let westCircle = CircleLayer()
+    private let westNorthWestCircle = CircleLayer()
+    private let northNorthWestCircle = CircleLayer()
+    private let northCircle = CircleLayer()
+    private let northNorthEastCircle = CircleLayer()
+    private let eastNorthEastCircle = CircleLayer()
+    private let eastCircle = CircleLayer()
     
     func makeMaterView(){
         let xCenter = self.frame.width * 0.5
@@ -27,31 +27,75 @@ class MaterView: UIView {
         let viewCenter = xCenter - radious
         let harfOfRoot3: CGFloat = sqrt(3.0) * 0.5
         
-        let westPath = UIBezierPath(ovalIn: CGRect.init(x: viewCenter - perimeter, y: height, width: diameter, height: diameter))
-        let westNorthWestPath = UIBezierPath(ovalIn: CGRect.init(x: viewCenter - (perimeter * harfOfRoot3), y: height - (perimeter * 0.5), width: diameter, height: diameter))
-        let northNorthWestPath = UIBezierPath(ovalIn: CGRect.init(x: viewCenter - (perimeter * 0.5), y: height - (perimeter * harfOfRoot3), width: diameter, height: diameter))
-        let northPath = UIBezierPath(ovalIn: CGRect.init(x: viewCenter, y: height - perimeter, width: diameter, height: diameter))
-        let northNorthEastPath = UIBezierPath(ovalIn: CGRect.init(x: viewCenter + (perimeter * 0.5), y: height - (perimeter * harfOfRoot3), width: diameter, height: diameter))
-        let eastNorthEastPath = UIBezierPath(ovalIn: CGRect.init(x: viewCenter + (perimeter * harfOfRoot3), y: height - (perimeter * 0.5), width: diameter, height: diameter))
-        let eastPath = UIBezierPath(ovalIn: CGRect.init(x: viewCenter + perimeter, y: height, width: diameter, height: diameter))
-        let pathesAndLayers: [(path: UIBezierPath, layer: CAShapeLayer)] = [(westPath, westCircle),( westNorthWestPath, westNorthWestCircle), (northNorthWestPath, northNorthWestCircle), (northPath, northCircle),  (northNorthEastPath, northNorthEastCircle),  (eastNorthEastPath, eastNorthEastCircle), (eastPath, eastCircle)]
+        westCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter - perimeter, y: height, width: diameter, height: diameter)).cgPath
+        westNorthWestCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter - (perimeter * harfOfRoot3), y: height - (perimeter * 0.5), width: diameter, height: diameter)).cgPath
+        northNorthWestCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter - (perimeter * 0.5), y: height - (perimeter * harfOfRoot3), width: diameter, height: diameter)).cgPath
+        northCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter, y: height - perimeter, width: diameter, height: diameter)).cgPath
+        northNorthEastCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter + (perimeter * 0.5), y: height - (perimeter * harfOfRoot3), width: diameter, height: diameter)).cgPath
+        eastNorthEastCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter + (perimeter * harfOfRoot3), y: height - (perimeter * 0.5), width: diameter, height: diameter)).cgPath
+        eastCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter + perimeter, y: height, width: diameter, height: diameter)).cgPath
+        let layers = [westCircle, westNorthWestCircle, northNorthWestCircle, northCircle, northNorthEastCircle, eastNorthEastCircle, eastCircle]
         
-        for pathAndLayer in pathesAndLayers{
-            makeCircle(path: pathAndLayer.path, layer: pathAndLayer.layer)
+        for layer in layers{
+            makeCircle(layer: layer)
         }
         
     }
     
-    func makeCircle(path: UIBezierPath, layer: CAShapeLayer) {
+    func makeCircle(layer: CircleLayer) {
         let strokeColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         let fillColor = UIColor.clear
         let frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     
-        layer.path = path.cgPath
         layer.frame = frame
         layer.strokeColor = strokeColor.cgColor
         layer.fillColor = fillColor.cgColor
         self.layer.addSublayer(layer)
+    }
+    
+    func circleLighting(pitch: Pitch, frequency: Double) {
+        let width = 0.30
+        var counter = 0.0
+        let circles = [westCircle, westNorthWestCircle, northNorthWestCircle, northCircle, northNorthEastCircle, eastNorthEastCircle, eastCircle]
+        westCircle.standardFrequency = pitch.frequency - (width * 3)
+        for circle in circles {
+            circle.standardFrequency = westCircle.standardFrequency! + (width * counter)
+            lightOff(layer: circle)
+            counter += 1
+        }
+        for circle in circles {
+            if range(standard: circle.standardFrequency, frequency: frequency) {
+                lighting(layer: circle)
+            }
+        }
+        if westCircle.standardFrequency! > frequency {
+            lighting(layer: westCircle)
+        }
+        if eastCircle.standardFrequency! < frequency {
+            lighting(layer: eastCircle)
+        }
+        
+    }
+    
+    func range(standard: Double?, frequency: Double) -> Bool{
+        
+        guard let standard = standard else {
+            return false
+        }
+        let absoulute = fabs(standard - frequency)
+        if absoulute <= 0.15 {
+            return true
+        }
+        return false
+    }
+    
+    func lighting(layer: CircleLayer) {
+        let fillColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        layer.fillColor = fillColor.cgColor
+    }
+    
+    func lightOff(layer: CircleLayer) {
+        layer.fillColor = UIColor.clear.cgColor
     }
 }
 

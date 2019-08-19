@@ -51,6 +51,7 @@ class ViewController: UIViewController, TunerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         Pitch.renewAll()
         tuner.startTuner()
+        baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
         print("strat")
     }
     
@@ -73,7 +74,7 @@ class ViewController: UIViewController, TunerDelegate {
     }
    
     func setupLabels() {
-        baseFrequencyLabel.text = String(Pitch.baseFrequency) + "Hz"
+        baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
         noteTitleLabel.text = "Note"
         pitchTitleLabel.text = "Pitch"
         frequencyTitleLabel.text = "Frequency"
@@ -81,6 +82,8 @@ class ViewController: UIViewController, TunerDelegate {
         pitchView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: 2, lineColor: underLineColor, UI: pitchView))
         frequencyView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: 2, lineColor: underLineColor, UI: frequencyView))
     }
+    
+   
     
     /// レイアウト系のセットアップ
     /*func setupLayout() {
@@ -122,13 +125,7 @@ class ViewController: UIViewController, TunerDelegate {
         pitchLabel.text = pitchFrequencyText
         noteLabel.text = "\(pitch.note)"
         //arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine)
-        print("complete")
-        if fabs(distance) < 0.1 {
-            noteLabel.textColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-        }else{
-            noteLabel.textColor = UIColor.black
-        }
-
+        materView.circleLighting(pitch: pitch, frequency: frequency)
     }
     
     override func didReceiveMemoryWarning() {
