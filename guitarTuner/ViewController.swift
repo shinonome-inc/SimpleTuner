@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVGKit
 
 class ViewController: UIViewController, TunerDelegate {
 
@@ -28,31 +27,22 @@ class ViewController: UIViewController, TunerDelegate {
     
     var scaleAffine: CGAffineTransform?
     let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
+    let lineWidth: CGFloat = 2
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tuner.delegate = self
         self.view.backgroundColor = UIColor.white
-        setupLabels()
-        //こっちだといけた。
-        /*let buttonImage = SVGKImage(named: "cog")
-        buttonImage?.size = CGSize(width: 25, height: 25)
-        editButton.image = buttonImage?.uiImage
         
-        materView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        materView.makeMaterView()
-        
-        arrowView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        arrowView.makeArrowLayer()*/
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         Pitch.renewAll()
         tuner.startTuner()
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
-        print("strat")
+        print("strat tuner")
     }
     
     //こいつが呼ばれるときにはオートレイアウト後のフレームが決定している.
@@ -66,11 +56,12 @@ class ViewController: UIViewController, TunerDelegate {
     
     private lazy var initViewLayout : Void = {
         materView.makeMaterView()
+        setupLabels()
     }()
     
     override func viewWillDisappear(_ animated: Bool) {
         tuner.stopTuner()
-        print("stop")
+        print("stop tuner")
     }
    
     func setupLabels() {
@@ -78,9 +69,9 @@ class ViewController: UIViewController, TunerDelegate {
         noteTitleLabel.text = "Note"
         pitchTitleLabel.text = "Pitch"
         frequencyTitleLabel.text = "Frequency"
-        noteView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: 2, lineColor: underLineColor, UI: noteView))
-        pitchView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: 2, lineColor: underLineColor, UI: pitchView))
-        frequencyView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: 2, lineColor: underLineColor, UI: frequencyView))
+        noteView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: noteView))
+        pitchView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: pitchView))
+        frequencyView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: frequencyView))
     }
     
    
