@@ -8,18 +8,21 @@
 
 import UIKit
 
-class MetronomeController: UIViewController {
+class MetronomeController: UIViewController, MetronomeDelegate {
     
-
     @IBOutlet weak var tempoView: UIView!
     @IBOutlet weak var tempoLabel: UILabel!
-   
+    @IBOutlet weak var metroCountView: MetroCountView!
+    
     let metronome = Metronome()
     let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
     let lineWidth: CGFloat = 2
     
+    var beatCounter = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        metronome.delegate = self
         
     }
     
@@ -29,6 +32,7 @@ class MetronomeController: UIViewController {
     }
     
     private lazy var initViewLayout : Void = {
+        metroCountView.makeView()
         setupLabels()
     }()
     
@@ -47,12 +51,23 @@ class MetronomeController: UIViewController {
     }
     
     @IBAction func tappedMinus(_ sender: Any) {
+        metronome.tempoMinus1()
     }
     
     @IBAction func tappedPlus(_ sender: Any) {
+        metronome.tempoPlus1()
     }
     
     @IBAction func tappedStart(_ sender: Any) {
+    }
+    
+    func metronomeDidBeat() {
+        print("DID Beat")
+        beatCounter += 1
+        metroCountView.circleLighting(beatCount: beatCounter)
+        if beatCounter >= metronome.getBeatNumber() {
+            beatCounter = 0
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

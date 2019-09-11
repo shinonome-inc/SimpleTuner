@@ -9,7 +9,7 @@
 import Foundation
 import AudioKit
 
-protocol TunerDelegate : class {
+protocol TunerDelegate: class {
     //pitchは一番近い音階、distanceは実際の周波数とその音階の周波数との差、amplitudeは音量
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double)
 }

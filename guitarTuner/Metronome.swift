@@ -8,19 +8,26 @@
 
 import AudioKit
 
+protocol MetronomeDelegate: class {
+    func metronomeDidBeat()
+}
+
 class Metronome: NSObject {
     
+    weak var delegate: MetronomeDelegate?
     fileprivate let metronome = AKMetronome()
     
     override init() {
-        metronome.tempo = 60
+        metronome.tempo = 120
         metronome.subdivision = 4
         metronome.frequency1 = 2000
         metronome.frequency2 = 1000
-        
     }
     
     func startMetro() {
+        metronome.callback = {
+            self.delegate?.metronomeDidBeat()
+        }
         metronome.start()
         AudioKit.output = metronome
         do{
@@ -37,5 +44,22 @@ class Metronome: NSObject {
             print("failed to stop metronome")
         }
     }
+    
+    func tempoPlus1() {
+        metronome.tempo += 1
+    }
+    
+    func tempoMinus1() {
+        metronome.tempo -= 1
+    }
+    
+    func getTenpo() ->Double{
+        return metronome.tempo
+    }
+    
+    func getBeatNumber() ->Int{
+        return metronome.subdivision
+    }
+    
     
 }

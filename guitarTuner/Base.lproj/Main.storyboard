@@ -111,6 +111,7 @@
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-1"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="metroCountView" destination="piS-gw-cvG" id="T9E-nh-0PG"/>
                         <outlet property="tempoLabel" destination="gbq-Hx-a2V" id="X5o-gv-gXw"/>
                         <outlet property="tempoView" destination="klD-e8-LJh" id="O62-Gi-qnG"/>
                     </connections>
@@ -311,7 +312,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="4QN-uT-MDh">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="4QN-uT-MDh">
                             <rect key="frame" x="0.0" y="217.5" width="414" height="619"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

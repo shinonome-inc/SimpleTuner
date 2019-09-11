@@ -18,7 +18,7 @@ class MaterView: UIView {
     private let eastNorthEastCircle = CircleLayer()
     private let eastCircle = CircleLayer()
     
-    func makeMaterView(){
+    func makeMaterView() {
         let xCenter = self.frame.width * 0.5
         let height = self.frame.height
         let perimeter = xCenter * 0.8
@@ -34,23 +34,13 @@ class MaterView: UIView {
         northNorthEastCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter + (perimeter * 0.5), y: height - (perimeter * harfOfRoot3), width: diameter, height: diameter)).cgPath
         eastNorthEastCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter + (perimeter * harfOfRoot3), y: height - (perimeter * 0.5), width: diameter, height: diameter)).cgPath
         eastCircle.path = UIBezierPath(ovalIn: CGRect.init(x: viewCenter + perimeter, y: height, width: diameter, height: diameter)).cgPath
-        let layers = [westCircle, westNorthWestCircle, northNorthWestCircle, northCircle, northNorthEastCircle, eastNorthEastCircle, eastCircle]
+        let circles = [westCircle, westNorthWestCircle, northNorthWestCircle, northCircle, northNorthEastCircle, eastNorthEastCircle, eastCircle]
         
-        for layer in layers{
-            makeCircle(layer: layer)
+        for circle in circles{
+            circle.drawCircle(frame: self.frame)
+            self.layer.addSublayer(circle)
         }
         
-    }
-    
-    func makeCircle(layer: CircleLayer) {
-        let strokeColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        let fillColor = UIColor.clear
-        let frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-    
-        layer.frame = frame
-        layer.strokeColor = strokeColor.cgColor
-        layer.fillColor = fillColor.cgColor
-        self.layer.addSublayer(layer)
     }
     
     func circleLighting(pitch: Pitch, frequency: Double) {

@@ -11,5 +11,26 @@ import UIKit
 class CircleLayer: CAShapeLayer {
     
     var standardFrequency: Double?
+    
+    func drawCircle(frame: CGRect) {
+        let strokeColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        let fillColor = UIColor.clear
+        let frame = CGRect.init(x: 0, y: 0, width: frame.width, height: frame.height)
+        
+        self.frame = frame
+        self.strokeColor = strokeColor.cgColor
+        self.fillColor = fillColor.cgColor
+        
+    }
+    
+    func lighting() {
+        let fillColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        self.fillColor = fillColor.cgColor
+    }
+    
+    func lightOff() {
+        let fillColor = UIColor.clear
+        self.fillColor = fillColor.cgColor
+    }
 
 }
