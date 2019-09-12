@@ -29,6 +29,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         _ = self.initViewLayout
+        print("called viewDidLayoutSubviews")
     }
     
     private lazy var initViewLayout : Void = {
@@ -64,6 +65,8 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     func metronomeDidBeat() {
         print("DID Beat")
         beatCounter += 1
+        print(beatCounter)
+        print(metronome.getBeatNumber())
         metroCountView.circleLighting(beatCount: beatCounter)
         if beatCounter >= metronome.getBeatNumber() {
             beatCounter = 0

@@ -23,14 +23,16 @@ class CircleLayer: CAShapeLayer {
         
     }
     
-    func lighting() {
+    func lighting(layer: CircleLayer) {
+        print("called lighitng")
         let fillColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-        self.fillColor = fillColor.cgColor
+        layer.fillColor = fillColor.cgColor
     }
     
-    func lightOff() {
+    func lightOff(layer: CircleLayer) {
+        print("called lightOff")
         let fillColor = UIColor.clear
-        self.fillColor = fillColor.cgColor
+        layer.fillColor = fillColor.cgColor
     }
 
 }
