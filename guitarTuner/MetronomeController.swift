@@ -63,10 +63,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     }
     
     func metronomeDidBeat() {
-        print("DID Beat")
         beatCounter += 1
-        print(beatCounter)
-        print(metronome.getBeatNumber())
         metroCountView.circleLighting(beatCount: beatCounter)
         if beatCounter >= metronome.getBeatNumber() {
             beatCounter = 0
