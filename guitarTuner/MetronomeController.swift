@@ -13,6 +13,9 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     @IBOutlet weak var tempoView: UIView!
     @IBOutlet weak var tempoLabel: UILabel!
     @IBOutlet weak var metroCountView: MetroCountView!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     
     let metronome = Metronome()
     let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
@@ -29,7 +32,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         _ = self.initViewLayout
-        print("called viewDidLayoutSubviews")
     }
     
     private lazy var initViewLayout : Void = {
@@ -37,14 +39,12 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         setupLabels()
     }()
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("start metro")
-        metronome.startMetro()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
-        print("stop metro")
-        metronome.stopMetro()
+        if metronome.isActivated == true {
+            metronome.stopMetro()
+            metroCountView.refresh()
+            beatCounter = 0
+        }
     }
     
     func setupLabels() {
@@ -53,13 +53,26 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     
     @IBAction func tappedMinus(_ sender: Any) {
         metronome.tempoMinus1()
+        let tempo = String(format: "%.0f", metronome.getTempo())
+        tempoLabel.text = tempo
     }
     
     @IBAction func tappedPlus(_ sender: Any) {
         metronome.tempoPlus1()
+        let tempo = String(format: "%.0f", metronome.getTempo())
+        tempoLabel.text = tempo
     }
     
     @IBAction func tappedStart(_ sender: Any) {
+        if metronome.isActivated == false {
+            startButton.titleLabel?.text = "STOP"
+            metronome.startMetro()
+        } else {
+            startButton.titleLabel?.text = "START"
+            metronome.stopMetro()
+            metroCountView.refresh()
+            beatCounter = 0
+        }
     }
     
     func metronomeDidBeat() {
@@ -69,6 +82,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
             beatCounter = 0
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

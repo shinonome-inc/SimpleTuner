@@ -50,19 +50,19 @@ class MaterView: UIView {
         westCircle.standardFrequency = pitch.frequency - (width * 3)
         for circle in circles {
             circle.standardFrequency = westCircle.standardFrequency! + (width * counter)
-            lightOff(layer: circle)
+            circle.lightOff()
             counter += 1
         }
         for circle in circles {
             if range(standard: circle.standardFrequency, frequency: frequency) {
-                lighting(layer: circle)
+                circle.lighting()
             }
         }
         if westCircle.standardFrequency! > frequency {
-            lighting(layer: westCircle)
+            westCircle.lighting()
         }
         if eastCircle.standardFrequency! < frequency {
-            lighting(layer: eastCircle)
+            eastCircle.lighting()
         }
         
     }
@@ -79,13 +79,5 @@ class MaterView: UIView {
         return false
     }
     
-    func lighting(layer: CircleLayer) {
-        let fillColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-        layer.fillColor = fillColor.cgColor
-    }
-    
-    func lightOff(layer: CircleLayer) {
-        layer.fillColor = UIColor.clear.cgColor
-    }
 }
 

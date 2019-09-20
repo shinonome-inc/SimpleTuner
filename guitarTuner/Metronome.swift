@@ -16,6 +16,8 @@ class Metronome: NSObject {
     
     weak var delegate: MetronomeDelegate?
     fileprivate let metronome = AKMetronome()
+    var isActivated: Bool = false
+    
     
     override init() {
         metronome.tempo = 120
@@ -32,6 +34,7 @@ class Metronome: NSObject {
         AudioKit.output = metronome
         do{
             try AudioKit.start()
+            isActivated = true
         }catch {
             print("failed to start metronome")
         }
@@ -40,6 +43,7 @@ class Metronome: NSObject {
     func stopMetro() {
         do{
             try AudioKit.stop()
+            isActivated = false
         }catch {
             print("failed to stop metronome")
         }
@@ -53,7 +57,7 @@ class Metronome: NSObject {
         metronome.tempo -= 1
     }
     
-    func getTenpo() ->Double{
+    func getTempo() ->Double{
         return metronome.tempo
     }
     

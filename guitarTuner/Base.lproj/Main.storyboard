@@ -52,35 +52,44 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSn-mI-g1v">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSn-mI-g1v">
                                 <rect key="frame" x="82" y="619" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="MKS-s9-W19"/>
                                     <constraint firstAttribute="width" constant="50" id="WdP-Up-1rB"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="-">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="tappedMinus:" destination="N2Q-2H-uM0" eventType="touchUpInside" id="x53-Kj-C01"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-Ke-V9I">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-Ke-V9I">
                                 <rect key="frame" x="282" y="619" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="I5A-jk-Pnk"/>
                                     <constraint firstAttribute="height" constant="50" id="LjY-RB-qTv"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="tappedPlus:" destination="N2Q-2H-uM0" eventType="touchUpInside" id="Xcd-Z3-2sw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcY-lD-9cf">
-                                <rect key="frame" x="157" y="709" width="100" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcY-lD-9cf">
+                                <rect key="frame" x="107" y="709" width="200" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="1uD-PH-i7U"/>
+                                    <constraint firstAttribute="width" constant="200" id="1uD-PH-i7U"/>
                                     <constraint firstAttribute="height" constant="50" id="8AM-Of-hyO"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="tappedStart:" destination="N2Q-2H-uM0" eventType="touchUpInside" id="CSO-8Y-7MC"/>
                                 </connections>
@@ -112,6 +121,9 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="metroCountView" destination="piS-gw-cvG" id="T9E-nh-0PG"/>
+                        <outlet property="minusButton" destination="oSn-mI-g1v" id="tMv-VZ-C0D"/>
+                        <outlet property="plusButton" destination="7h1-Ke-V9I" id="wcY-nj-b1L"/>
+                        <outlet property="startButton" destination="TcY-lD-9cf" id="TL5-vd-hFr"/>
                         <outlet property="tempoLabel" destination="gbq-Hx-a2V" id="X5o-gv-gXw"/>
                         <outlet property="tempoView" destination="klD-e8-LJh" id="O62-Gi-qnG"/>
                     </connections>
@@ -312,7 +324,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="4QN-uT-MDh">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="4QN-uT-MDh">
                             <rect key="frame" x="0.0" y="217.5" width="414" height="619"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

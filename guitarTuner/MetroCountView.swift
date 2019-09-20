@@ -43,27 +43,19 @@ class MetroCountView: UIView {
         let circles = [circle1, circle2, circle3, circle4, circle5, circle6]
         for i in 0 ..< beatCount - 1 {
             let circle = circles[i]
-            lightOff(layer: circle)
+            circle.lightOff()
         }
         if beatCount == 1 {
-            lightOff(layer: circles[beatNumber - 1])
+            circles[beatNumber - 1].lightOff()
         }
         let circle = circles[beatCount - 1]
-        lighting(layer: circle)
+        circle.lighting()
     }
     
-    func lighting(layer: CircleLayer) {
-        print("called lighting")
-        DispatchQueue.main.async {
-            let fillColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-            layer.fillColor = fillColor.cgColor
-        }
-    }
-    
-    func lightOff(layer: CircleLayer) {
-        print("called lightOff")
-        DispatchQueue.main.async {
-            layer.fillColor = UIColor.clear.cgColor
+    func refresh() {
+        let circles = [circle1, circle2, circle3, circle4, circle5, circle6]
+        for i in 0 ..< beatNumber {
+            circles[i].lightOff()
         }
     }
 
