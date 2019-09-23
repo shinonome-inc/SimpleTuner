@@ -16,10 +16,12 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
+    let numberPadView = UIView()
     
     let metronome = Metronome()
     let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
     let lineWidth: CGFloat = 2
+    let numberPadHeight: CGFloat = 300
     
     var beatCounter = 0
     
@@ -36,7 +38,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     
     private lazy var initViewLayout : Void = {
         metroCountView.makeView()
-        setupLabels()
+        setupUIs()
     }()
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,17 +49,33 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         }
     }
     
-    func setupLabels() {
+    func setupUIs() {
+        let height = self.view.frame.height
+        let width = self.view.frame.width
+        numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
         tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: tempoView))
+        startButton.layer.borderColor = UIColor.gray.cgColor
+        startButton.layer.borderWidth = 1.0
+        startButton.layer.cornerRadius = 25
+        startButton.setTitle("START", for: .normal)
+        let tempo = String(format: "%.0f", metronome.getTempo())
+        tempoLabel.text = tempo
+        
     }
     
     @IBAction func tappedMinus(_ sender: Any) {
+        guard metronome.getTempo() > 1 else {
+            return
+        }
         metronome.tempoMinus1()
         let tempo = String(format: "%.0f", metronome.getTempo())
         tempoLabel.text = tempo
     }
     
     @IBAction func tappedPlus(_ sender: Any) {
+        guard metronome.getTempo() < 300 else {
+            return
+        }
         metronome.tempoPlus1()
         let tempo = String(format: "%.0f", metronome.getTempo())
         tempoLabel.text = tempo
@@ -65,10 +83,10 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     
     @IBAction func tappedStart(_ sender: Any) {
         if metronome.isActivated == false {
-            startButton.titleLabel?.text = "STOP"
+            startButton.setTitle("STOP", for: .normal)
             metronome.startMetro()
         } else {
-            startButton.titleLabel?.text = "START"
+            startButton.setTitle("START", for: .normal)
             metronome.stopMetro()
             metroCountView.refresh()
             beatCounter = 0
