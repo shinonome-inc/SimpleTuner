@@ -61,7 +61,7 @@ class SettingViewController: UITableViewController {
         }
         
     }
-    //
+    
     @objc func tapView(sender: UITapGestureRecognizer) {
         let width = self.view.frame.width
         let height = self.view.frame.height

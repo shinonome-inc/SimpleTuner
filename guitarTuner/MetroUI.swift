@@ -59,7 +59,7 @@ class MetroCountView: UIView {
     }
 }
 
-class numberPadView: UIView {
+class NumberPadView: UIView {
     private let button1 = UIButton()
     private let button2 = UIButton()
     private let button3 = UIButton()
@@ -73,20 +73,90 @@ class numberPadView: UIView {
     private let buttonCL = UIButton()
     private let buttonSET = UIButton()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        let width = self.frame.width
-        let height = self.frame.height
-        let leftSide = width * 0.3
-        let space = width * 0.1
-        let numberButtons = [button1, button2, button3, button4, button5, button6, button7, button8, button9]
-        for (index, numberButton) in numberButtons.enumerated() {
-            
+    func makeView() {
+        let width = frame.width
+        let spaceY = width * 0.2
+        let topEnd = width * 0.1
+        let buttons = [button1, button2, button3, button4, button5, button6, button7, button8, button9, button0, buttonCL, buttonSET]
+        for (index, button) in buttons.enumerated() {
+            switch index / 3 {
+            case 0:
+                buttonDetail(index: index, y: topEnd, button: button, frame: frame)
+            case 1:
+                buttonDetail(index: index, y: topEnd + spaceY, button: button, frame: frame)
+            case 2:
+                buttonDetail(index: index, y: topEnd + (spaceY * 2), button: button, frame: frame)
+            case 3:
+                otherButtonDetail(index: index, y: topEnd + (spaceY * 3), button: button, frame: frame)
+            default:
+                return
+            }
+            self.addSubview(button)
+            button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
         }
-        
+        self.backgroundColor = UIColor.white
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    func buttonDetail(index: Int, y: CGFloat, button: UIButton, frame: CGRect) {
+        let width = frame.width
+        let leftSide = width * 0.15
+        let spaceX = width * 0.05
+        let buttonWidth = width * 0.2
+        let x: CGFloat
+        
+        switch index % 3 {
+        case 0:
+            x = leftSide
+        case 1:
+            x = leftSide + buttonWidth + spaceX
+        case 2:
+            x = leftSide + buttonWidth * 2 + spaceX * 2
+        default:
+            return
+        }
+        button.frame = CGRect(x: x, y: y, width: buttonWidth, height: buttonWidth)
+        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.cornerRadius = buttonWidth * 0.5
+        button.layer.borderWidth = 1.0
+        button.setTitle(String(index + 1), for: .normal)
+        button.setTitleColor(UIColor.gray, for: .normal)
+    }
+    
+    func otherButtonDetail(index: Int, y: CGFloat, button: UIButton, frame: CGRect) {
+        let width = frame.width
+        let leftSide = width * 0.15
+        let spaceX = width * 0.05
+        let spaceY = width * 0.2
+        let buttonHeight = width * 0.2
+        let buttonWidth: CGFloat
+        let x: CGFloat
+        var y = y
+        
+        switch index % 3 {
+        case 0:
+            x = leftSide
+            buttonWidth = width * 0.45
+            button.setTitle("0", for: .normal)
+        case 1:
+            buttonWidth = width * 0.2
+            x = leftSide + buttonWidth * 2 + spaceX * 2
+            button.setTitle("CL", for: .normal)
+        case 2:
+            x = leftSide
+            y = y + spaceY
+            buttonWidth = width * 0.7
+            button.setTitle("SET", for: .normal)
+        default:
+            return
+        }
+        button.setTitleColor(UIColor.gray, for: .normal)
+        button.frame = CGRect(x: x, y: y, width: buttonWidth, height: buttonHeight)
+        button.layer.borderColor = UIColor.gray.cgColor
+        button.layer.cornerRadius = buttonHeight * 0.5
+        button.layer.borderWidth = 1.0
+    }
+    
+    @objc func buttonTapped(sender: AnyObject) {
+        sender
     }
 }

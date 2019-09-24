@@ -16,9 +16,9 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
-    let numberPadView = UIView()
     
     let metronome = Metronome()
+    let numberPadView = NumberPadView()
     let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
     let lineWidth: CGFloat = 2
     let numberPadHeight: CGFloat = 300
@@ -28,6 +28,9 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         metronome.delegate = self
+        
+        tempoLabel.isUserInteractionEnabled = true
+        tempoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedTempoLabel)))
         
     }
     
@@ -52,7 +55,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     func setupUIs() {
         let height = self.view.frame.height
         let width = self.view.frame.width
-        numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
         tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: tempoView))
         startButton.layer.borderColor = UIColor.gray.cgColor
         startButton.layer.borderWidth = 1.0
@@ -60,6 +62,9 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         startButton.setTitle("START", for: .normal)
         let tempo = String(format: "%.0f", metronome.getTempo())
         tempoLabel.text = tempo
+        numberPadView.frame = CGRect(x: 0, y: height, width: width, height: width * 1.2)
+        numberPadView.makeView()
+        self.view.addSubview(numberPadView)
         
     }
     
@@ -91,6 +96,13 @@ class MetronomeController: UIViewController, MetronomeDelegate {
             metroCountView.refresh()
             beatCounter = 0
         }
+    }
+    
+    @objc func tappedTempoLabel(sender: UITapGestureRecognizer) {
+        let width = self.view.frame.width
+        UIView.animate(withDuration: 0.2, animations: {
+            self.numberPadView.frame = CGRect(x: 0, y: 0, width: width, height: width * 1.2)
+        })
     }
     
     func metronomeDidBeat() {
