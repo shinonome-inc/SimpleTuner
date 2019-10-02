@@ -28,6 +28,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         metronome.delegate = self
+        numberPadView.delegate = self
         
         tempoLabel.isUserInteractionEnabled = true
         tempoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedTempoLabel)))
@@ -115,5 +116,55 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+
+extension MetronomeController: NumberPadViewDelegate {
+    
+    func numberButtonTapped(number: String) {
+        
+        if numberPadView.firstTouch {
+            tempoLabel.text = number
+            numberPadView.firstTouch = false
+            return
+        }
+        
+        if var tempoLabelText = tempoLabel.text{
+            tempoLabelText = tempoLabelText + number
+            if Int(tempoLabelText)! > 300 {
+                tempoLabel.text = "300"
+                return
+            }else{
+                tempoLabel.text = tempoLabelText
+            }
+        }else{
+            tempoLabel.text = number
+        }
+    }
+    
+    func CLButtonTapped() {
+        tempoLabel.text = "0"
+        numberPadView.firstTouch = true
+    }
+    
+    func SETButtontapped() {
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        
+        guard let tempoLabelText = tempoLabel.text else{
+            return
+        }
+        guard let settedTempoInt = Int(tempoLabelText) else {
+            return
+        }
+        guard settedTempoInt > 0 else{
+            return
+        }
+        let settedTempo = Double(tempoLabelText)
+        metronome.setTenpo(settedTenpo: settedTempo!)
+        numberPadView.firstTouch = true
+        UIView.animate(withDuration: 0.2, animations: {
+            self.numberPadView.frame = CGRect(x: 0, y: height, width: width, height: width * 1.2)
+        })
     }
 }

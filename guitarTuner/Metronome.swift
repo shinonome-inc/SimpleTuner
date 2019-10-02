@@ -57,6 +57,10 @@ class Metronome: NSObject {
         metronome.tempo -= 1
     }
     
+    func setTenpo(settedTenpo: Double) {
+        metronome.tempo = settedTenpo
+    }
+    
     func getTempo() ->Double{
         return metronome.tempo
     }

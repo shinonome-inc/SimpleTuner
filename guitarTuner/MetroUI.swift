@@ -59,7 +59,16 @@ class MetroCountView: UIView {
     }
 }
 
+protocol NumberPadViewDelegate: class {
+    func numberButtonTapped(number: String)
+    func CLButtonTapped()
+    func SETButtontapped()
+}
+
 class NumberPadView: UIView {
+    
+    weak var delegate: NumberPadViewDelegate?
+    
     private let button1 = UIButton()
     private let button2 = UIButton()
     private let button3 = UIButton()
@@ -73,12 +82,15 @@ class NumberPadView: UIView {
     private let buttonCL = UIButton()
     private let buttonSET = UIButton()
     
+    var firstTouch: Bool = true
+    
     func makeView() {
         let width = frame.width
         let spaceY = width * 0.2
         let topEnd = width * 0.1
         let buttons = [button1, button2, button3, button4, button5, button6, button7, button8, button9, button0, buttonCL, buttonSET]
         for (index, button) in buttons.enumerated() {
+            button.tag = index + 1
             switch index / 3 {
             case 0:
                 buttonDetail(index: index, y: topEnd, button: button, frame: frame)
@@ -157,6 +169,49 @@ class NumberPadView: UIView {
     }
     
     @objc func buttonTapped(sender: AnyObject) {
-        sender
+        print("tapped")
+        if let buttonTag = actionTag(rawValue: sender.tag) {
+            switch buttonTag {
+            case .tapped1:
+                self.delegate?.numberButtonTapped(number: "1")
+            case .tapped2:
+                self.delegate?.numberButtonTapped(number: "2")
+            case .tapped3:
+                self.delegate?.numberButtonTapped(number: "3")
+            case .tapped4:
+                self.delegate?.numberButtonTapped(number: "4")
+            case .tapped5:
+                self.delegate?.numberButtonTapped(number: "5")
+            case .tapped6:
+                self.delegate?.numberButtonTapped(number: "6")
+            case .tapped7:
+                self.delegate?.numberButtonTapped(number: "7")
+            case .tapped8:
+                self.delegate?.numberButtonTapped(number: "8")
+            case .tapped9:
+                self.delegate?.numberButtonTapped(number: "9")
+            case .tapped0:
+                self.delegate?.numberButtonTapped(number: "0")
+            case .tappedCL:
+                self.delegate?.CLButtonTapped()
+            case .tappedSET:
+                self.delegate?.SETButtontapped()
+            }
+        }
     }
+}
+
+enum actionTag: Int {
+    case tapped1 = 1
+    case tapped2 = 2
+    case tapped3 = 3
+    case tapped4 = 4
+    case tapped5 = 5
+    case tapped6 = 6
+    case tapped7 = 7
+    case tapped8 = 8
+    case tapped9 = 9
+    case tapped0 = 10
+    case tappedCL = 11
+    case tappedSET = 12
 }
