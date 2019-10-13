@@ -17,11 +17,12 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
+    let metroTabBarController = UITabBarController()
     let metronome = Metronome()
     let numberPadView = NumberPadView()
     let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
     let lineWidth: CGFloat = 2
-    let numberPadHeight: CGFloat = 300
+    var tempoLabelFrame: CGRect?
     
     var beatCounter = 0
     
@@ -56,6 +57,8 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     func setupUIs() {
         let height = self.view.frame.height
         let width = self.view.frame.width
+        let numberPadHeight = width * 1.2
+        tempoLabelFrame = tempoLabel.frame
         tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: tempoView))
         startButton.layer.borderColor = UIColor.gray.cgColor
         startButton.layer.borderWidth = 1.0
@@ -63,7 +66,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         startButton.setTitle("START", for: .normal)
         let tempo = String(format: "%.0f", metronome.getTempo())
         tempoLabel.text = tempo
-        numberPadView.frame = CGRect(x: 0, y: height, width: width, height: width * 1.2)
+        numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
         numberPadView.makeView()
         self.view.addSubview(numberPadView)
         
@@ -101,8 +104,16 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     
     @objc func tappedTempoLabel(sender: UITapGestureRecognizer) {
         let width = self.view.frame.width
+        let height = self.view.frame.height
+        let numberPadHeight = width * 1.2
+        let tabBarHeight = metroTabBarController.tabBar.frame.height
+        self.tempoLabel.translatesAutoresizingMaskIntoConstraints = true
+        guard let tempoLabelFrame = tempoLabelFrame else {
+            return
+        }
         UIView.animate(withDuration: 0.2, animations: {
-            self.numberPadView.frame = CGRect(x: 0, y: 0, width: width, height: width * 1.2)
+            self.numberPadView.frame = CGRect(x: 0, y: height - numberPadHeight - tabBarHeight, width: width, height: numberPadHeight)
+            self.tempoLabel.frame = CGRect(x: tempoLabelFrame.origin.x, y: height - numberPadHeight - tabBarHeight - tempoLabelFrame.height, width: tempoLabelFrame.width, height: tempoLabelFrame.height)
         })
     }
     
@@ -129,6 +140,11 @@ extension MetronomeController: NumberPadViewDelegate {
             return
         }
         
+        if tempoLabel.text == "0" {
+            tempoLabel.text = number
+            return
+        }
+        
         if var tempoLabelText = tempoLabel.text{
             tempoLabelText = tempoLabelText + number
             if Int(tempoLabelText)! > 300 {
@@ -150,6 +166,7 @@ extension MetronomeController: NumberPadViewDelegate {
     func SETButtontapped() {
         let width = self.view.frame.width
         let height = self.view.frame.height
+        let numberPadHeight = width * 1.2
         
         guard let tempoLabelText = tempoLabel.text else{
             return
@@ -163,8 +180,12 @@ extension MetronomeController: NumberPadViewDelegate {
         let settedTempo = Double(tempoLabelText)
         metronome.setTenpo(settedTenpo: settedTempo!)
         numberPadView.firstTouch = true
+        guard let tempoLabelFrame = tempoLabelFrame else {
+            return
+        }
         UIView.animate(withDuration: 0.2, animations: {
-            self.numberPadView.frame = CGRect(x: 0, y: height, width: width, height: width * 1.2)
+            self.numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
+            self.tempoLabel.frame = CGRect(x: tempoLabelFrame.origin.x, y: tempoLabelFrame.origin.y, width: tempoLabelFrame.width, height: tempoLabelFrame.height)
         })
     }
 }
