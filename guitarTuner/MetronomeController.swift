@@ -117,6 +117,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
             self.numberPadView.frame = CGRect(x: 0, y: height - numberPadHeight - tabBarHeight, width: width, height: numberPadHeight)
             self.tempoLabel.frame = CGRect(x: tempoLabelFrame.origin.x, y: height - numberPadHeight - tabBarHeight - tempoLabelFrame.height, width: tempoLabelFrame.width, height: tempoLabelFrame.height)
             self.hideView.frame = CGRect(x: 0, y: height - numberPadHeight - tabBarHeight - 300, width: width, height: 300)
+            self.metroCountView.backgroundColor = UIColor.white
             
         })
     }
@@ -190,6 +191,7 @@ extension MetronomeController: NumberPadViewDelegate {
         UIView.animate(withDuration: 0.2, animations: {
             self.numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
             self.tempoLabel.frame = CGRect(x: tempoLabelFrame.origin.x, y: tempoLabelFrame.origin.y, width: tempoLabelFrame.width, height: tempoLabelFrame.height)
+            self.metroCountView.backgroundColor = UIColor.clear
         })
     }
 }
