@@ -33,9 +33,6 @@ class ViewController: UIViewController, TunerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tuner.delegate = self
-        self.view.backgroundColor = UIColor.white
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
