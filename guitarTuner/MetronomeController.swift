@@ -10,6 +10,7 @@ import UIKit
 
 class MetronomeController: UIViewController, MetronomeDelegate {
     
+    @IBOutlet weak var hideView: UIView!
     @IBOutlet weak var tempoView: UIView!
     @IBOutlet weak var tempoLabel: UILabel!
     @IBOutlet weak var metroCountView: MetroCountView!
@@ -23,7 +24,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
     let lineWidth: CGFloat = 2
     var tempoLabelFrame: CGRect?
-    let hideView = UIView()
     var beatCounter = 0
     
     override func viewDidLoad() {
@@ -68,8 +68,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         tempoLabel.text = tempo
         numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
         numberPadView.makeView()
-        hideView.frame = CGRect(x: 0, y: height, width: width, height: 300)
-        hideView.backgroundColor = UIColor.white
         self.view.addSubview(numberPadView)
         
     }
@@ -116,9 +114,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         UIView.animate(withDuration: 0.2, animations: {
             self.numberPadView.frame = CGRect(x: 0, y: height - numberPadHeight - tabBarHeight, width: width, height: numberPadHeight)
             self.tempoLabel.frame = CGRect(x: tempoLabelFrame.origin.x, y: height - numberPadHeight - tabBarHeight - tempoLabelFrame.height, width: tempoLabelFrame.width, height: tempoLabelFrame.height)
-            self.hideView.frame = CGRect(x: 0, y: height - numberPadHeight - tabBarHeight - 300, width: width, height: 300)
-            self.metroCountView.backgroundColor = UIColor.white
-            
+            self.hideView.backgroundColor = UIColor.white
         })
     }
     
@@ -191,7 +187,7 @@ extension MetronomeController: NumberPadViewDelegate {
         UIView.animate(withDuration: 0.2, animations: {
             self.numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
             self.tempoLabel.frame = CGRect(x: tempoLabelFrame.origin.x, y: tempoLabelFrame.origin.y, width: tempoLabelFrame.width, height: tempoLabelFrame.height)
-            self.metroCountView.backgroundColor = UIColor.clear
+            self.hideView.backgroundColor = UIColor.clear
         })
     }
 }
