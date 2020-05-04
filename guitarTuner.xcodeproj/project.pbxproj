@@ -143,17 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				7822C0EB2257027B00361EC5 /* AppDelegate.swift */,
-				7822C0ED2257027B00361EC5 /* ViewController.swift */,
-				78E6E74123112C9C005B56CA /* MetronomeController.swift */,
-				78702628225B591700E32781 /* tuner.swift */,
-				78E6E73F231125AC005B56CA /* Metronome.swift */,
-				78E773E5225DFD85006C8C4B /* Note.swift */,
-				78E63EF52266C97900D882CA /* Pitch.swift */,
-				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
-				7822C0EF2257027B00361EC5 /* Main.storyboard */,
-				78DB12DF2306A399005F416D /* Mater.swift */,
-				78E428392313F2B100B02902 /* MetroUI.swift */,
-				78E36056230A67750084DFA1 /* CircleLayer.swift */,
+				78358D8A24605C1C00B6E4D1 /* Controllers */,
+				78358D8B24605C7A00B6E4D1 /* Function */,
 				7822C0F22257027C00361EC5 /* Assets.xcassets */,
 				7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */,
 				78C6CCC522DDA7400086CDD1 /* tunerIcon.png */,
@@ -182,6 +173,39 @@
 				7822C10D2257027C00361EC5 /* Info.plist */,
 			);
 			path = guitarTunerUITests;
+			sourceTree = "<group>";
+		};
+		78358D8A24605C1C00B6E4D1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				78358D8C24605D3800B6E4D1 /* UI */,
+				7822C0ED2257027B00361EC5 /* ViewController.swift */,
+				78E6E74123112C9C005B56CA /* MetronomeController.swift */,
+				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
+				7822C0EF2257027B00361EC5 /* Main.storyboard */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		78358D8B24605C7A00B6E4D1 /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				78702628225B591700E32781 /* tuner.swift */,
+				78E6E73F231125AC005B56CA /* Metronome.swift */,
+				78E773E5225DFD85006C8C4B /* Note.swift */,
+				78E63EF52266C97900D882CA /* Pitch.swift */,
+			);
+			path = Function;
+			sourceTree = "<group>";
+		};
+		78358D8C24605D3800B6E4D1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				78DB12DF2306A399005F416D /* Mater.swift */,
+				78E428392313F2B100B02902 /* MetroUI.swift */,
+				78E36056230A67750084DFA1 /* CircleLayer.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		93B12D79495DB638591C1FC5 /* Pods */ = {
