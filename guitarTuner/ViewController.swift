@@ -97,7 +97,7 @@ class ViewController: UIViewController, TunerDelegate {
     ///   - amplitude: 振幅
     ///   - frequency: 周波数
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double) {
-        guard amplitude > 0.01 else{
+        guard amplitude > 0.2 else{
             return
         }
         guard frequency > Pitch.all[0].frequency, frequency < Pitch.all[60].frequency else {
