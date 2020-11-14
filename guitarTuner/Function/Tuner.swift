@@ -33,9 +33,9 @@ class Tuner: NSObject {
     
     func startTuner() {
         //チューナー起動
-        AudioKit.output = silence
+        AKManager.output = silence
         do{
-            try AudioKit.start()
+            try AKManager.start()
         }catch{
             print("failed to start AudioKit")
             return
@@ -47,7 +47,7 @@ class Tuner: NSObject {
     func stopTuner() {
         //チューナー終了
         do{
-            try AudioKit.stop()
+            try AKManager.stop()
         }catch{
             print("failed to stop AudioKit")
             return

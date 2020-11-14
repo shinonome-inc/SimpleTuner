@@ -1,13 +1,13 @@
 PODS:
-  - AudioKit (4.10.1):
-    - AudioKit/Core (= 4.10.1)
-    - AudioKit/UI (= 4.10.1)
-  - AudioKit/Core (4.10.1)
-  - AudioKit/UI (4.10.1):
+  - AudioKit (4.11.2):
+    - AudioKit/Core (= 4.11.2)
+    - AudioKit/UI (= 4.11.2)
+  - AudioKit/Core (4.11.2)
+  - AudioKit/UI (4.11.2):
     - AudioKit/Core
-  - CocoaLumberjack (3.6.1):
-    - CocoaLumberjack/Core (= 3.6.1)
-  - CocoaLumberjack/Core (3.6.1)
+  - CocoaLumberjack (3.7.0):
+    - CocoaLumberjack/Core (= 3.7.0)
+  - CocoaLumberjack/Core (3.7.0)
   - SVGKit (2.1.1):
     - CocoaLumberjack (~> 3.0)
 
@@ -22,10 +22,10 @@ SPEC REPOS:
     - SVGKit
 
 SPEC CHECKSUMS:
-  AudioKit: b8e508a0af3dc7d53caf0ca1002b187a662f949e
-  CocoaLumberjack: b17ae15142558d08bbacf69775fa10c4abbebcc9
+  AudioKit: 57cc61d708f085763a031e5c3f87adae21dc4b59
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
 
-PODFILE CHECKSUM: e9f14fe1e33dbe328ba66e1704c6277a300963b0
+PODFILE CHECKSUM: 039f8b8954c22278633e9a54d2d2b8369fb200ec
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

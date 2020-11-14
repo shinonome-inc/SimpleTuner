@@ -8,14 +8,4 @@ target 'guitarTuner' do
 	pod 'SVGKit'
   # Pods for guitarTuner
 
-  target 'guitarTunerTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'guitarTunerUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

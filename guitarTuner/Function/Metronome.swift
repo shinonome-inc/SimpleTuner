@@ -31,9 +31,9 @@ class Metronome: NSObject {
             self.delegate?.metronomeDidBeat()
         }
         metronome.start()
-        AudioKit.output = metronome
+        AKManager.output = metronome
         do{
-            try AudioKit.start()
+            try AKManager.start()
             isActivated = true
         }catch {
             print("failed to start metronome")
@@ -42,7 +42,7 @@ class Metronome: NSObject {
     
     func stopMetro() {
         do{
-            try AudioKit.stop()
+            try AKManager.stop()
             isActivated = false
         }catch {
             print("failed to stop metronome")
