@@ -13,7 +13,7 @@
 		780E15D223090F9D00ED0A98 /* icons8-automation-26.png in Resources */ = {isa = PBXBuildFile; fileRef = 780E15D123090F9D00ED0A98 /* icons8-automation-26.png */; };
 		780E15D42309105B00ED0A98 /* icons8-metronome-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 780E15D32309105A00ED0A98 /* icons8-metronome-50.png */; };
 		7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C0EB2257027B00361EC5 /* AppDelegate.swift */; };
-		7822C0EE2257027B00361EC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C0ED2257027B00361EC5 /* ViewController.swift */; };
+		7822C0EE2257027B00361EC5 /* TunerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C0ED2257027B00361EC5 /* TunerViewController.swift */; };
 		7822C0F12257027B00361EC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7822C0EF2257027B00361EC5 /* Main.storyboard */; };
 		7822C0F32257027C00361EC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7822C0F22257027C00361EC5 /* Assets.xcassets */; };
 		7822C0F62257027C00361EC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */; };
@@ -21,7 +21,9 @@
 		7822C10C2257027C00361EC5 /* guitarTunerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C10B2257027C00361EC5 /* guitarTunerUITests.swift */; };
 		783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C81CD22C24757004FEB7E /* SettingViewController.swift */; };
 		7840B587235EFA3200F09325 /* 1598350-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7840B586235EFA3200F09325 /* 1598350-2.png */; };
-		78702629225B591700E32781 /* tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78702628225B591700E32781 /* tuner.swift */; };
+		78702629225B591700E32781 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78702628225B591700E32781 /* Tuner.swift */; };
+		7883A343246124DF00C812C3 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */; };
+		7890739C24739066008179EE /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7890739B24739066008179EE /* BackgroundImageView.swift */; };
 		78C6CCC622DDA7400086CDD1 /* tunerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C6CCC522DDA7400086CDD1 /* tunerIcon.png */; };
 		78DB12E02306A399005F416D /* Mater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DB12DF2306A399005F416D /* Mater.swift */; };
 		78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E36056230A67750084DFA1 /* CircleLayer.swift */; };
@@ -60,7 +62,7 @@
 		780E15D32309105A00ED0A98 /* icons8-metronome-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-metronome-50.png"; sourceTree = "<group>"; };
 		7822C0E82257027B00361EC5 /* guitarTuner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = guitarTuner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7822C0EB2257027B00361EC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7822C0ED2257027B00361EC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7822C0ED2257027B00361EC5 /* TunerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerViewController.swift; sourceTree = "<group>"; };
 		7822C0F02257027B00361EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7822C0F22257027C00361EC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7822C0F52257027C00361EC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -73,7 +75,9 @@
 		7822C10D2257027C00361EC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		783C81CD22C24757004FEB7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7840B586235EFA3200F09325 /* 1598350-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1598350-2.png"; sourceTree = "<group>"; };
-		78702628225B591700E32781 /* tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tuner.swift; sourceTree = "<group>"; };
+		78702628225B591700E32781 /* Tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
+		7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
+		7890739B24739066008179EE /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
 		78C6CCC522DDA7400086CDD1 /* tunerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tunerIcon.png; sourceTree = "<group>"; };
 		78DB12DF2306A399005F416D /* Mater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mater.swift; sourceTree = "<group>"; };
 		78E36056230A67750084DFA1 /* CircleLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLayer.swift; sourceTree = "<group>"; };
@@ -179,7 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				78358D8C24605D3800B6E4D1 /* UI */,
-				7822C0ED2257027B00361EC5 /* ViewController.swift */,
+				7822C0ED2257027B00361EC5 /* TunerViewController.swift */,
 				78E6E74123112C9C005B56CA /* MetronomeController.swift */,
 				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
 				7822C0EF2257027B00361EC5 /* Main.storyboard */,
@@ -190,10 +194,11 @@
 		78358D8B24605C7A00B6E4D1 /* Function */ = {
 			isa = PBXGroup;
 			children = (
-				78702628225B591700E32781 /* tuner.swift */,
+				78702628225B591700E32781 /* Tuner.swift */,
 				78E6E73F231125AC005B56CA /* Metronome.swift */,
 				78E773E5225DFD85006C8C4B /* Note.swift */,
 				78E63EF52266C97900D882CA /* Pitch.swift */,
+				7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				78DB12DF2306A399005F416D /* Mater.swift */,
 				78E428392313F2B100B02902 /* MetroUI.swift */,
 				78E36056230A67750084DFA1 /* CircleLayer.swift */,
+				7890739B24739066008179EE /* BackgroundImageView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -458,8 +464,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				78E6E740231125AC005B56CA /* Metronome.swift in Sources */,
-				7822C0EE2257027B00361EC5 /* ViewController.swift in Sources */,
-				78702629225B591700E32781 /* tuner.swift in Sources */,
+				7822C0EE2257027B00361EC5 /* TunerViewController.swift in Sources */,
+				7890739C24739066008179EE /* BackgroundImageView.swift in Sources */,
+				7883A343246124DF00C812C3 /* PhotoLibraryManager.swift in Sources */,
+				78702629225B591700E32781 /* Tuner.swift in Sources */,
 				78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */,
 				783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */,
 				7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, TunerDelegate {
+class TunerViewController: UIViewController, TunerDelegate {
 
     @IBOutlet weak var baseFrequencyLabel: UILabel!
     @IBOutlet weak var noteTitleLabel: UILabel!
@@ -22,6 +22,7 @@ class ViewController: UIViewController, TunerDelegate {
     @IBOutlet weak var noteView: UIView!
     @IBOutlet weak var materView: MaterView!
     @IBOutlet weak var tunerTabBarItem: UITabBarItem!
+    @IBOutlet weak var backgroundImageView: BackgroundImageView!
     
     let tuner = Tuner()
     
@@ -39,6 +40,7 @@ class ViewController: UIViewController, TunerDelegate {
         Pitch.renewAll()
         tuner.startTuner()
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
+        backgroundImageView.setImage()
         print("strat tuner")
     }
     
@@ -130,3 +132,5 @@ extension CALayer {
         return line
     }
  }
+
+
