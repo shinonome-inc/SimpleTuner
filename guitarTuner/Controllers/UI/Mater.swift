@@ -85,14 +85,15 @@ class MaterView2: UIView {
     private let propLayer = CAShapeLayer.init()
     
     func makeMaterView() {
-        let strokeColor = UIColor.white.cgColor
+        let color = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        let strokeColor = color.cgColor
         let frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        let startAngle: CGFloat = CGFloat(((-1 * Double.pi) / 180 ) * 180)
-        let endAngle: CGFloat = CGFloat((Double.pi / 180) * 0)
+        let startAngle: CGFloat = CGFloat(((-1 * Double.pi) / 180 ) * 150)
+        let endAngle: CGFloat = CGFloat((-1 * Double.pi / 180) * 30)
         let justPitchAngle = CGFloat((-1 * Double.pi) / 2)
         
         let path: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        let propPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width / 2.0) - frame.size.width / 6.0, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        let propPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0 + 15, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         let justPitchPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width / 2.0, startAngle: justPitchAngle, endAngle: endAngle, clockwise: true)
         
         thinLayer.path = path.cgPath
@@ -102,7 +103,7 @@ class MaterView2: UIView {
         thinLayer.fillColor = UIColor.clear.cgColor
         thinLayer.lineDashPattern = [ 0.5, 5.55 ]
         thinLayer.lineDashPhase = 0.25
-        self.layer.addSublayer(thinLayer)
+        //self.layer.addSublayer(thinLayer)
         
         thickLayer.path = path.cgPath
         thickLayer.frame = frame
@@ -111,12 +112,20 @@ class MaterView2: UIView {
         thickLayer.fillColor = UIColor.clear.cgColor
         thickLayer.lineDashPattern = [ 2.0, 469 ]
         thickLayer.lineDashPhase = 1.0
-        self.layer.addSublayer(thickLayer)
+        //self.layer.addSublayer(thickLayer)
+        
+        /*propLayer.frame = frame
+        propLayer.shadowColor = strokeColor
+        propLayer.shadowOffset = CGSize(width: 2.5, height: 2.5)
+        propLayer.shadowOpacity = 0.5
+        propLayer.shadowPath = propPath.cgPath*/
         
         propLayer.path = propPath.cgPath
         propLayer.frame = frame
         propLayer.strokeColor = strokeColor
+        propLayer.lineWidth = 3
         propLayer.fillColor = UIColor.clear.cgColor
+        
         self.layer.addSublayer(propLayer)
         
         justPitchLayer.path = justPitchPath.cgPath
@@ -134,22 +143,44 @@ class MaterView2: UIView {
 class ArrowView: UIView {
     private let arrowLayer = CAShapeLayer.init()
     
-    func makeArrowLayer() {
+    /*func makeArrowLayer() {
+        let color = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        let arrowColor = color.cgColor
         let frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         let arrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2)
         let arrowEndAngel: CGFloat = arrowStartAngel + CGFloat(Double.pi * 2)
-        let arrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width * 5.0 / 12.0, startAngle: arrowStartAngel, endAngle: arrowEndAngel, clockwise: true)
+        let arrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width * 3.0 / 12.0, startAngle: arrowStartAngel, endAngle: arrowEndAngel, clockwise: true)
         
         arrowLayer.path = arrowPath.cgPath
         arrowLayer.frame = frame
-        arrowLayer.strokeColor = UIColor.red.cgColor
-        arrowLayer.lineWidth = frame.size.width / 6.0
+        arrowLayer.strokeColor = arrowColor
+        arrowLayer.lineWidth = frame.size.width * 2 / 6.0
         arrowLayer.fillColor = UIColor.clear.cgColor
         arrowLayer.lineDashPattern = [ 1.5, 958.5 ]
 
         
         self.layer.addSublayer(arrowLayer)
+    }*/
+    
+    func makeArrowLayer() {
+        let color = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        let width = self.frame.width
+        let height = self.frame.height
+        let frame = CGRect.init(x: 0, y: 0, width: width, height: height)
+        let arrowPath = UIBezierPath()
+        arrowPath.move(to: CGPoint(x: width / 2, y: height / 12))
+        arrowPath.addLine(to: CGPoint(x: width / 2 + 1, y: height / 2))
+        arrowPath.addLine(to: CGPoint(x: width / 2 - 1, y: height / 2))
+        arrowPath.close()
+        arrowLayer.path = arrowPath.cgPath
+        arrowLayer.frame = frame
+        arrowLayer.strokeColor = color.cgColor
+        arrowLayer.fillColor = color.cgColor
+        arrowLayer.lineWidth = 2
+        self.layer.addSublayer(arrowLayer)
     }
+    
+    
     
     func moveArrowLayer(pitch: Pitch, frequency: Double, scaleAffine: CGAffineTransform) {
         var arrowRate: Double

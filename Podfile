@@ -6,6 +6,7 @@ target 'guitarTuner' do
   use_frameworks!
 	pod 'AudioKit' 
 	pod 'SVGKit'
+	pod 'XLPagerTabStrip'
   # Pods for guitarTuner
 
 end

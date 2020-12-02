@@ -10,22 +10,26 @@ PODS:
   - CocoaLumberjack/Core (3.7.0)
   - SVGKit (2.1.1):
     - CocoaLumberjack (~> 3.0)
+  - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - AudioKit
   - SVGKit
+  - XLPagerTabStrip
 
 SPEC REPOS:
   trunk:
     - AudioKit
     - CocoaLumberjack
     - SVGKit
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   AudioKit: 57cc61d708f085763a031e5c3f87adae21dc4b59
   CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
+  XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 039f8b8954c22278633e9a54d2d2b8369fb200ec
+PODFILE CHECKSUM: 0b1ac849302ee5ab0102f429ef1403135460ec6e
 
 COCOAPODS: 1.10.0

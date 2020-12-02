@@ -22,25 +22,30 @@ class TunerViewController: UIViewController, TunerDelegate {
     @IBOutlet weak var noteView: UIView!
     @IBOutlet weak var materView: MaterView!
     @IBOutlet weak var tunerTabBarItem: UITabBarItem!
-    @IBOutlet weak var backgroundImageView: BackgroundImageView!
     
     let tuner = Tuner()
     
     var scaleAffine: CGAffineTransform?
     let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
     let lineWidth: CGFloat = 2
+    let materView2 = MaterView2()
+    let arrowView = ArrowView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tuner.delegate = self
+        materView2.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
+        materView2.makeMaterView()
+        arrowView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
+        arrowView.makeArrowLayer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         Pitch.renewAll()
         tuner.startTuner()
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
-        backgroundImageView.setImage()
+        //backgroundImageView.setImage()
         print("strat tuner")
     }
     
@@ -54,8 +59,9 @@ class TunerViewController: UIViewController, TunerDelegate {
     }
     
     private lazy var initViewLayout : Void = {
-        materView.makeMaterView()
+        //materView.makeMaterView()
         setupLabels()
+        setupLayout()
     }()
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,20 +82,20 @@ class TunerViewController: UIViewController, TunerDelegate {
    
     
     /// レイアウト系のセットアップ
-    /*func setupLayout() {
-        scaleAffine = CGAffineTransform(scaleX: baseView.frame.height * 0.7 / 150, y: baseView.frame.height * 0.7 / 150)
+    func setupLayout() {
+        scaleAffine = CGAffineTransform(scaleX: 1.1, y: 1)
         guard let scaleAffine = scaleAffine else {
             return
         }
-        materView.transform = scaleAffine
-        materView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + baseView.frame.height / 2 - 10)
-        self.view.addSubview(materView)
+        materView2.transform = scaleAffine
+        materView2.center = CGPoint(x: materView.center.x, y: materView.frame.height)
+        self.view.addSubview(materView2)
         
         arrowView.transform = scaleAffine
-        arrowView.center = CGPoint(x: baseView.center.x, y: baseView.center.y + baseView.frame.height / 2 - 10)
+        arrowView.center = CGPoint(x: materView.center.x, y: materView.frame.height)
         self.view.addSubview(arrowView)
         
-    }*/
+    }
     
     /// メジャーの更新
     ///
@@ -105,17 +111,17 @@ class TunerViewController: UIViewController, TunerDelegate {
         guard frequency > Pitch.all[0].frequency, frequency < Pitch.all[60].frequency else {
             return
         }
-        /*guard let scaleAffine = scaleAffine else {
+        guard let scaleAffine = scaleAffine else {
             return
-        }*/
+        }
         
         let frequencyText = String(format: "%.1f", frequency)
         let pitchFrequencyText = String(format: "%.1f", pitch.frequency)
         frequencyLabel.text = frequencyText
         pitchLabel.text = pitchFrequencyText
         noteLabel.text = "\(pitch.note)"
-        //arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine)
-        materView.circleLighting(pitch: pitch, frequency: frequency)
+        arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine)
+        //materView.circleLighting(pitch: pitch, frequency: frequency)
     }
     
     override func didReceiveMemoryWarning() {
