@@ -27,6 +27,7 @@ class Metronome: NSObject {
     }
     
     func startMetro() {
+        stopMetro()
         metronome.callback = {
             self.delegate?.metronomeDidBeat()
         }

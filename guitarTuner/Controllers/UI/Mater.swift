@@ -202,13 +202,10 @@ class ArrowView: UIView {
         let movedArrowAngel: CGFloat = CGFloat(( Double.pi / 2 ) * arrowRate)
         
         UIView.animate(withDuration: 0.2, animations: {
-            
             //.concatenating()で行列同士の掛け算をしている。かける順番が変わると結果も変わるので要検索。
             let rotateAffine = CGAffineTransform(rotationAngle: movedArrowAngel)
             let affine = scaleAffine.concatenating(rotateAffine)
-            
             self.transform = affine
-            
         })
     }
 }

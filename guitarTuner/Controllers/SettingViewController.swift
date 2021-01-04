@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 class SettingViewController: UITableViewController {
     
@@ -35,7 +36,8 @@ class SettingViewController: UITableViewController {
         pickerView.frame = CGRect(x: 0, y: height, width: width, height: pickerViewHeight)
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.backgroundColor = UIColor.white
+        pickerView.backgroundColor = UIColor.clear
+        pickerView.setValue(UIColor.mainTextColor, forKey: "textColor")
         self.view.addSubview(pickerView)
         
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
@@ -64,8 +66,8 @@ class SettingViewController: UITableViewController {
                 UIView.animate(withDuration: 0.2, animations: {
                 self.pickerView.frame = CGRect(x:0, y:height - self.pickerViewHeight, width:width, height:self.pickerViewHeight)
                 })
-            case 1:
-                photoLibraryManager?.callPhotoLibrary()
+            //case 1:
+                //photoLibraryManager?.callPhotoLibrary()
             default :
                 return
             }
@@ -115,7 +117,6 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
         baseFrequencyLable.text = baseFrequencyText + "Hz"
     }
-    
 }
 
 extension SettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -125,5 +126,12 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         defaults.setUIImageToData(image: image, forKey: "backgroundImage")
+    }
+}
+
+extension SettingViewController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        let info = IndicatorInfo(image: UIImage(named: "cog"))
+        return info
     }
 }

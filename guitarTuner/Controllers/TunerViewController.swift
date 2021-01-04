@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 class TunerViewController: UIViewController, TunerDelegate {
 
@@ -21,9 +22,6 @@ class TunerViewController: UIViewController, TunerDelegate {
     @IBOutlet weak var frequencyView: UIView!
     @IBOutlet weak var noteView: UIView!
     @IBOutlet weak var materView: MaterView!
-    @IBOutlet weak var tunerTabBarItem: UITabBarItem!
-    
-    let tuner = Tuner()
     
     var scaleAffine: CGAffineTransform?
     let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
@@ -34,7 +32,7 @@ class TunerViewController: UIViewController, TunerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tuner.delegate = self
+        SoundAnalizer.shared.tunerDelegate = self
         materView2.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
         materView2.makeMaterView()
         arrowView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
@@ -43,7 +41,7 @@ class TunerViewController: UIViewController, TunerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         Pitch.renewAll()
-        tuner.startTuner()
+        SoundAnalizer.shared.startTuner()
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
         //backgroundImageView.setImage()
         print("strat tuner")
@@ -63,11 +61,6 @@ class TunerViewController: UIViewController, TunerDelegate {
         setupLabels()
         setupLayout()
     }()
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        tuner.stopTuner()
-        print("stop tuner")
-    }
    
     func setupLabels() {
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
@@ -128,6 +121,13 @@ class TunerViewController: UIViewController, TunerDelegate {
         super.didReceiveMemoryWarning()
     }
 
+}
+
+extension TunerViewController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        let info = IndicatorInfo(image: UIImage(named: "tuningFork"))
+        return info
+    }
 }
 
 extension CALayer {
