@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 class MetronomeController: UIViewController, MetronomeDelegate {
     
@@ -17,6 +18,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
+
     
     let metroTabBarController = UITabBarController()
     let metronome = Metronome()
@@ -33,12 +35,15 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         
         tempoLabel.isUserInteractionEnabled = true
         tempoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedTempoLabel)))
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         _ = self.initViewLayout
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //backgroundImageView.setImage()
     }
     
     private lazy var initViewLayout : Void = {
@@ -191,3 +196,11 @@ extension MetronomeController: NumberPadViewDelegate {
         })
     }
 }
+
+extension MetronomeController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        let info = IndicatorInfo(image: UIImage(named: "metronome"))
+        return info
+    }
+}
+

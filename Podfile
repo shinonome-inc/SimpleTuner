@@ -6,16 +6,7 @@ target 'guitarTuner' do
   use_frameworks!
 	pod 'AudioKit' 
 	pod 'SVGKit'
+	pod 'XLPagerTabStrip'
   # Pods for guitarTuner
-
-  target 'guitarTunerTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'guitarTunerUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 
 end

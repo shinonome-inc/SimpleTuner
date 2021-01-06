@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 class SettingViewController: UITableViewController {
     
     let pickerView = UIPickerView()
     let pickerViewHeight: CGFloat = 300
-    var pickerIndexPath :IndexPath?
+    var pickerIndexPath: IndexPath?
+    var photoLibraryManager: PhotoLibraryManager?
+    let defaults = UserDefaults.standard
     private let frequencyArray = ["440", "441", "442"]
     
     @IBOutlet weak var baseFrequencyLable: UILabel!
@@ -20,6 +23,8 @@ class SettingViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photoLibraryManager = PhotoLibraryManager(parentViewController: self)
         
         let width = self.view.frame.width
         let height = self.view.frame.height
@@ -31,7 +36,8 @@ class SettingViewController: UITableViewController {
         pickerView.frame = CGRect(x: 0, y: height, width: width, height: pickerViewHeight)
         pickerView.delegate = self
         pickerView.dataSource = self
-        pickerView.backgroundColor = UIColor.white
+        pickerView.backgroundColor = UIColor.clear
+        pickerView.setValue(UIColor.mainTextColor, forKey: "textColor")
         self.view.addSubview(pickerView)
         
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
@@ -53,13 +59,19 @@ class SettingViewController: UITableViewController {
         }
         pickerView.selectRow(index, inComponent: 0, animated: true)
         pickerView.reloadAllComponents()
-        //湧き出すpicker
+        
         if indexPath.section == 0 {
-            UIView.animate(withDuration: 0.2, animations: {
+            switch indexPath.row {
+            case 0:
+                UIView.animate(withDuration: 0.2, animations: {
                 self.pickerView.frame = CGRect(x:0, y:height - self.pickerViewHeight, width:width, height:self.pickerViewHeight)
                 })
+            //case 1:
+                //photoLibraryManager?.callPhotoLibrary()
+            default :
+                return
+            }
         }
-        
     }
     
     @objc func tapView(sender: UITapGestureRecognizer) {
@@ -105,5 +117,21 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
         baseFrequencyLable.text = baseFrequencyText + "Hz"
     }
-    
+}
+
+extension SettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+   
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        defaults.setUIImageToData(image: image, forKey: "backgroundImage")
+    }
+}
+
+extension SettingViewController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        let info = IndicatorInfo(image: UIImage(named: "cog"))
+        return info
+    }
 }

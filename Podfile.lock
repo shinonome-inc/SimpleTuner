@@ -1,31 +1,35 @@
 PODS:
-  - AudioKit (4.9.3):
-    - AudioKit/Core (= 4.9.3)
-    - AudioKit/UI (= 4.9.3)
-  - AudioKit/Core (4.9.3)
-  - AudioKit/UI (4.9.3):
+  - AudioKit (4.11.2):
+    - AudioKit/Core (= 4.11.2)
+    - AudioKit/UI (= 4.11.2)
+  - AudioKit/Core (4.11.2)
+  - AudioKit/UI (4.11.2):
     - AudioKit/Core
-  - CocoaLumberjack (3.6.1):
-    - CocoaLumberjack/Core (= 3.6.1)
-  - CocoaLumberjack/Core (3.6.1)
+  - CocoaLumberjack (3.7.0):
+    - CocoaLumberjack/Core (= 3.7.0)
+  - CocoaLumberjack/Core (3.7.0)
   - SVGKit (2.1.1):
     - CocoaLumberjack (~> 3.0)
+  - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
   - AudioKit
   - SVGKit
+  - XLPagerTabStrip
 
 SPEC REPOS:
   trunk:
     - AudioKit
     - CocoaLumberjack
     - SVGKit
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
-  AudioKit: d025ecbb68f567bba15dab7ea80b8991155729f9
-  CocoaLumberjack: b17ae15142558d08bbacf69775fa10c4abbebcc9
+  AudioKit: 57cc61d708f085763a031e5c3f87adae21dc4b59
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
+  XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: e9f14fe1e33dbe328ba66e1704c6277a300963b0
+PODFILE CHECKSUM: 0b1ac849302ee5ab0102f429ef1403135460ec6e
 
-COCOAPODS: 1.8.1
+COCOAPODS: 1.10.0
