@@ -574,7 +574,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="mainBackground"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="4QN-uT-MDh">
-                            <rect key="frame" x="0.0" y="295.5" width="414" height="94"/>
+                            <rect key="frame" x="0.0" y="296" width="414" height="11"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -669,11 +669,40 @@
                     <connections>
                         <outlet property="baseFrequencyLable" destination="qbN-fr-F3I" id="05Y-6i-7GE"/>
                         <outlet property="clearView" destination="4QN-uT-MDh" id="hYe-dK-3Nb"/>
+                        <outlet property="colorLabel" destination="9rq-CA-17t" id="wyX-ZL-VjU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lu3-GU-lgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1117" y="1608"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qyY-iC-YZq">
+            <objects>
+                <viewController id="LzB-LR-RbY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6nl-ZE-ypv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ya1-xf-l6I">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hvP-HG-9wS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hvP-HG-9wS" firstAttribute="bottom" secondItem="ya1-xf-l6I" secondAttribute="bottom" id="48L-im-15q"/>
+                            <constraint firstItem="hvP-HG-9wS" firstAttribute="trailing" secondItem="ya1-xf-l6I" secondAttribute="trailing" id="FPs-yQ-25l"/>
+                            <constraint firstItem="ya1-xf-l6I" firstAttribute="leading" secondItem="hvP-HG-9wS" secondAttribute="leading" id="QKZ-6y-ZxX"/>
+                            <constraint firstItem="ya1-xf-l6I" firstAttribute="top" secondItem="hvP-HG-9wS" secondAttribute="top" id="SxG-f2-l3g"/>
+                        </constraints>
+                    </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ko-AZ-Jic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2028" y="1608"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rjs-pH-8Dm">

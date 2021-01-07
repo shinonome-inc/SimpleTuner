@@ -7,5 +7,24 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
 
-
+class UserInfo {
+    static let shared = UserInfo()
+    private init() {}
+    
+    private let color = BehaviorRelay<BaseColor>(value: .blue)
+    private let baseFrequency = BehaviorRelay<Int>(value: 440)
+    
+    var colorEvent: Observable<BaseColor> { return color.asObservable() }
+    var baseFrequencyEvent: Observable<Int> { return baseFrequency.asObservable() }
+    
+    func setColor(color: BaseColor) {
+        self.color.accept(color)
+    }
+    
+    func setBaseFrequency(baseFrequency: Int) {
+        self.baseFrequency.accept(baseFrequency)
+    }
+}

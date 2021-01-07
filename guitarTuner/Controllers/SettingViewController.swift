@@ -19,6 +19,7 @@ class SettingViewController: UITableViewController {
     private let frequencyArray = ["440", "441", "442"]
     
     @IBOutlet weak var baseFrequencyLable: UILabel!
+    @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var clearView: UIView!
     
     override func viewDidLoad() {
@@ -78,11 +79,10 @@ class SettingViewController: UITableViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
         
-        //ハイライト解除
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
         }
-        //沈むpicker
+    
         UIView.animate(withDuration: 0.2, animations: {
             self.pickerView.frame = CGRect(x: 0, y: height, width: width, height: self.pickerViewHeight)
         })

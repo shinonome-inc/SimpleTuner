@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 import XLPagerTabStrip
 
 class SoundMaterViewController: UIViewController {
@@ -20,17 +21,13 @@ class SoundMaterViewController: UIViewController {
     @IBOutlet weak var amplitudeLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
     
-    let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
+    var soundBarColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
+    let disposeBag = DisposeBag()
     let lineWidth: CGFloat = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
         SoundAnalizer.shared.soundMaterDelegate = self
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        _ = self.initViewLayout
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,13 +36,17 @@ class SoundMaterViewController: UIViewController {
         print("sound mater start")
     }
     
-    private lazy var initViewLayout : Void = {
-        setupLayout()
-    }()
+    func dataBind() {
+        UserInfo.shared.colorEvent.subscribe(onNext: {
+            color in
+            self.drawLabelUnderLine(color: color.main())
+            self.soundBarColor = color.sub()
+        }).disposed(by: disposeBag)
+    }
     
-    func setupLayout() {
-        titleLabel.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: titleLabel))
-        unitLabel.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: unitLabel))
+    func drawLabelUnderLine(color: UIColor) {
+        titleLabel.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: titleLabel))
+        unitLabel.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: unitLabel))
     }
 }
 
@@ -59,7 +60,7 @@ extension SoundMaterViewController: SoundMaterDelegate {
             soundBar?.backgroundColor = UIColor.lightGray
         })
         for count in 0 ... index {
-            soundBars[count]?.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
+            soundBars[count]?.backgroundColor = soundBarColor
         }
     }
 }

@@ -180,6 +180,9 @@ class ArrowView: UIView {
         self.layer.addSublayer(arrowLayer)
     }
     
+    func setColor(color: UIColor) {
+        arrowLayer.fillColor = color.cgColor
+    }
     
     
     func moveArrowLayer(pitch: Pitch, frequency: Double, scaleAffine: CGAffineTransform) {

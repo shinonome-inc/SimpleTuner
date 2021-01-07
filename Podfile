@@ -4,9 +4,11 @@
 target 'guitarTuner' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-	pod 'AudioKit' 
+	pod 'AudioKit', '~>4.0' 
 	pod 'SVGKit'
 	pod 'XLPagerTabStrip'
+	pod 'RxSwift'
+	pod 'RxCocoa'
   # Pods for guitarTuner
 
 end

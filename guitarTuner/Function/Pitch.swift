@@ -29,7 +29,6 @@ class Pitch: CustomStringConvertible {
         }
     }.joined())
     
-    //配列allを更新。結構無理やりなのかも。
     class func renewAll() {
         Pitch.all = Array((1 ... 6).map { octave -> [Pitch] in
             Note.all.map { note -> Pitch in
@@ -38,7 +37,6 @@ class Pitch: CustomStringConvertible {
         }.joined())
         
     }
-    
     
     class func nearest(_ frequency: Double) -> Pitch {
         var results = all.map { pitch -> (pitch: Pitch, distance: Double) in

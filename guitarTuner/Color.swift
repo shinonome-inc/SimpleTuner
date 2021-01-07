@@ -8,19 +8,19 @@
 
 import UIKit
 
-enum BaseColor {
-    case blue
-    case pink
-    case yellow
-    case green
-    case beige
+enum BaseColor: String {
+    case blue = "blue"
+    case red = "red"
+    case yellow = "yellow"
+    case green = "green"
+    case beige = "beige"
     
     func main() -> UIColor{
         let color: UIColor?
         switch self {
         case .blue:
             color = UIColor(named: "mainBlue")
-        case .pink:
+        case .red:
             color = UIColor(named: "mainRed")
         case .yellow:
             color = UIColor(named: "mainYellow")
@@ -40,7 +40,7 @@ enum BaseColor {
         switch self {
         case .blue:
             color = UIColor(named: "subBlue")
-        case .pink:
+        case .red:
             color = UIColor(named: "subRed")
         case .yellow:
             color = UIColor(named: "subYellow")
