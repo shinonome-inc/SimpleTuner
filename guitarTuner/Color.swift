@@ -55,3 +55,5 @@ enum BaseColor: String {
         return subColor
     }
 }
+
+extension BaseColor: Codable {}

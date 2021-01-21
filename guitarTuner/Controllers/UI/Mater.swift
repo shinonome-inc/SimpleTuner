@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class MaterView: UIView {
     
@@ -142,28 +143,29 @@ class MaterView2: UIView {
 
 class ArrowView: UIView {
     private let arrowLayer = CAShapeLayer.init()
+    var color: UIColor?
+    let disposeBag = DisposeBag()
     
-    /*func makeArrowLayer() {
-        let color = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-        let arrowColor = color.cgColor
-        let frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        let arrowStartAngel: CGFloat = CGFloat((-1 * Double.pi) / 2)
-        let arrowEndAngel: CGFloat = arrowStartAngel + CGFloat(Double.pi * 2)
-        let arrowPath: UIBezierPath = UIBezierPath(arcCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: frame.size.width * 3.0 / 12.0, startAngle: arrowStartAngel, endAngle: arrowEndAngel, clockwise: true)
-        
-        arrowLayer.path = arrowPath.cgPath
-        arrowLayer.frame = frame
-        arrowLayer.strokeColor = arrowColor
-        arrowLayer.lineWidth = frame.size.width * 2 / 6.0
-        arrowLayer.fillColor = UIColor.clear.cgColor
-        arrowLayer.lineDashPattern = [ 1.5, 958.5 ]
-
-        
-        self.layer.addSublayer(arrowLayer)
-    }*/
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        dataBind()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func dataBind() {
+        UserInfo.shared.colorEvent.subscribe(onNext: {
+            color in
+            self.color = color.sub()
+        }).disposed(by: disposeBag)
+    }
     
     func makeArrowLayer() {
-        let color = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        guard let color = color else {
+            return
+        }
         let width = self.frame.width
         let height = self.frame.height
         let frame = CGRect.init(x: 0, y: 0, width: width, height: height)
@@ -179,11 +181,6 @@ class ArrowView: UIView {
         arrowLayer.lineWidth = 2
         self.layer.addSublayer(arrowLayer)
     }
-    
-    func setColor(color: UIColor) {
-        arrowLayer.fillColor = color.cgColor
-    }
-    
     
     func moveArrowLayer(pitch: Pitch, frequency: Double, scaleAffine: CGAffineTransform) {
         var arrowRate: Double

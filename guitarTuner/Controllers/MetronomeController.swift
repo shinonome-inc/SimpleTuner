@@ -80,8 +80,12 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     func dataBind() {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
-            self.tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: self.lineWidth, lineColor: color.main(), UI: self.tempoView))
+            self.drawLabelUnderLine(color: color.main())
         }).disposed(by: disposeBag)
+    }
+    
+    func drawLabelUnderLine(color: UIColor) {
+        tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: tempoView))
     }
     
     @IBAction func tappedMinus(_ sender: Any) {

@@ -32,6 +32,7 @@ class SoundMaterViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        dataBind()
         SoundAnalizer.shared.startSoundMater()
         print("sound mater start")
     }
