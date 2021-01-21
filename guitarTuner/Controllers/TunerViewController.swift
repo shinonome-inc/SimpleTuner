@@ -8,6 +8,7 @@
 
 import UIKit
 import XLPagerTabStrip
+import RxSwift
 
 class TunerViewController: UIViewController, TunerDelegate {
 
@@ -24,8 +25,8 @@ class TunerViewController: UIViewController, TunerDelegate {
     @IBOutlet weak var materView: MaterView!
     
     var scaleAffine: CGAffineTransform?
-    let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
     let lineWidth: CGFloat = 2
+    let disposeBag = DisposeBag()
     let materView2 = MaterView2()
     let arrowView = ArrowView()
 
@@ -42,17 +43,15 @@ class TunerViewController: UIViewController, TunerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         Pitch.renewAll()
         SoundAnalizer.shared.startTuner()
+        dataBind()
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
         //backgroundImageView.setImage()
         print("strat tuner")
     }
     
-    //こいつが呼ばれるときにはオートレイアウト後のフレームが決定している.
-    //逆にviewDidLoadではまだ決定していない。なんかめちゃくちゃ呼ばれるっぽいので注意。
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        //これ+下のlazyってやつで初回の一回のみsetupLayoutを呼べる。詳しくは不明。
         _ = self.initViewLayout
     }
     
@@ -61,20 +60,28 @@ class TunerViewController: UIViewController, TunerDelegate {
         setupLabels()
         setupLayout()
     }()
+    
+    func dataBind() {
+        UserInfo.shared.colorEvent.subscribe(onNext: {
+            color in
+            self.drawLabelUnderLine(color: color.main())
+            self.arrowView.setColor(color: color.sub())
+        }).disposed(by: disposeBag)
+    }
    
     func setupLabels() {
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
         noteTitleLabel.text = "Note"
         pitchTitleLabel.text = "Pitch"
         frequencyTitleLabel.text = "Frequency"
-        noteView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: noteView))
-        pitchView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: pitchView))
-        frequencyView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: frequencyView))
     }
     
-   
+    func drawLabelUnderLine(color: UIColor) {
+        noteView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: noteView))
+        pitchView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: pitchView))
+        frequencyView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: frequencyView))
+    }
     
-    /// レイアウト系のセットアップ
     func setupLayout() {
         scaleAffine = CGAffineTransform(scaleX: 1.1, y: 1)
         guard let scaleAffine = scaleAffine else {
@@ -87,16 +94,8 @@ class TunerViewController: UIViewController, TunerDelegate {
         arrowView.transform = scaleAffine
         arrowView.center = CGPoint(x: materView.center.x, y: materView.frame.height)
         self.view.addSubview(arrowView)
-        
     }
     
-    /// メジャーの更新
-    ///
-    /// - Parameters:
-    ///   - pitch: Pitch
-    ///   - distance: 距離
-    ///   - amplitude: 振幅
-    ///   - frequency: 周波数
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double) {
         guard amplitude > 0.2 else{
             return
@@ -129,14 +128,3 @@ extension TunerViewController: IndicatorInfoProvider {
         return info
     }
 }
-
-extension CALayer {
-    class func drawUnderLine(lineWidth: CGFloat, lineColor: UIColor, UI:AnyObject) -> CALayer{
-        let line = CALayer()
-        line.frame = CGRect(x: 0.0, y: (UI.frame?.size.height)! - lineWidth, width: (UI.frame?.size.width)!, height: lineWidth)
-        line.backgroundColor = lineColor.cgColor
-        return line
-    }
- }
-
-

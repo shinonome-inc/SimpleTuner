@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 import XLPagerTabStrip
 
 class MetronomeController: UIViewController, MetronomeDelegate {
@@ -23,7 +24,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     let metroTabBarController = UITabBarController()
     let metronome = Metronome()
     let numberPadView = NumberPadView()
-    let underLineColor: UIColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
+    let disposeBag = DisposeBag()
     let lineWidth: CGFloat = 2
     var tempoLabelFrame: CGRect?
     var beatCounter = 0
@@ -43,6 +44,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        dataBind()
         //backgroundImageView.setImage()
     }
     
@@ -64,7 +66,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         let width = self.view.frame.width
         let numberPadHeight = width * 1.2
         tempoLabelFrame = tempoLabel.frame
-        tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: underLineColor, UI: tempoView))
         startButton.layer.borderColor = UIColor.gray.cgColor
         startButton.layer.borderWidth = 1.0
         startButton.layer.cornerRadius = 25
@@ -74,7 +75,17 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
         numberPadView.makeView()
         self.view.addSubview(numberPadView)
-        
+    }
+    
+    func dataBind() {
+        UserInfo.shared.colorEvent.subscribe(onNext: {
+            color in
+            self.drawLabelUnderLine(color: color.main())
+        }).disposed(by: disposeBag)
+    }
+    
+    func drawLabelUnderLine(color: UIColor) {
+        tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: tempoView))
     }
     
     @IBAction func tappedMinus(_ sender: Any) {
