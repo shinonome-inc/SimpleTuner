@@ -40,8 +40,8 @@ class SoundMaterViewController: UIViewController {
     func dataBind() {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
-            self.drawLabelUnderLine(color: color.main())
-            self.soundBarColor = color.sub()
+            self.drawLabelUnderLine(color: color.main)
+            self.soundBarColor = color.sub
         }).disposed(by: disposeBag)
     }
     

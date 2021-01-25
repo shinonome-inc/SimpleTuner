@@ -32,3 +32,13 @@ extension CALayer {
         return line
     }
  }
+
+extension UIView {
+    func cardView() {
+        self.layer.cornerRadius = 8
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 8
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+    }
+}

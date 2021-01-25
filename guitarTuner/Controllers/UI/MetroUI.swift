@@ -62,7 +62,7 @@ class MetroCountView: UIView {
 protocol NumberPadViewDelegate: class {
     func numberButtonTapped(number: String)
     func CLButtonTapped()
-    func SETButtontapped()
+    func SETButtonTapped()
 }
 
 class NumberPadView: UIView {
@@ -195,7 +195,7 @@ class NumberPadView: UIView {
             case .tappedCL:
                 self.delegate?.CLButtonTapped()
             case .tappedSET:
-                self.delegate?.SETButtontapped()
+                self.delegate?.SETButtonTapped()
             }
         }
     }

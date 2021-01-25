@@ -7,19 +7,45 @@
 //
 
 import UIKit
+import RxSwift
 import XLPagerTabStrip
 
 class TabBarController: ButtonBarPagerTabStripViewController {
     
+    var themeColor: BaseColor = .blue
+    var isInitBind: Bool = true
+    let disposeBag = DisposeBag()
+    
+    
     override func viewDidLoad() {
+        if isInitBind {
+            dataBind()
+        }
         tabBarSetting()
         super.viewDidLoad()
+    }
+    
+    func dataBind() {
+        UserInfo.shared.colorEvent.subscribe(onNext: {
+            color in
+            self.themeColor = color
+            if self.isInitBind {
+                self.isInitBind = false
+            } else {
+                self.reLoadView()
+            }
+        }).disposed(by: disposeBag)
+    }
+    
+    func reLoadView() {
+        loadView()
+        viewDidLoad()
     }
     
     func tabBarSetting() {
         settings.style.buttonBarBackgroundColor = UIColor.white
         settings.style.buttonBarItemBackgroundColor = UIColor.white
-        settings.style.selectedBarBackgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 0.5)
+        settings.style.selectedBarBackgroundColor = themeColor.main
         settings.style.buttonBarMinimumLineSpacing = 20
         settings.style.buttonBarLeftContentInset = 20
         settings.style.buttonBarRightContentInset = 20

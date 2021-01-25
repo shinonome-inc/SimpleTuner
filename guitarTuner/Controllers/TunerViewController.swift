@@ -32,7 +32,6 @@ class TunerViewController: UIViewController, TunerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         SoundAnalizer.shared.tunerDelegate = self
         materView2.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
         materView2.makeMaterView()
@@ -64,8 +63,7 @@ class TunerViewController: UIViewController, TunerDelegate {
     func dataBind() {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
-            self.drawLabelUnderLine(color: color.main())
-            self.arrowView.setColor(color: color.sub())
+            self.drawLabelUnderLine(color: color.main)
         }).disposed(by: disposeBag)
     }
    
@@ -119,7 +117,6 @@ class TunerViewController: UIViewController, TunerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 }
 
 extension TunerViewController: IndicatorInfoProvider {

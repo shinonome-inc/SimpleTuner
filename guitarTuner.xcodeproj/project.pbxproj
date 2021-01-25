@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2A885E6BBB2DDAD8D3CFA49F /* Pods_guitarTuner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8DEAC7CC3ABC449088B71D /* Pods_guitarTuner.framework */; };
+		7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */; };
+		7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812FB3325BABB7700190BC6 /* ColorCell.xib */; };
+		7812FB3925BAC0AB00190BC6 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB3825BAC0AB00190BC6 /* ColorCell.swift */; };
 		7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C0EB2257027B00361EC5 /* AppDelegate.swift */; };
 		7822C0EE2257027B00361EC5 /* TunerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7822C0ED2257027B00361EC5 /* TunerViewController.swift */; };
 		7822C0F12257027B00361EC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7822C0EF2257027B00361EC5 /* Main.storyboard */; };
@@ -55,6 +58,9 @@
 /* Begin PBXFileReference section */
 		1E8DEAC7CC3ABC449088B71D /* Pods_guitarTuner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guitarTuner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		467535DACE0ADF3C5230F824 /* Pods-guitarTuner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guitarTuner.release.xcconfig"; path = "Pods/Target Support Files/Pods-guitarTuner/Pods-guitarTuner.release.xcconfig"; sourceTree = "<group>"; };
+		7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
+		7812FB3325BABB7700190BC6 /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
+		7812FB3825BAC0AB00190BC6 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		7822C0E82257027B00361EC5 /* guitarTuner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = guitarTuner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7822C0EB2257027B00361EC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7822C0ED2257027B00361EC5 /* TunerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerViewController.swift; sourceTree = "<group>"; };
@@ -182,7 +188,10 @@
 				78E6E74123112C9C005B56CA /* MetronomeController.swift */,
 				785096AC257224FD00B2D074 /* SoundMaterViewController.swift */,
 				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
+				7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */,
 				7822C0EF2257027B00361EC5 /* Main.storyboard */,
+				7812FB3325BABB7700190BC6 /* ColorCell.xib */,
+				7812FB3825BAC0AB00190BC6 /* ColorCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -336,6 +345,7 @@
 				7822C0F62257027C00361EC5 /* LaunchScreen.storyboard in Resources */,
 				7822C0F32257027C00361EC5 /* Assets.xcassets in Resources */,
 				7822C0F12257027B00361EC5 /* Main.storyboard in Resources */,
+				7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */,
 				7840B587235EFA3200F09325 /* 1598350-2.png in Resources */,
 				78C6CCC622DDA7400086CDD1 /* tunerIcon.png in Resources */,
 			);
@@ -417,10 +427,12 @@
 				7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */,
 				78E6E74223112C9C005B56CA /* MetronomeController.swift in Sources */,
 				78E773E6225DFD85006C8C4B /* Note.swift in Sources */,
+				7812FB3925BAC0AB00190BC6 /* ColorCell.swift in Sources */,
 				78E63EF62266C97900D882CA /* Pitch.swift in Sources */,
 				78DB12E02306A399005F416D /* Mater.swift in Sources */,
 				785096AD257224FD00B2D074 /* SoundMaterViewController.swift in Sources */,
 				78E4283A2313F2B100B02902 /* MetroUI.swift in Sources */,
+				7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */,
 				7830224825A5EF6400D95267 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

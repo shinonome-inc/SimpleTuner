@@ -19,7 +19,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
-
     
     let metroTabBarController = UITabBarController()
     let metronome = Metronome()
@@ -80,7 +79,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     func dataBind() {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
-            self.drawLabelUnderLine(color: color.main())
+            self.drawLabelUnderLine(color: color.main)
         }).disposed(by: disposeBag)
     }
     
@@ -180,7 +179,7 @@ extension MetronomeController: NumberPadViewDelegate {
         numberPadView.firstTouch = true
     }
     
-    func SETButtontapped() {
+    func SETButtonTapped() {
         let width = self.view.frame.width
         let height = self.view.frame.height
         let numberPadHeight = width * 1.2

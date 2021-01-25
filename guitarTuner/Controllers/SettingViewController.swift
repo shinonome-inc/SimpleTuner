@@ -7,30 +7,42 @@
 //
 
 import UIKit
+import RxSwift
 import XLPagerTabStrip
 
 class SettingViewController: UITableViewController {
+    
+    @IBOutlet weak var baseFrequencyLable: UILabel!
+    @IBOutlet weak var colorLabel: UILabel!
+    @IBOutlet weak var clearView: UIView!
     
     let pickerView = UIPickerView()
     let pickerViewHeight: CGFloat = 300
     var pickerIndexPath: IndexPath?
     var photoLibraryManager: PhotoLibraryManager?
     let defaults = UserDefaults.standard
+    let disposeBag = DisposeBag()
     private let frequencyArray = ["440", "441", "442"]
-    
-    @IBOutlet weak var baseFrequencyLable: UILabel!
-    @IBOutlet weak var colorLabel: UILabel!
-    @IBOutlet weak var clearView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        photoLibraryManager = PhotoLibraryManager(parentViewController: self)
-        
+        //photoLibraryManager = PhotoLibraryManager(parentViewController: self)
+        dataBind()
+        setupPickerView()
+        setupLabel()
+    }
+    
+    func dataBind() {
+        UserInfo.shared.colorEvent.subscribe(onNext: {
+            color in
+            self.colorLabel.text = color.name
+        }).disposed(by: disposeBag)
+    }
+    
+    func setupPickerView() {
         let width = self.view.frame.width
         let height = self.view.frame.height
         
-        //関係ないとこタッチでpickerが閉じるよ。ハイライトも解除するよ
         clearView.isUserInteractionEnabled = true
         clearView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapView)))
         
@@ -40,10 +52,11 @@ class SettingViewController: UITableViewController {
         pickerView.backgroundColor = UIColor.clear
         pickerView.setValue(UIColor.mainTextColor, forKey: "textColor")
         self.view.addSubview(pickerView)
-        
+    }
+    
+    func setupLabel() {
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
         baseFrequencyLable.text = baseFrequencyText + "Hz"
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
