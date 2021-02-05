@@ -158,7 +158,7 @@ class ArrowView: UIView {
     private func dataBind() {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
-            self.color = color.sub()
+            self.color = color.sub
         }).disposed(by: disposeBag)
     }
     

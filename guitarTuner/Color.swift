@@ -8,14 +8,29 @@
 
 import UIKit
 
-enum BaseColor: String {
-    case blue = "blue"
-    case red = "red"
-    case yellow = "yellow"
-    case green = "green"
-    case beige = "beige"
+enum BaseColor: Int, CaseIterable, Codable {
+    case blue
+    case red
+    case yellow
+    case green
+    case beige
     
-    func main() -> UIColor{
+    var name: String {
+        switch self {
+        case .blue:
+            return "Blue"
+        case .red:
+            return "Red"
+        case .yellow:
+            return "Yellow"
+        case .green:
+            return "Green"
+        case .beige:
+            return "Beige"
+        }
+    }
+
+    var main: UIColor {
         let color: UIColor?
         switch self {
         case .blue:
@@ -35,7 +50,7 @@ enum BaseColor: String {
         return mainColor
     }
     
-    func sub() -> UIColor{
+    var sub: UIColor {
         let color: UIColor?
         switch self {
         case .blue:
@@ -55,5 +70,3 @@ enum BaseColor: String {
         return subColor
     }
 }
-
-extension BaseColor: Codable {}
