@@ -33,10 +33,6 @@ class TunerViewController: UIViewController, TunerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         SoundAnalizer.shared.tunerDelegate = self
-        /*materView2.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
-        materView2.makeMaterView()
-        arrowView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
-        arrowView.makeArrowLayer()*/
     }
     
     override func viewDidAppear(_ animated: Bool) {

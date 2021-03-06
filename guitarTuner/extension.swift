@@ -34,7 +34,6 @@ extension CALayer {
  }
 
 extension UIView {
-    
     func cardView() {
         self.layer.cornerRadius = 8
         self.layer.shadowOpacity = 0.2

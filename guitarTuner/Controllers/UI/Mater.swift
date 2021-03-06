@@ -171,11 +171,11 @@ class ArrowView: UIView {
             arrowRate = (frequency - pitch.frequency) / ((pitch.frequency - beforePitch.frequency) / 2)
         }
         
-        if arrowRate > 1 {
-            arrowRate = 1
+        if arrowRate > 2/3 {
+            arrowRate = 2/3
         }
-        if arrowRate < -1 {
-            arrowRate = -1
+        if arrowRate < -2/3 {
+            arrowRate = -2/3
         }
         let movedArrowAngel: CGFloat = CGFloat(( Double.pi / 2 ) * arrowRate)
         
