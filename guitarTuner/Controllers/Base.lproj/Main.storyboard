@@ -20,17 +20,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piS-gw-cvG" customClass="MetroCountView" customModule="guitarTuner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="160.66666666666666"/>
+                                <rect key="frame" x="0.0" y="0.0" width="382" height="148"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mys-Ne-1QP">
-                                <rect key="frame" x="0.0" y="160.66666666666666" width="414" height="96.666666666666657"/>
+                                <rect key="frame" x="0.0" y="148" width="382" height="89"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klD-e8-LJh" customClass="UnderLineView" customModule="guitarTuner" customModuleProvider="target">
-                                        <rect key="frame" x="20.666666666666671" y="51.666666666666657" width="83" height="41.333333333333343"/>
+                                        <rect key="frame" x="19" y="47.666666666666657" width="76.666666666666671" height="38.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSK-f8-d0w">
-                                                <rect key="frame" x="0.0" y="0.0" width="83" height="41.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="76.666666666666671" height="38.333333333333336"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="mainTextColor"/>
@@ -55,14 +55,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqr-N4-xuq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="0.0" width="382" height="592.66666666666663"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfl-Mo-lXj">
-                                <rect key="frame" x="0.0" y="257.33333333333331" width="414" height="77"/>
+                                <rect key="frame" x="0.0" y="237" width="382" height="160"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbq-Hx-a2V">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="77"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="160"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <color key="textColor" name="mainTextColor"/>
@@ -78,14 +78,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naU-IO-MlO">
-                                <rect key="frame" x="0.0" y="334.33333333333331" width="414" height="77.333333333333314"/>
+                                <rect key="frame" x="0.0" y="397" width="382" height="72"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-Ke-V9I">
-                                        <rect key="frame" x="327" y="13.666666666666686" width="50" height="50"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="288.66666666666669" y="0.0" width="72" height="72"/>
+                                        <color key="backgroundColor" name="mainBackground"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="I5A-jk-Pnk"/>
-                                            <constraint firstAttribute="height" constant="50" id="LjY-RB-qTv"/>
+                                            <constraint firstAttribute="width" secondItem="7h1-Ke-V9I" secondAttribute="height" multiplier="1:1" id="1VD-wg-zEy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
                                         <state key="normal" title="+">
@@ -97,11 +96,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSn-mI-g1v">
-                                        <rect key="frame" x="37" y="13.666666666666686" width="50" height="50"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="21.333333333333329" y="0.0" width="72" height="72"/>
+                                        <color key="backgroundColor" name="mainBackground"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="MKS-s9-W19"/>
-                                            <constraint firstAttribute="width" constant="50" id="WdP-Up-1rB"/>
+                                            <constraint firstAttribute="width" secondItem="oSn-mI-g1v" secondAttribute="height" multiplier="1:1" id="Z4w-wQ-4eb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
                                         <state key="normal" title="-">
@@ -114,18 +112,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="naU-IO-MlO" secondAttribute="height" multiplier="23:4" id="3WZ-be-clJ"/>
                                     <constraint firstItem="7h1-Ke-V9I" firstAttribute="centerX" secondItem="naU-IO-MlO" secondAttribute="centerX" multiplier="1.7" id="Qc1-a1-RCW"/>
                                     <constraint firstItem="oSn-mI-g1v" firstAttribute="centerX" secondItem="naU-IO-MlO" secondAttribute="centerX" multiplier="0.3" id="Uty-Q2-IGb"/>
                                     <constraint firstItem="oSn-mI-g1v" firstAttribute="centerY" secondItem="naU-IO-MlO" secondAttribute="centerY" id="a30-Sf-DqK"/>
+                                    <constraint firstItem="7h1-Ke-V9I" firstAttribute="height" secondItem="naU-IO-MlO" secondAttribute="height" id="lrY-38-TpU"/>
+                                    <constraint firstItem="oSn-mI-g1v" firstAttribute="height" secondItem="naU-IO-MlO" secondAttribute="height" id="sOW-Pv-ASL"/>
+                                    <constraint firstAttribute="width" secondItem="naU-IO-MlO" secondAttribute="height" multiplier="69:13" id="vhV-Hw-G4J"/>
                                     <constraint firstItem="7h1-Ke-V9I" firstAttribute="centerY" secondItem="naU-IO-MlO" secondAttribute="centerY" id="ynl-cC-GH7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="05P-IP-ixX">
-                                <rect key="frame" x="0.0" y="411.66666666666669" width="414" height="77"/>
+                                <rect key="frame" x="0.0" y="469" width="382" height="72"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcY-lD-9cf">
-                                        <rect key="frame" x="103.66666666666669" y="15.333333333333318" width="207" height="46.333333333333343"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="95.666666666666686" y="14.333333333333375" width="191" height="43.333333333333343"/>
+                                        <color key="backgroundColor" name="mainBackground"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="start">
                                             <color key="titleColor" name="mainTextColor"/>
@@ -148,7 +150,7 @@
                         <viewLayoutGuide key="safeArea" id="OA1-wI-lF6"/>
                         <color key="backgroundColor" name="mainBackground"/>
                         <constraints>
-                            <constraint firstItem="naU-IO-MlO" firstAttribute="height" secondItem="xfl-Mo-lXj" secondAttribute="height" id="1WO-ne-zEW"/>
+                            <constraint firstItem="naU-IO-MlO" firstAttribute="height" secondItem="xfl-Mo-lXj" secondAttribute="height" multiplier="0.45" id="1WO-ne-zEW"/>
                             <constraint firstItem="piS-gw-cvG" firstAttribute="height" secondItem="cJk-uY-CFA" secondAttribute="height" multiplier="0.25" id="3su-mX-jCt"/>
                             <constraint firstItem="piS-gw-cvG" firstAttribute="trailing" secondItem="OA1-wI-lF6" secondAttribute="trailing" id="8h9-tu-xqx"/>
                             <constraint firstItem="05P-IP-ixX" firstAttribute="leading" secondItem="OA1-wI-lF6" secondAttribute="leading" id="AfO-hq-lbm"/>
@@ -165,7 +167,7 @@
                             <constraint firstItem="Rqr-N4-xuq" firstAttribute="leading" secondItem="OA1-wI-lF6" secondAttribute="leading" id="W6T-Jf-c5P"/>
                             <constraint firstItem="OA1-wI-lF6" firstAttribute="trailing" secondItem="mys-Ne-1QP" secondAttribute="trailing" id="Xvu-Ir-YXA"/>
                             <constraint firstItem="OA1-wI-lF6" firstAttribute="trailing" secondItem="05P-IP-ixX" secondAttribute="trailing" id="egI-Qm-iUz"/>
-                            <constraint firstItem="xfl-Mo-lXj" firstAttribute="height" secondItem="mys-Ne-1QP" secondAttribute="height" multiplier="0.8" id="fjA-g6-fbK"/>
+                            <constraint firstItem="xfl-Mo-lXj" firstAttribute="height" secondItem="mys-Ne-1QP" secondAttribute="height" multiplier="1.8" id="fjA-g6-fbK"/>
                             <constraint firstItem="Rqr-N4-xuq" firstAttribute="top" secondItem="OA1-wI-lF6" secondAttribute="top" id="g06-QJ-ySb"/>
                             <constraint firstItem="Rqr-N4-xuq" firstAttribute="trailing" secondItem="OA1-wI-lF6" secondAttribute="trailing" id="l9D-wn-jzY"/>
                             <constraint firstItem="mys-Ne-1QP" firstAttribute="top" secondItem="piS-gw-cvG" secondAttribute="bottom" id="r5X-sq-7m0"/>
@@ -592,7 +594,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="mainBackground"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="4QN-uT-MDh">
-                            <rect key="frame" x="0.0" y="261" width="414" height="138"/>
+                            <rect key="frame" x="0.0" y="261.33333206176758" width="414" height="138"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -753,7 +755,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mainTextColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -73,7 +73,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         //buttons
         startButton.layer.borderColor = UIColor.gray.cgColor
         startButton.layer.borderWidth = 1.0
-        startButton.layer.cornerRadius = 25
+        startButton.layer.cornerRadius = startButton.frame.height / 2
         startButton.setTitle("START", for: .normal)
         
         //views
