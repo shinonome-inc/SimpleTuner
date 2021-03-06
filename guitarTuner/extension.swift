@@ -25,7 +25,7 @@ extension UIColor {
 }
 
 extension CALayer {
-    class func drawUnderLine(lineWidth: CGFloat, lineColor: UIColor, UI:AnyObject) -> CALayer{
+    class func drawUnderLine(lineWidth: CGFloat, lineColor: UIColor, UI: AnyObject) -> CALayer{
         let line = CALayer()
         line.frame = CGRect(x: 0.0, y: (UI.frame?.size.height)! - lineWidth, width: (UI.frame?.size.width)!, height: lineWidth)
         line.backgroundColor = lineColor.cgColor
@@ -34,6 +34,7 @@ extension CALayer {
  }
 
 extension UIView {
+    
     func cardView() {
         self.layer.cornerRadius = 8
         self.layer.shadowOpacity = 0.2
