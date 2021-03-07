@@ -19,10 +19,10 @@ class TunerViewController: UIViewController, TunerDelegate {
     @IBOutlet weak var frequencyTitleLabel: UILabel!
     @IBOutlet weak var pitchLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
-    @IBOutlet weak var pitchView: UIView!
-    @IBOutlet weak var frequencyView: UIView!
-    @IBOutlet weak var noteView: UIView!
-    @IBOutlet weak var materView: MaterView!
+    @IBOutlet weak var pitchView: UnderLineView!
+    @IBOutlet weak var frequencyView: UnderLineView!
+    @IBOutlet weak var noteView: UnderLineView!
+    @IBOutlet weak var materView: UIView!
     
     var scaleAffine: CGAffineTransform?
     let lineWidth: CGFloat = 2
@@ -33,16 +33,11 @@ class TunerViewController: UIViewController, TunerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         SoundAnalizer.shared.tunerDelegate = self
-        materView2.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
-        materView2.makeMaterView()
-        arrowView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width)
-        arrowView.makeArrowLayer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         Pitch.renewAll()
         SoundAnalizer.shared.startTuner()
-        dataBind()
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
         //backgroundImageView.setImage()
         print("strat tuner")
@@ -50,20 +45,23 @@ class TunerViewController: UIViewController, TunerDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        dataBind()
         _ = self.initViewLayout
     }
     
     private lazy var initViewLayout : Void = {
         //materView.makeMaterView()
         setupLabels()
-        setupLayout()
+        setupViews()
     }()
     
     func dataBind() {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
-            self.drawLabelUnderLine(color: color.main)
+            self.noteView.line.backgroundColor = color.main.cgColor
+            self.pitchView.line.backgroundColor = color.main.cgColor
+            self.frequencyView.line.backgroundColor = color.main.cgColor
+            //self.drawLabelUnderLine(color: color.main)
         }).disposed(by: disposeBag)
     }
    
@@ -74,24 +72,24 @@ class TunerViewController: UIViewController, TunerDelegate {
         frequencyTitleLabel.text = "Frequency"
     }
     
-    func drawLabelUnderLine(color: UIColor) {
-        noteView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: noteView))
-        pitchView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: pitchView))
-        frequencyView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: frequencyView))
-    }
-    
-    func setupLayout() {
+    func setupViews() {
         scaleAffine = CGAffineTransform(scaleX: 1.1, y: 1)
         guard let scaleAffine = scaleAffine else {
             return
         }
-        materView2.transform = scaleAffine
+        materView2.frame.size = CGSize(width: materView.frame.width, height: materView.frame.width)
+        //materView2.transform = scaleAffine
         materView2.center = CGPoint(x: materView.center.x, y: materView.frame.height)
+        materView2.makeMaterView()
         self.view.addSubview(materView2)
-        
-        arrowView.transform = scaleAffine
+        arrowView.frame.size = CGSize(width: materView.frame.width, height: materView.frame.width)
+        //arrowView.transform = scaleAffine
         arrowView.center = CGPoint(x: materView.center.x, y: materView.frame.height)
+        arrowView.makeArrowLayer()
         self.view.addSubview(arrowView)
+        noteView.drawUnderLine()
+        pitchView.drawUnderLine()
+        frequencyView.drawUnderLine()
     }
     
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double) {
@@ -121,7 +119,7 @@ class TunerViewController: UIViewController, TunerDelegate {
 
 extension TunerViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(image: UIImage(named: "tuningFork"))
+        let info = IndicatorInfo(title: "Tuner", image: UIImage(named: "tuningFork")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }

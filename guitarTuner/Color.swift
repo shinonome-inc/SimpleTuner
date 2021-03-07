@@ -69,4 +69,24 @@ enum BaseColor: Int, CaseIterable, Codable {
         }
         return subColor
     }
+    
+    var tab: UIColor {
+        let color: UIColor?
+        switch self {
+        case .blue:
+            color = UIColor(named: "tabBlue")
+        case .red:
+            color = UIColor(named: "tabRed")
+        case .yellow:
+            color = UIColor(named: "tabYellow")
+        case .green:
+            color = UIColor(named: "tabGreen")
+        case .beige:
+            color = UIColor(named: "tabBeige")
+        }
+        guard let tabColor = color else {
+            fatalError()
+        }
+        return tabColor
+    }
 }

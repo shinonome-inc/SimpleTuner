@@ -23,10 +23,9 @@ class CircleLayer: CAShapeLayer {
         
     }
     
-    func lighting() {
+    func lighting(color: BaseColor) {
         DispatchQueue.main.async {
-            let fillColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-            self.fillColor = fillColor.cgColor
+            self.fillColor = color.sub.cgColor
         }
     }
     

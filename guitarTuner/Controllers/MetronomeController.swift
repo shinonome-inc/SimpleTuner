@@ -13,7 +13,7 @@ import XLPagerTabStrip
 class MetronomeController: UIViewController, MetronomeDelegate {
     
     @IBOutlet weak var hideView: UIView!
-    @IBOutlet weak var tempoView: UIView!
+    @IBOutlet weak var tempoView: UnderLineView!
     @IBOutlet weak var tempoLabel: UILabel!
     @IBOutlet weak var metroCountView: MetroCountView!
     @IBOutlet weak var startButton: UIButton!
@@ -39,11 +39,11 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        dataBind()
         _ = self.initViewLayout
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        dataBind()
         //backgroundImageView.setImage()
     }
     
@@ -64,27 +64,35 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         let height = self.view.frame.height
         let width = self.view.frame.width
         let numberPadHeight = width * 1.2
-        tempoLabelFrame = tempoLabel.frame
-        startButton.layer.borderColor = UIColor.gray.cgColor
-        startButton.layer.borderWidth = 1.0
-        startButton.layer.cornerRadius = 25
-        startButton.setTitle("START", for: .normal)
+        
+        //labels
         let tempo = String(format: "%.0f", metronome.getTempo())
         tempoLabel.text = tempo
+        tempoLabelFrame = tempoLabel.frame
+        
+        //buttons
+        startButton.layer.borderColor = UIColor.gray.cgColor
+        startButton.layer.borderWidth = 1.0
+        startButton.layer.cornerRadius = startButton.frame.height / 4
+        startButton.setTitle("START", for: .normal)
+        
+        //views
         numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
         numberPadView.makeView()
         self.view.addSubview(numberPadView)
+        tempoView.drawUnderLine()
     }
     
     func dataBind() {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
-            self.drawLabelUnderLine(color: color.main)
+            self.tempoView.line.backgroundColor = color.main.cgColor
+            self.metroCountView.color = color
         }).disposed(by: disposeBag)
     }
     
     func drawLabelUnderLine(color: UIColor) {
-        tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: tempoView))
+        //tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: tempoView))
     }
     
     @IBAction func tappedMinus(_ sender: Any) {
@@ -209,7 +217,7 @@ extension MetronomeController: NumberPadViewDelegate {
 
 extension MetronomeController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(image: UIImage(named: "metronome"))
+        let info = IndicatorInfo(title: "Metronome", image: UIImage(named: "metronome")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }

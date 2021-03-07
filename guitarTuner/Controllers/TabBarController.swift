@@ -14,6 +14,7 @@ class TabBarController: ButtonBarPagerTabStripViewController {
     
     var themeColor: BaseColor = .blue
     var isInitBind: Bool = true
+    let iconDisabledColor = UIColor.gray
     let disposeBag = DisposeBag()
     
     
@@ -43,12 +44,22 @@ class TabBarController: ButtonBarPagerTabStripViewController {
     }
     
     func tabBarSetting() {
-        settings.style.buttonBarBackgroundColor = UIColor.white
-        settings.style.buttonBarItemBackgroundColor = UIColor.white
-        settings.style.selectedBarBackgroundColor = themeColor.main
+        settings.style.buttonBarBackgroundColor = UIColor.mainBackground
+        settings.style.buttonBarItemBackgroundColor = UIColor.mainBackground
+        settings.style.selectedBarBackgroundColor = UIColor.clear
         settings.style.buttonBarMinimumLineSpacing = 20
+        settings.style.buttonBarItemsShouldFillAvailableWidth = true
         settings.style.buttonBarLeftContentInset = 20
         settings.style.buttonBarRightContentInset = 20
+        changeCurrentIndexProgressive = {
+            oldCell, newCell, progressPercentage, changeCurrentIndex, animated in
+            guard let oldCell = oldCell, let newCell = newCell else {
+                return
+            }
+            oldCell.imageView.tintColor = self.iconDisabledColor
+            newCell.imageView.tintColor = self.themeColor.sub
+            self.navigationItem.title = newCell.label.text
+        }
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
@@ -60,5 +71,14 @@ class TabBarController: ButtonBarPagerTabStripViewController {
         let childViewControllers: [UIViewController] = [VC1, VC2, VC3, VC4]
         
         return childViewControllers
+    }
+    
+    override func configureCell(_ cell: ButtonBarViewCell, indicatorInfo: IndicatorInfo) {
+        cell.imageView.tintColor = UIColor.gray
+        cell.label.textColor = UIColor.clear
+        if cell.isSelected {
+            cell.imageView.tintColor = themeColor.sub
+            self.navigationItem.title = cell.label.text
+        }
     }
 }

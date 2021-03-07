@@ -68,7 +68,7 @@ extension SoundMaterViewController: SoundMaterDelegate {
 
 extension SoundMaterViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(image: UIImage(named: "sound"))
+        let info = IndicatorInfo(title: "Sound", image: UIImage(named: "sound")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }

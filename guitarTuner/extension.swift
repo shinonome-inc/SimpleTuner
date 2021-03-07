@@ -25,7 +25,7 @@ extension UIColor {
 }
 
 extension CALayer {
-    class func drawUnderLine(lineWidth: CGFloat, lineColor: UIColor, UI:AnyObject) -> CALayer{
+    class func drawUnderLine(lineWidth: CGFloat, lineColor: UIColor, UI: AnyObject) -> CALayer{
         let line = CALayer()
         line.frame = CGRect(x: 0.0, y: (UI.frame?.size.height)! - lineWidth, width: (UI.frame?.size.width)!, height: lineWidth)
         line.backgroundColor = lineColor.cgColor
@@ -39,6 +39,6 @@ extension UIView {
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 8
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+        self.layer.shadowOffset = CGSize(width: 2, height: 2)
     }
 }
