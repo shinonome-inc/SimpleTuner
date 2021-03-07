@@ -144,7 +144,7 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 extension SettingViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(image: UIImage(named: "cog"))
+        let info = IndicatorInfo(title: "Settings", image: UIImage(named: "cog")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }

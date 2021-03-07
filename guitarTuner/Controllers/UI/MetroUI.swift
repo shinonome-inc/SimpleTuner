@@ -16,6 +16,7 @@ class MetroCountView: UIView {
     private let circle4 = CircleLayer()
     private let circle5 = CircleLayer()
     private let circle6 = CircleLayer()
+    var color: BaseColor = .blue
     
     var beatNumber = 4
     
@@ -48,7 +49,7 @@ class MetroCountView: UIView {
             circles[beatNumber - 1].lightOff()
         }
         let circle = circles[beatCount - 1]
-        circle.lighting()
+        circle.lighting(color: color)
     }
     
     func refresh() {

@@ -73,7 +73,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         //buttons
         startButton.layer.borderColor = UIColor.gray.cgColor
         startButton.layer.borderWidth = 1.0
-        startButton.layer.cornerRadius = startButton.frame.height / 2
+        startButton.layer.cornerRadius = startButton.frame.height / 4
         startButton.setTitle("START", for: .normal)
         
         //views
@@ -87,6 +87,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
             self.tempoView.line.backgroundColor = color.main.cgColor
+            self.metroCountView.color = color
         }).disposed(by: disposeBag)
     }
     
@@ -216,7 +217,7 @@ extension MetronomeController: NumberPadViewDelegate {
 
 extension MetronomeController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(image: UIImage(named: "metronome"))
+        let info = IndicatorInfo(title: "Metronome", image: UIImage(named: "metronome")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }

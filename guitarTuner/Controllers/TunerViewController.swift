@@ -22,7 +22,7 @@ class TunerViewController: UIViewController, TunerDelegate {
     @IBOutlet weak var pitchView: UnderLineView!
     @IBOutlet weak var frequencyView: UnderLineView!
     @IBOutlet weak var noteView: UnderLineView!
-    @IBOutlet weak var materView: MaterView!
+    @IBOutlet weak var materView: UIView!
     
     var scaleAffine: CGAffineTransform?
     let lineWidth: CGFloat = 2
@@ -119,7 +119,7 @@ class TunerViewController: UIViewController, TunerDelegate {
 
 extension TunerViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(image: UIImage(named: "tuningFork"))
+        let info = IndicatorInfo(title: "Tuner", image: UIImage(named: "tuningFork")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }

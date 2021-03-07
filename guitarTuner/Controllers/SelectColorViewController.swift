@@ -63,5 +63,6 @@ extension SelectColorViewController: UITableViewDelegate, UITableViewDataSource 
             return
         }
         UserInfo.shared.setColor(color: color)
+        self.navigationController?.navigationBar.barTintColor = color.tab
     }
 }
