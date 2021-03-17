@@ -19,9 +19,11 @@ class UserInfo {
     
     private let color = BehaviorRelay<BaseColor>(value: .blue)
     private let baseFrequency = BehaviorRelay<Int>(value: 440)
+    private let tempo = BehaviorRelay<Double>(value: 120)
     
     var colorEvent: Observable<BaseColor> { return color.asObservable() }
     var baseFrequencyEvent: Observable<Int> { return baseFrequency.asObservable() }
+    var tempoEvent: Observable<Double> { return tempo.asObservable() }
     
     func setColor(color: BaseColor) {
         self.color.accept(color)
@@ -30,6 +32,10 @@ class UserInfo {
     
     func setBaseFrequency(baseFrequency: Int) {
         self.baseFrequency.accept(baseFrequency)
+    }
+    
+    func setTempo(tempo: Double) {
+        self.tempo.accept(tempo)
     }
     
     private func setColorUserDefaults(color: BaseColor, key: String) {

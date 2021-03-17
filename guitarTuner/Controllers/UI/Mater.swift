@@ -37,7 +37,7 @@ class MaterView2: UIView {
         justPitchLayer.strokeColor = strokeColor
         justPitchLayer.lineWidth = 30.0
         justPitchLayer.fillColor = UIColor.clear.cgColor
-        justPitchLayer.lineDashPattern = [ 3.0, 300]
+        justPitchLayer.lineDashPattern = [3.0, 300]
         justPitchLayer.lineDashPhase = 1.5
         self.layer.addSublayer(justPitchLayer)
     }

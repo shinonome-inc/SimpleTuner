@@ -21,6 +21,7 @@
 		782A79D22577E62A00E04949 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A79D12577E62A00E04949 /* TabBarController.swift */; };
 		7830223425A5BCE600D95267 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7830223325A5BCE600D95267 /* UserInfo.swift */; };
 		7830224825A5EF6400D95267 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7830224725A5EF6400D95267 /* Color.swift */; };
+		7834A6F625F4F1E700BF1B58 /* TempoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */; };
 		783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C81CD22C24757004FEB7E /* SettingViewController.swift */; };
 		7840B587235EFA3200F09325 /* 1598350-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7840B586235EFA3200F09325 /* 1598350-2.png */; };
 		785096AD257224FD00B2D074 /* SoundMaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785096AC257224FD00B2D074 /* SoundMaterViewController.swift */; };
@@ -78,6 +79,7 @@
 		782A79D12577E62A00E04949 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7830223325A5BCE600D95267 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		7830224725A5EF6400D95267 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoSettingViewController.swift; sourceTree = "<group>"; };
 		783C81CD22C24757004FEB7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7840B586235EFA3200F09325 /* 1598350-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1598350-2.png"; sourceTree = "<group>"; };
 		785096AC257224FD00B2D074 /* SoundMaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundMaterViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				78E6E74123112C9C005B56CA /* MetronomeController.swift */,
 				785096AC257224FD00B2D074 /* SoundMaterViewController.swift */,
 				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
+				7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */,
 				7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */,
 				7822C0EF2257027B00361EC5 /* Main.storyboard */,
 				7812FB3325BABB7700190BC6 /* ColorCell.xib */,
@@ -425,6 +428,7 @@
 				78702629225B591700E32781 /* SoundAnalizer.swift in Sources */,
 				78E9357B25CD3BCD00A75190 /* UnderLineView.swift in Sources */,
 				78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */,
+				7834A6F625F4F1E700BF1B58 /* TempoSettingViewController.swift in Sources */,
 				7830223425A5BCE600D95267 /* UserInfo.swift in Sources */,
 				7899D34E25A2230E0003647D /* extension.swift in Sources */,
 				783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */,

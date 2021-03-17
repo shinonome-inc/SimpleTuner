@@ -54,10 +54,6 @@
                                     <constraint firstItem="klD-e8-LJh" firstAttribute="width" secondItem="mys-Ne-1QP" secondAttribute="width" multiplier="0.2" id="YdJ-OX-UIY"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rqr-N4-xuq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfl-Mo-lXj">
                                 <rect key="frame" x="0.0" y="413" width="414" height="219.5"/>
                                 <subviews>
@@ -144,6 +140,13 @@
                                     <constraint firstItem="TcY-lD-9cf" firstAttribute="width" secondItem="05P-IP-ixX" secondAttribute="width" multiplier="0.5" id="llI-Tf-fIy"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NVs-yD-5Mg">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="VhJ-bD-EY4" kind="embed" id="6CR-YL-lB6"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OA1-wI-lF6"/>
                         <color key="backgroundColor" name="mainBackground"/>
@@ -160,14 +163,10 @@
                             <constraint firstItem="naU-IO-MlO" firstAttribute="leading" secondItem="OA1-wI-lF6" secondAttribute="leading" id="KdC-46-mgC"/>
                             <constraint firstItem="xfl-Mo-lXj" firstAttribute="centerX" secondItem="cJk-uY-CFA" secondAttribute="centerX" id="Lj2-j2-lGI"/>
                             <constraint firstItem="OA1-wI-lF6" firstAttribute="trailing" secondItem="naU-IO-MlO" secondAttribute="trailing" id="Oqe-A6-UdV"/>
-                            <constraint firstItem="Rqr-N4-xuq" firstAttribute="bottom" secondItem="OA1-wI-lF6" secondAttribute="bottom" id="R99-ew-Cjj"/>
                             <constraint firstItem="piS-gw-cvG" firstAttribute="top" secondItem="OA1-wI-lF6" secondAttribute="top" id="THE-TQ-4eI"/>
-                            <constraint firstItem="Rqr-N4-xuq" firstAttribute="leading" secondItem="OA1-wI-lF6" secondAttribute="leading" id="W6T-Jf-c5P"/>
                             <constraint firstItem="OA1-wI-lF6" firstAttribute="trailing" secondItem="mys-Ne-1QP" secondAttribute="trailing" id="Xvu-Ir-YXA"/>
                             <constraint firstItem="OA1-wI-lF6" firstAttribute="trailing" secondItem="05P-IP-ixX" secondAttribute="trailing" id="egI-Qm-iUz"/>
                             <constraint firstItem="xfl-Mo-lXj" firstAttribute="height" secondItem="mys-Ne-1QP" secondAttribute="height" multiplier="1.8" id="fjA-g6-fbK"/>
-                            <constraint firstItem="Rqr-N4-xuq" firstAttribute="top" secondItem="OA1-wI-lF6" secondAttribute="top" id="g06-QJ-ySb"/>
-                            <constraint firstItem="Rqr-N4-xuq" firstAttribute="trailing" secondItem="OA1-wI-lF6" secondAttribute="trailing" id="l9D-wn-jzY"/>
                             <constraint firstItem="mys-Ne-1QP" firstAttribute="top" secondItem="piS-gw-cvG" secondAttribute="bottom" id="r5X-sq-7m0"/>
                             <constraint firstItem="xfl-Mo-lXj" firstAttribute="top" secondItem="mys-Ne-1QP" secondAttribute="bottom" id="sMO-bw-51A"/>
                             <constraint firstItem="mys-Ne-1QP" firstAttribute="height" secondItem="piS-gw-cvG" secondAttribute="height" multiplier="0.6" id="u0I-Cn-96e"/>
@@ -178,12 +177,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
-                        <outlet property="hideView" destination="Rqr-N4-xuq" id="tbn-Ll-Xua"/>
                         <outlet property="metroCountView" destination="piS-gw-cvG" id="T9E-nh-0PG"/>
                         <outlet property="minusButton" destination="oSn-mI-g1v" id="tMv-VZ-C0D"/>
                         <outlet property="plusButton" destination="7h1-Ke-V9I" id="wcY-nj-b1L"/>
                         <outlet property="startButton" destination="TcY-lD-9cf" id="TL5-vd-hFr"/>
                         <outlet property="tempoLabel" destination="gbq-Hx-a2V" id="X5o-gv-gXw"/>
+                        <outlet property="tempoSettingView" destination="NVs-yD-5Mg" id="aaz-RC-WdS"/>
                         <outlet property="tempoView" destination="klD-e8-LJh" id="O62-Gi-qnG"/>
                     </connections>
                 </viewController>
@@ -500,7 +499,7 @@
                                         <color key="textColor" name="mainTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SD1-X9-XwZ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="440" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SD1-X9-XwZ">
                                         <rect key="frame" x="251" y="0.0" width="83" height="41.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -533,7 +532,7 @@
                                         <color key="textColor" name="mainTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-Fg-S8A">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="440" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-Fg-S8A">
                                         <rect key="frame" x="251" y="0.0" width="83" height="41.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -617,7 +616,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="mainBackground"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="4QN-uT-MDh">
-                            <rect key="frame" x="0.0" y="295.5" width="414" height="390"/>
+                            <rect key="frame" x="0.0" y="295.5" width="414" height="224"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -774,13 +773,69 @@
             </objects>
             <point key="canvasLocation" x="-571.01449275362324" y="-427.23214285714283"/>
         </scene>
+        <!--Tempo Setting View Controller-->
+        <scene sceneID="CRU-Ix-jCB">
+            <objects>
+                <viewController storyboardIdentifier="TempoSettingViewController" id="VhJ-bD-EY4" customClass="TempoSettingViewController" customModule="guitarTuner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XdI-ff-s6y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I98-DT-Dbs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="217.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-RI-ni6">
+                                        <rect key="frame" x="98.5" y="0.0" width="217.5" height="217.5"/>
+                                        <color key="backgroundColor" name="mainBackground"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8qi-RI-ni6" secondAttribute="height" multiplier="1:1" id="378-vM-y3R"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                        <color key="textColor" name="mainTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="mainBackground"/>
+                                <constraints>
+                                    <constraint firstItem="8qi-RI-ni6" firstAttribute="centerX" secondItem="I98-DT-Dbs" secondAttribute="centerX" id="Bvd-WR-EY6"/>
+                                    <constraint firstItem="8qi-RI-ni6" firstAttribute="top" secondItem="I98-DT-Dbs" secondAttribute="top" id="O2g-OY-Dqr"/>
+                                    <constraint firstAttribute="bottom" secondItem="8qi-RI-ni6" secondAttribute="bottom" id="r2d-Ur-VI5"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGW-Mx-B0x" customClass="NumberPadView" customModule="guitarTuner" customModuleProvider="target">
+                                <rect key="frame" x="20" y="217.5" width="374" height="507.5"/>
+                                <color key="backgroundColor" name="mainBackground"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ltl-bR-uk8"/>
+                        <color key="backgroundColor" name="mainBackground"/>
+                        <constraints>
+                            <constraint firstItem="I98-DT-Dbs" firstAttribute="leading" secondItem="XdI-ff-s6y" secondAttribute="leading" id="0vZ-Of-TJk"/>
+                            <constraint firstAttribute="trailing" secondItem="I98-DT-Dbs" secondAttribute="trailing" id="IVP-t9-v3I"/>
+                            <constraint firstItem="I98-DT-Dbs" firstAttribute="top" secondItem="XdI-ff-s6y" secondAttribute="top" id="P8o-qO-D2y"/>
+                            <constraint firstItem="I98-DT-Dbs" firstAttribute="height" secondItem="XdI-ff-s6y" secondAttribute="height" multiplier="0.3" id="VnJ-jh-EJk"/>
+                            <constraint firstItem="IGW-Mx-B0x" firstAttribute="top" secondItem="I98-DT-Dbs" secondAttribute="bottom" id="dhV-oa-PZc"/>
+                            <constraint firstItem="IGW-Mx-B0x" firstAttribute="leading" secondItem="XdI-ff-s6y" secondAttribute="leadingMargin" id="f8h-nW-uSP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IGW-Mx-B0x" secondAttribute="trailing" id="o9v-tE-a2D"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="IGW-Mx-B0x" secondAttribute="bottom" id="zOj-0Y-Rbe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="numberPadView" destination="IGW-Mx-B0x" id="14g-NS-pzi"/>
+                        <outlet property="tempoLabel" destination="8qi-RI-ni6" id="7og-pa-1vI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RZW-8g-hzt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1995.6521739130437" y="238.72767857142856"/>
+        </scene>
     </scenes>
     <resources>
         <namedColor name="mainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mainTextColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.23499999940395355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

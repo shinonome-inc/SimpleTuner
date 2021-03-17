@@ -47,8 +47,7 @@ class TabBarController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarBackgroundColor = UIColor.mainBackground
         settings.style.buttonBarItemBackgroundColor = UIColor.mainBackground
         settings.style.selectedBarBackgroundColor = UIColor.clear
-        settings.style.buttonBarMinimumLineSpacing = 20
-        settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarLeftContentInset = 20
         settings.style.buttonBarRightContentInset = 20
         changeCurrentIndexProgressive = {
