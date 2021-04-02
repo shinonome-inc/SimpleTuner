@@ -146,7 +146,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
 
 extension MetronomeController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(title: "Metronome", image: UIImage(named: "metronome")?.withRenderingMode(.alwaysTemplate))
+        let info = IndicatorInfo(title: "Metro", image: UIImage(named: "metronome")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }

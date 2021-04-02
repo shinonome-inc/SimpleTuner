@@ -43,7 +43,6 @@ class SoundAnalizer {
     }
     
     func startTuner() {
-        //チューナー起動
         stop()
         AKManager.output = frequencySilence
         do{
@@ -52,7 +51,6 @@ class SoundAnalizer {
             print("failed to start AudioKit")
             return
         }
-        //タイマー作成
         timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SoundAnalizer.tick), userInfo: nil, repeats: true)
     }
     
@@ -69,7 +67,6 @@ class SoundAnalizer {
     }
     
     func stop() {
-        //チューナー終了
         do{
             try AKManager.stop()
         }catch{
