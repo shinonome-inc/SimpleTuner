@@ -42,3 +42,7 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
     }
 }
+
+extension Notification.Name {
+    static let tappedSET = Notification.Name(rawValue: "tappedSET")
+}

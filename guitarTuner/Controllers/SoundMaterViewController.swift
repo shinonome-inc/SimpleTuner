@@ -53,8 +53,11 @@ class SoundMaterViewController: UIViewController {
 
 extension SoundMaterViewController: SoundMaterDelegate {
     func soundMaterDidMesure(dB: Double) {
-        print(dB)
-        amplitudeLabel.text = String(format: "%.0f", dB)
+        if dB < 0 {
+            amplitudeLabel.text = "0"
+        } else {
+            amplitudeLabel.text = String(format: "%.0f", dB)
+        }
         let index = Int(dB / 20)
         let soundBars = [soundBar1, soundBar2, soundBar3, soundBar4, soundBar5]
         soundBars.forEach({ soundBar in

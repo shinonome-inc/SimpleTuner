@@ -10,13 +10,24 @@ import UIKit
 import RxSwift
 import XLPagerTabStrip
 
-class TabBarController: ButtonBarPagerTabStripViewController {
+class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
     
     var themeColor: BaseColor = .blue
     var isInitBind: Bool = true
     let iconDisabledColor = UIColor.gray
     let disposeBag = DisposeBag()
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        buttonBarItemSpec = ButtonBarItemSpec.nibFile(nibName: "TabbarCell", bundle: Bundle(for: TabbarCell.self), width: {
+            _ in
+            return 64
+        })
+    }
     
     override func viewDidLoad() {
         if isInitBind {
@@ -47,18 +58,20 @@ class TabBarController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarBackgroundColor = UIColor.mainBackground
         settings.style.buttonBarItemBackgroundColor = UIColor.mainBackground
         settings.style.selectedBarBackgroundColor = UIColor.clear
-        settings.style.buttonBarMinimumLineSpacing = 20
+        settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        settings.style.buttonBarLeftContentInset = 20
         settings.style.buttonBarRightContentInset = 20
-        changeCurrentIndexProgressive = {
-            oldCell, newCell, progressPercentage, changeCurrentIndex, animated in
+        settings.style.buttonBarLeftContentInset = 20
+        changeCurrentIndexProgressive = { [weak self] (
+            oldCell: TabbarCell?, newCell: TabbarCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard let oldCell = oldCell, let newCell = newCell else {
                 return
             }
-            oldCell.imageView.tintColor = self.iconDisabledColor
-            newCell.imageView.tintColor = self.themeColor.sub
-            self.navigationItem.title = newCell.label.text
+            oldCell.iconImageView.tintColor = self?.iconDisabledColor
+            oldCell.iconLabel.textColor = self?.iconDisabledColor
+            newCell.iconImageView.tintColor = self?.themeColor.sub
+            newCell.iconLabel.textColor = self?.themeColor.sub
+            self?.navigationItem.title = newCell.iconLabel.text
         }
     }
     
@@ -73,12 +86,15 @@ class TabBarController: ButtonBarPagerTabStripViewController {
         return childViewControllers
     }
     
-    override func configureCell(_ cell: ButtonBarViewCell, indicatorInfo: IndicatorInfo) {
-        cell.imageView.tintColor = UIColor.gray
-        cell.label.textColor = UIColor.clear
+    override func configure(cell: TabbarCell, for indicatorInfo: IndicatorInfo) {
+        cell.iconImageView.tintColor = iconDisabledColor
+        cell.iconImageView.image = indicatorInfo.image?.withRenderingMode(.alwaysTemplate)
+        cell.iconLabel.textColor = iconDisabledColor
+        cell.iconLabel.text = indicatorInfo.title?.trimmingCharacters(in: .whitespacesAndNewlines)
         if cell.isSelected {
-            cell.imageView.tintColor = themeColor.sub
-            self.navigationItem.title = cell.label.text
+            cell.iconImageView.tintColor = themeColor.sub
+            cell.iconLabel.textColor = themeColor.sub
+            self.navigationItem.title = cell.iconLabel.text
         }
     }
 }

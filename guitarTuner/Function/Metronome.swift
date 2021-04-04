@@ -52,14 +52,17 @@ class Metronome: NSObject {
     
     func tempoPlus1() {
         metronome.tempo += 1
+        UserInfo.shared.setTempo(tempo: metronome.tempo)
     }
     
     func tempoMinus1() {
         metronome.tempo -= 1
+        UserInfo.shared.setTempo(tempo: metronome.tempo)
     }
     
     func setTenpo(settedTenpo: Double) {
         metronome.tempo = settedTenpo
+        UserInfo.shared.setTempo(tempo: metronome.tempo)
     }
     
     func getTempo() ->Double{

@@ -8,21 +8,20 @@
 
 import UIKit
 import RxSwift
+import RxRelay
 import XLPagerTabStrip
 
 class MetronomeController: UIViewController, MetronomeDelegate {
     
-    @IBOutlet weak var hideView: UIView!
     @IBOutlet weak var tempoView: UnderLineView!
     @IBOutlet weak var tempoLabel: UILabel!
     @IBOutlet weak var metroCountView: MetroCountView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var tempoSettingView: UIView!
     
-    let metroTabBarController = UITabBarController()
     let metronome = Metronome()
-    let numberPadView = NumberPadView()
     let disposeBag = DisposeBag()
     let lineWidth: CGFloat = 2
     var tempoLabelFrame: CGRect?
@@ -31,15 +30,16 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         metronome.delegate = self
-        numberPadView.delegate = self
         
         tempoLabel.isUserInteractionEnabled = true
         tempoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedTempoLabel)))
+        NotificationCenter.default.addObserver(self, selector: #selector(finishTempoSetting(notification:)), name: .tappedSET, object: nil)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         dataBind()
+        tempoSettingView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
         _ = self.initViewLayout
     }
     
@@ -55,16 +55,13 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         if metronome.isActivated == true {
             metronome.stopMetro()
+            startButton.setTitle("START", for: .normal)
             metroCountView.refresh()
             beatCounter = 0
         }
     }
     
     func setupUIs() {
-        let height = self.view.frame.height
-        let width = self.view.frame.width
-        let numberPadHeight = width * 1.2
-        
         //labels
         let tempo = String(format: "%.0f", metronome.getTempo())
         tempoLabel.text = tempo
@@ -77,9 +74,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         startButton.setTitle("START", for: .normal)
         
         //views
-        numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
-        numberPadView.makeView()
-        self.view.addSubview(numberPadView)
         tempoView.drawUnderLine()
     }
     
@@ -89,10 +83,19 @@ class MetronomeController: UIViewController, MetronomeDelegate {
             self.tempoView.line.backgroundColor = color.main.cgColor
             self.metroCountView.color = color
         }).disposed(by: disposeBag)
+        UserInfo.shared.tempoEvent.subscribe(onNext: {
+            tempo in
+            self.tempoLabel.text = String(format: "%.0f", tempo)
+        }).disposed(by: disposeBag)
     }
     
-    func drawLabelUnderLine(color: UIColor) {
-        //tempoView.layer.addSublayer(CALayer.drawUnderLine(lineWidth: lineWidth, lineColor: color, UI: tempoView))
+    @objc func finishTempoSetting(notification: NSNotification) {
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        UIView.animate(withDuration: 0.2, animations: {
+            self.tempoSettingView.frame = CGRect(x: 0, y: height, width: width, height: height)
+        })
+        metronome.setTenpo(settedTenpo: notification.object as! Double)
     }
     
     @IBAction func tappedMinus(_ sender: Any) {
@@ -100,8 +103,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
             return
         }
         metronome.tempoMinus1()
-        let tempo = String(format: "%.0f", metronome.getTempo())
-        tempoLabel.text = tempo
     }
     
     @IBAction func tappedPlus(_ sender: Any) {
@@ -109,8 +110,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
             return
         }
         metronome.tempoPlus1()
-        let tempo = String(format: "%.0f", metronome.getTempo())
-        tempoLabel.text = tempo
     }
     
     @IBAction func tappedStart(_ sender: Any) {
@@ -128,16 +127,8 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     @objc func tappedTempoLabel(sender: UITapGestureRecognizer) {
         let width = self.view.frame.width
         let height = self.view.frame.height
-        let numberPadHeight = width * 1.2
-        let tabBarHeight = metroTabBarController.tabBar.frame.height
-        self.tempoLabel.translatesAutoresizingMaskIntoConstraints = true
-        guard let tempoLabelFrame = tempoLabelFrame else {
-            return
-        }
         UIView.animate(withDuration: 0.2, animations: {
-            self.numberPadView.frame = CGRect(x: 0, y: height - numberPadHeight - tabBarHeight, width: width, height: numberPadHeight)
-            self.tempoLabel.frame = CGRect(x: tempoLabelFrame.origin.x, y: height - numberPadHeight - tabBarHeight - tempoLabelFrame.height, width: tempoLabelFrame.width, height: tempoLabelFrame.height)
-            self.hideView.backgroundColor = UIColor.white
+            self.tempoSettingView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         })
     }
     
@@ -154,70 +145,9 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     }
 }
 
-extension MetronomeController: NumberPadViewDelegate {
-    
-    func numberButtonTapped(number: String) {
-        
-        if numberPadView.firstTouch {
-            tempoLabel.text = number
-            numberPadView.firstTouch = false
-            return
-        }
-        
-        if tempoLabel.text == "0" {
-            tempoLabel.text = number
-            return
-        }
-        
-        if var tempoLabelText = tempoLabel.text{
-            tempoLabelText = tempoLabelText + number
-            if Int(tempoLabelText)! > 300 {
-                tempoLabel.text = "300"
-                return
-            }else{
-                tempoLabel.text = tempoLabelText
-            }
-        }else{
-            tempoLabel.text = number
-        }
-    }
-    
-    func CLButtonTapped() {
-        tempoLabel.text = "0"
-        numberPadView.firstTouch = true
-    }
-    
-    func SETButtonTapped() {
-        let width = self.view.frame.width
-        let height = self.view.frame.height
-        let numberPadHeight = width * 1.2
-        
-        guard let tempoLabelText = tempoLabel.text else{
-            return
-        }
-        guard let settedTempoInt = Int(tempoLabelText) else {
-            return
-        }
-        guard settedTempoInt > 0 else{
-            return
-        }
-        let settedTempo = Double(tempoLabelText)
-        metronome.setTenpo(settedTenpo: settedTempo!)
-        numberPadView.firstTouch = true
-        guard let tempoLabelFrame = tempoLabelFrame else {
-            return
-        }
-        UIView.animate(withDuration: 0.2, animations: {
-            self.numberPadView.frame = CGRect(x: 0, y: height, width: width, height: numberPadHeight)
-            self.tempoLabel.frame = CGRect(x: tempoLabelFrame.origin.x, y: tempoLabelFrame.origin.y, width: tempoLabelFrame.width, height: tempoLabelFrame.height)
-            self.hideView.backgroundColor = UIColor.clear
-        })
-    }
-}
-
 extension MetronomeController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(title: "Metronome", image: UIImage(named: "metronome")?.withRenderingMode(.alwaysTemplate))
+        let info = IndicatorInfo(title: "Metro", image: UIImage(named: "metronome")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }
