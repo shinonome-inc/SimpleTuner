@@ -68,7 +68,9 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
                 return
             }
             oldCell.iconImageView.tintColor = self?.iconDisabledColor
+            oldCell.iconLabel.textColor = self?.iconDisabledColor
             newCell.iconImageView.tintColor = self?.themeColor.sub
+            newCell.iconLabel.textColor = self?.themeColor.sub
             self?.navigationItem.title = newCell.iconLabel.text
         }
     }
@@ -85,12 +87,13 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
     }
     
     override func configure(cell: TabbarCell, for indicatorInfo: IndicatorInfo) {
-        cell.iconImageView.tintColor = UIColor.gray
+        cell.iconImageView.tintColor = iconDisabledColor
         cell.iconImageView.image = indicatorInfo.image?.withRenderingMode(.alwaysTemplate)
-        cell.iconLabel.textColor = UIColor.gray
+        cell.iconLabel.textColor = iconDisabledColor
         cell.iconLabel.text = indicatorInfo.title?.trimmingCharacters(in: .whitespacesAndNewlines)
         if cell.isSelected {
             cell.iconImageView.tintColor = themeColor.sub
+            cell.iconLabel.textColor = themeColor.sub
             self.navigationItem.title = cell.iconLabel.text
         }
     }
