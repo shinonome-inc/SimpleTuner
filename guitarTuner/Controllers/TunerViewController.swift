@@ -22,12 +22,12 @@ class TunerViewController: UIViewController, TunerDelegate {
     @IBOutlet weak var pitchView: UnderLineView!
     @IBOutlet weak var frequencyView: UnderLineView!
     @IBOutlet weak var noteView: UnderLineView!
-    @IBOutlet weak var materView: UIView!
+    @IBOutlet weak var materBaseView: UIView!
     
     var scaleAffine: CGAffineTransform?
     let lineWidth: CGFloat = 2
     let disposeBag = DisposeBag()
-    let materView2 = MaterView2()
+    let materView = MaterView()
     let arrowView = ArrowView()
 
     override func viewDidLoad() {
@@ -50,9 +50,7 @@ class TunerViewController: UIViewController, TunerDelegate {
     }
     
     private lazy var initViewLayout : Void = {
-        //materView.makeMaterView()
-        setupLabels()
-        setupViews()
+        setupUIs()
     }()
     
     func dataBind() {
@@ -61,30 +59,24 @@ class TunerViewController: UIViewController, TunerDelegate {
             self.noteView.line.backgroundColor = color.main.cgColor
             self.pitchView.line.backgroundColor = color.main.cgColor
             self.frequencyView.line.backgroundColor = color.main.cgColor
-            //self.drawLabelUnderLine(color: color.main)
         }).disposed(by: disposeBag)
     }
    
-    func setupLabels() {
+    func setupUIs() {
+        //labels
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
         noteTitleLabel.text = "Note"
         pitchTitleLabel.text = "Pitch"
         frequencyTitleLabel.text = "Frequency"
-    }
-    
-    func setupViews() {
+        
+        //views
         scaleAffine = CGAffineTransform(scaleX: 1.1, y: 1)
-        guard let scaleAffine = scaleAffine else {
-            return
-        }
-        materView2.frame.size = CGSize(width: materView.frame.width, height: materView.frame.width)
-        //materView2.transform = scaleAffine
-        materView2.center = CGPoint(x: materView.center.x, y: materView.frame.height)
-        materView2.makeMaterView()
-        self.view.addSubview(materView2)
-        arrowView.frame.size = CGSize(width: materView.frame.width, height: materView.frame.width)
-        //arrowView.transform = scaleAffine
-        arrowView.center = CGPoint(x: materView.center.x, y: materView.frame.height)
+        materView.frame.size = CGSize(width: materBaseView.frame.width, height: materBaseView.frame.width)
+        materView.center = CGPoint(x: materBaseView.center.x, y: materBaseView.frame.height)
+        materView.makeMaterView()
+        self.view.addSubview(materView)
+        arrowView.frame.size = CGSize(width: materBaseView.frame.width, height: materBaseView.frame.width)
+        arrowView.center = CGPoint(x: materBaseView.center.x, y: materBaseView.frame.height)
         arrowView.makeArrowLayer()
         self.view.addSubview(arrowView)
         noteView.drawUnderLine()
@@ -93,13 +85,10 @@ class TunerViewController: UIViewController, TunerDelegate {
     }
     
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double) {
-        guard amplitude > 0.2 else{
-            return
-        }
-        guard frequency > Pitch.all[0].frequency, frequency < Pitch.all[60].frequency else {
-            return
-        }
-        guard let scaleAffine = scaleAffine else {
+        guard amplitude > 0.2,
+              frequency > Pitch.all[0].frequency,
+              frequency < Pitch.all[60].frequency,
+              let scaleAffine = scaleAffine else {
             return
         }
         
@@ -109,7 +98,6 @@ class TunerViewController: UIViewController, TunerDelegate {
         pitchLabel.text = pitchFrequencyText
         noteLabel.text = "\(pitch.note)"
         arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine)
-        //materView.circleLighting(pitch: pitch, frequency: frequency)
     }
     
     override func didReceiveMemoryWarning() {

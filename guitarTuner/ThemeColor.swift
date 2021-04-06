@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum BaseColor: Int, CaseIterable, Codable {
+enum ThemeColor: Int, CaseIterable, Codable {
     case blue
     case red
     case yellow

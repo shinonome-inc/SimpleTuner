@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class MaterView2: UIView {
+class MaterView: UIView {
     private let thinLayer = CAShapeLayer.init()
     private let thickLayer = CAShapeLayer.init()
     private let justPitchLayer = CAShapeLayer.init()

@@ -17,15 +17,15 @@ class UserInfo {
         self.color.accept(color)
     }
     
-    private let color = BehaviorRelay<BaseColor>(value: .blue)
+    private let color = BehaviorRelay<ThemeColor>(value: .blue)
     private let baseFrequency = BehaviorRelay<Int>(value: 440)
     private let tempo = BehaviorRelay<Double>(value: 120)
     
-    var colorEvent: Observable<BaseColor> { return color.asObservable() }
+    var colorEvent: Observable<ThemeColor> { return color.asObservable() }
     var baseFrequencyEvent: Observable<Int> { return baseFrequency.asObservable() }
     var tempoEvent: Observable<Double> { return tempo.asObservable() }
     
-    func setColor(color: BaseColor) {
+    func setColor(color: ThemeColor) {
         self.color.accept(color)
         setColorUserDefaults(color: color, key: "baseColor")
     }
@@ -38,7 +38,7 @@ class UserInfo {
         self.tempo.accept(tempo)
     }
     
-    private func setColorUserDefaults(color: BaseColor, key: String) {
+    private func setColorUserDefaults(color: ThemeColor, key: String) {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
         guard let data = try? jsonEncoder.encode(color) else {
@@ -47,11 +47,11 @@ class UserInfo {
         UserDefaults.standard.setValue(data, forKey: key)
     }
     
-    private func getColorUserDefaults(key: String) ->BaseColor{
+    private func getColorUserDefaults(key: String) ->ThemeColor{
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
         guard let data = UserDefaults.standard.data(forKey: key),
-              let color = try? jsonDecoder.decode(BaseColor.self, from: data) else {
+              let color = try? jsonDecoder.decode(ThemeColor.self, from: data) else {
             return .blue
         }
         return color

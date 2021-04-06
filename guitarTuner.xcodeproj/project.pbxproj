@@ -22,7 +22,7 @@
 		78299D8126073157001FEB5C /* TabbarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78299D8026073157001FEB5C /* TabbarCell.swift */; };
 		782A79D22577E62A00E04949 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782A79D12577E62A00E04949 /* TabBarController.swift */; };
 		7830223425A5BCE600D95267 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7830223325A5BCE600D95267 /* UserInfo.swift */; };
-		7830224825A5EF6400D95267 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7830224725A5EF6400D95267 /* Color.swift */; };
+		7830224825A5EF6400D95267 /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7830224725A5EF6400D95267 /* ThemeColor.swift */; };
 		7834A6F625F4F1E700BF1B58 /* TempoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */; };
 		783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C81CD22C24757004FEB7E /* SettingViewController.swift */; };
 		7840B587235EFA3200F09325 /* 1598350-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7840B586235EFA3200F09325 /* 1598350-2.png */; };
@@ -82,7 +82,7 @@
 		78299D8026073157001FEB5C /* TabbarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCell.swift; sourceTree = "<group>"; };
 		782A79D12577E62A00E04949 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7830223325A5BCE600D95267 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		7830224725A5EF6400D95267 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		7830224725A5EF6400D95267 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoSettingViewController.swift; sourceTree = "<group>"; };
 		783C81CD22C24757004FEB7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7840B586235EFA3200F09325 /* 1598350-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1598350-2.png"; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 				78358D8A24605C1C00B6E4D1 /* Controllers */,
 				78358D8B24605C7A00B6E4D1 /* Function */,
 				7830223325A5BCE600D95267 /* UserInfo.swift */,
-				7830224725A5EF6400D95267 /* Color.swift */,
+				7830224725A5EF6400D95267 /* ThemeColor.swift */,
 				7899D34D25A2230E0003647D /* extension.swift */,
 				7822C0F22257027C00361EC5 /* Assets.xcassets */,
 				7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */,
@@ -449,7 +449,7 @@
 				785096AD257224FD00B2D074 /* SoundMaterViewController.swift in Sources */,
 				78E4283A2313F2B100B02902 /* MetroUI.swift in Sources */,
 				7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */,
-				7830224825A5EF6400D95267 /* Color.swift in Sources */,
+				7830224825A5EF6400D95267 /* ThemeColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
