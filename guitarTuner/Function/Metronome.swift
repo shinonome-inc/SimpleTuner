@@ -15,7 +15,7 @@ protocol MetronomeDelegate: class {
 class Metronome: NSObject {
     
     weak var delegate: MetronomeDelegate?
-    fileprivate let metronome = AKMetronome()
+    private let metronome = AKMetronome()
     var isActivated: Bool = false
     
     
