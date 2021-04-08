@@ -584,7 +584,7 @@
                         <outlet property="frequencyLabel" destination="cbJ-Fg-S8A" id="xvE-QT-EX8"/>
                         <outlet property="frequencyTitleLabel" destination="rDU-W3-Xy7" id="xLX-82-saH"/>
                         <outlet property="frequencyView" destination="bJW-2c-AqF" id="35o-GF-oa1"/>
-                        <outlet property="materView" destination="yLf-0T-aDl" id="gor-fh-JeQ"/>
+                        <outlet property="materBaseView" destination="yLf-0T-aDl" id="gor-fh-JeQ"/>
                         <outlet property="noteLabel" destination="5ww-zi-dm2" id="GqU-75-4Df"/>
                         <outlet property="noteTitleLabel" destination="sME-q5-rwP" id="dOm-oR-5kh"/>
                         <outlet property="noteView" destination="W7D-pm-KtR" id="DpL-Jd-Tcb"/>

@@ -13,7 +13,7 @@ class SelectColorViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var baseColor: BaseColor = .blue
+    var baseColor: ThemeColor = .blue
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -39,12 +39,12 @@ class SelectColorViewController: UIViewController {
 
 extension SelectColorViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BaseColor.allCases.count
+        return ThemeColor.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath) as! ColorCell
-        guard let color = BaseColor.init(rawValue: indexPath.row) else {
+        guard let color = ThemeColor.init(rawValue: indexPath.row) else {
             return cell
         }
         if indexPath.row == baseColor.rawValue {
@@ -59,7 +59,7 @@ extension SelectColorViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let color = BaseColor.init(rawValue: indexPath.row) else {
+        guard let color = ThemeColor.init(rawValue: indexPath.row) else {
             return
         }
         UserInfo.shared.setColor(color: color)

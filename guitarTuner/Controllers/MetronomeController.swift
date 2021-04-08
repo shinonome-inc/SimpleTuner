@@ -54,7 +54,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         if metronome.isActivated == true {
-            metronome.stopMetro()
+            metronome.isActivated = false
             startButton.setTitle("START", for: .normal)
             metroCountView.refresh()
             beatCounter = 0

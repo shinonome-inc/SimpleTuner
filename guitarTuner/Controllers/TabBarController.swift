@@ -12,7 +12,7 @@ import XLPagerTabStrip
 
 class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
     
-    var themeColor: BaseColor = .blue
+    var themeColor: ThemeColor = .blue
     var isInitBind: Bool = true
     let iconDisabledColor = UIColor.gray
     let disposeBag = DisposeBag()
@@ -41,6 +41,7 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
             self.themeColor = color
+            //場合分けしないとviewDidLoadで無限ループする
             if self.isInitBind {
                 self.isInitBind = false
             } else {
@@ -49,6 +50,7 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
         }).disposed(by: disposeBag)
     }
     
+    //テーマカラーの更新用
     func reLoadView() {
         loadView()
         viewDidLoad()

@@ -16,7 +16,7 @@ class MetroCountView: UIView {
     private let circle4 = CircleLayer()
     private let circle5 = CircleLayer()
     private let circle6 = CircleLayer()
-    var color: BaseColor = .blue
+    var color: ThemeColor = .blue
     
     var beatNumber = 4
     
@@ -107,7 +107,7 @@ class NumberPadView: UIView {
             self.addSubview(button)
             button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
         }
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.mainBackground
     }
     
     func buttonDetail(index: Int, y: CGFloat, button: UIButton, frame: CGRect) {
