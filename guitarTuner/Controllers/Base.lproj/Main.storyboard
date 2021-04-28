@@ -704,6 +704,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="appVersionLabel" destination="mT7-bQ-tBl" id="s6P-LZ-hHk"/>
                         <outlet property="baseFrequencyLable" destination="qbN-fr-F3I" id="05Y-6i-7GE"/>
                         <outlet property="clearView" destination="4QN-uT-MDh" id="hYe-dK-3Nb"/>
                         <outlet property="colorLabel" destination="9rq-CA-17t" id="wyX-ZL-VjU"/>

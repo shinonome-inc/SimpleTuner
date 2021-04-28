@@ -14,6 +14,7 @@ class SettingViewController: UITableViewController {
     
     @IBOutlet weak var baseFrequencyLable: UILabel!
     @IBOutlet weak var colorLabel: UILabel!
+    @IBOutlet weak var appVersionLabel: UILabel!
     @IBOutlet weak var clearView: UIView!
     
     let pickerView = UIPickerView()
@@ -56,7 +57,10 @@ class SettingViewController: UITableViewController {
     
     func setupLabel() {
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        
         baseFrequencyLable.text = baseFrequencyText + "Hz"
+        appVersionLabel.text = version
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
