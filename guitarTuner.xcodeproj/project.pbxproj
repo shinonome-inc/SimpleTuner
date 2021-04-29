@@ -26,7 +26,7 @@
 		7834A6F625F4F1E700BF1B58 /* TempoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */; };
 		783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C81CD22C24757004FEB7E /* SettingViewController.swift */; };
 		7840B587235EFA3200F09325 /* 1598350-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7840B586235EFA3200F09325 /* 1598350-2.png */; };
-		785096AD257224FD00B2D074 /* SoundMaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785096AC257224FD00B2D074 /* SoundMaterViewController.swift */; };
+		785096AD257224FD00B2D074 /* VolumeMaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785096AC257224FD00B2D074 /* VolumeMaterViewController.swift */; };
 		78702629225B591700E32781 /* SoundAnalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78702628225B591700E32781 /* SoundAnalizer.swift */; };
 		7883A343246124DF00C812C3 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */; };
 		7890739C24739066008179EE /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7890739B24739066008179EE /* BackgroundImageView.swift */; };
@@ -86,7 +86,7 @@
 		7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoSettingViewController.swift; sourceTree = "<group>"; };
 		783C81CD22C24757004FEB7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7840B586235EFA3200F09325 /* 1598350-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1598350-2.png"; sourceTree = "<group>"; };
-		785096AC257224FD00B2D074 /* SoundMaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundMaterViewController.swift; sourceTree = "<group>"; };
+		785096AC257224FD00B2D074 /* VolumeMaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMaterViewController.swift; sourceTree = "<group>"; };
 		78702628225B591700E32781 /* SoundAnalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAnalizer.swift; sourceTree = "<group>"; };
 		7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 		7890739B24739066008179EE /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 				782A79D12577E62A00E04949 /* TabBarController.swift */,
 				7822C0ED2257027B00361EC5 /* TunerViewController.swift */,
 				78E6E74123112C9C005B56CA /* MetronomeController.swift */,
-				785096AC257224FD00B2D074 /* SoundMaterViewController.swift */,
+				785096AC257224FD00B2D074 /* VolumeMaterViewController.swift */,
 				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
 				7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */,
 				7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */,
@@ -446,7 +446,7 @@
 				7812FB3925BAC0AB00190BC6 /* ColorCell.swift in Sources */,
 				78E63EF62266C97900D882CA /* Pitch.swift in Sources */,
 				78DB12E02306A399005F416D /* Mater.swift in Sources */,
-				785096AD257224FD00B2D074 /* SoundMaterViewController.swift in Sources */,
+				785096AD257224FD00B2D074 /* VolumeMaterViewController.swift in Sources */,
 				78E4283A2313F2B100B02902 /* MetroUI.swift in Sources */,
 				7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */,
 				7830224825A5EF6400D95267 /* ThemeColor.swift in Sources */,
@@ -635,7 +635,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.SimpleTuner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SimpleTuner;
@@ -659,7 +659,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.SimpleTuner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SimpleTuner;

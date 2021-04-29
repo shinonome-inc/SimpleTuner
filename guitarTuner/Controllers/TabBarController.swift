@@ -81,7 +81,7 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let VC1 = storyboard.instantiateViewController(identifier: "TunerViewController") as! TunerViewController
         let VC2 = storyboard.instantiateViewController(identifier: "MetronomeController") as! MetronomeController
-        let VC3 = storyboard.instantiateViewController(identifier: "SoundMaterViewController") as! SoundMaterViewController
+        let VC3 = storyboard.instantiateViewController(identifier: "VolumeMaterViewController") as! VolumeMaterViewController
         let VC4 = storyboard.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
         let childViewControllers: [UIViewController] = [VC1, VC2, VC3, VC4]
         
