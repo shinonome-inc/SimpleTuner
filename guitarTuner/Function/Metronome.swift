@@ -16,14 +16,18 @@ class Metronome: NSObject {
     
     weak var delegate: MetronomeDelegate?
     private let metronome = AKMetronome()
+    private var mixer: AKMixer!
     var isActivated: Bool = false
     
     
     override init() {
+        super.init()
         metronome.tempo = 120
         metronome.subdivision = 4
         metronome.frequency1 = 2000
         metronome.frequency2 = 1000
+        mixer = AKMixer(metronome)
+        mixer.volume = 10
     }
     
     func startMetro() {
@@ -31,10 +35,10 @@ class Metronome: NSObject {
         metronome.callback = {
             self.delegate?.metronomeDidBeat()
         }
-        metronome.start()
-        AKManager.output = metronome
+        AKManager.output = mixer
         do{
             try AKManager.start()
+            metronome.start()
             isActivated = true
         }catch {
             print("failed to start metronome")
@@ -44,6 +48,7 @@ class Metronome: NSObject {
     func stopMetro() {
         do{
             try AKManager.stop()
+            metronome.stop()
             isActivated = false
         }catch {
             print("failed to stop metronome")
