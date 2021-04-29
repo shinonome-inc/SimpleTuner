@@ -1,5 +1,5 @@
 //
-//  SoundMaterViewController.swift
+//  VolumeMaterViewController.swift
 //  guitarTuner
 //
 //  Created by 大谷悦志 on 2020/11/28.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import XLPagerTabStrip
 
-class SoundMaterViewController: UIViewController {
+class VolumeMaterViewController: UIViewController {
     
     @IBOutlet weak var soundBar1: UIView!
     @IBOutlet weak var soundBar2: UIView!
@@ -27,14 +27,14 @@ class SoundMaterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SoundAnalizer.shared.soundMaterDelegate = self
+        SoundAnalizer.shared.volumeMaterDelegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dataBind()
-        SoundAnalizer.shared.startSoundMater()
-        print("sound mater start")
+        SoundAnalizer.shared.startVolumeMater()
+        print("volume mater start")
     }
     
     func dataBind() {
@@ -51,8 +51,8 @@ class SoundMaterViewController: UIViewController {
     }
 }
 
-extension SoundMaterViewController: SoundMaterDelegate {
-    func soundMaterDidMesure(dB: Double) {
+extension VolumeMaterViewController: VolumeMaterDelegate {
+    func volumeMaterDidMesure(dB: Double) {
         if dB < 0 {
             amplitudeLabel.text = "0"
         } else {
@@ -69,9 +69,9 @@ extension SoundMaterViewController: SoundMaterDelegate {
     }
 }
 
-extension SoundMaterViewController: IndicatorInfoProvider {
+extension VolumeMaterViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(title: "Sound", image: UIImage(named: "sound")?.withRenderingMode(.alwaysTemplate))
+        let info = IndicatorInfo(title: "Volume", image: UIImage(named: "volume")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }
