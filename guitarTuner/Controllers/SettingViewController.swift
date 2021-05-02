@@ -29,8 +29,7 @@ class SettingViewController: UITableViewController {
         super.viewDidLoad()
         //photoLibraryManager = PhotoLibraryManager(parentViewController: self)
         dataBind()
-        setupPickerView()
-        setupLabel()
+        setup()
     }
     
     func dataBind() {
@@ -40,27 +39,29 @@ class SettingViewController: UITableViewController {
         }).disposed(by: disposeBag)
     }
     
-    func setupPickerView() {
+    func setup() {
+        //view
         let width = self.view.frame.width
         let height = self.view.frame.height
         
         clearView.isUserInteractionEnabled = true
         clearView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapView)))
-        
         pickerView.frame = CGRect(x: 0, y: height, width: width, height: pickerViewHeight)
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.backgroundColor = UIColor.clear
         pickerView.setValue(UIColor.mainTextColor, forKey: "textColor")
         self.view.addSubview(pickerView)
-    }
-    
-    func setupLabel() {
+        
+        //label
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        
         baseFrequencyLable.text = baseFrequencyText + "Hz"
         appVersionLabel.text = version
+        
+        //notification
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.appDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -89,7 +90,25 @@ class SettingViewController: UITableViewController {
             default :
                 return
             }
+        } else if indexPath.section == 1 {
+            switch indexPath.row {
+            case 1:
+                guard let reviewURL = URL(string: "https://apps.apple.com/app/id1563149768?action=write-review") else {
+                    return
+                }
+                UIApplication.shared.open(reviewURL, options: [:], completionHandler: nil)
+            default:
+                return
+            }
         }
+    }
+    
+    //レビューから戻ってきた際のCellのハイライト解除用
+    @objc func appDidBecomeActive(_ notification: Notification) {
+        guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else {
+            return
+        }
+        tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
     }
     
     @objc func tapView(sender: UITapGestureRecognizer) {
