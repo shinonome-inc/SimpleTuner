@@ -14,8 +14,8 @@ protocol TunerDelegate: class {
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double)
 }
 
-protocol SoundMaterDelegate: class {
-    func soundMaterDidMesure(dB: Double)
+protocol VolumeMaterDelegate: class {
+    func volumeMaterDidMesure(dB: Double)
 }
 
     //NSObjectは全てのクラスに継承出来る大元みたいなやつ。
@@ -24,7 +24,7 @@ class SoundAnalizer {
     static let shared = SoundAnalizer()
     
     weak var tunerDelegate: TunerDelegate?
-    weak var soundMaterDelegate: SoundMaterDelegate?
+    weak var volumeMaterDelegate: VolumeMaterDelegate?
     
     /* Private instance variables. */
     fileprivate var timer: Timer?
@@ -54,7 +54,7 @@ class SoundAnalizer {
         timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SoundAnalizer.tick), userInfo: nil, repeats: true)
     }
     
-    func startSoundMater() {
+    func startVolumeMater() {
         stop()
         AKManager.output = amplitudeSilence
         do{
@@ -95,6 +95,6 @@ class SoundAnalizer {
             print("amplitude is 0 ")
             return
         }
-        self.soundMaterDelegate?.soundMaterDidMesure(dB: dB)
+        self.volumeMaterDelegate?.volumeMaterDidMesure(dB: dB)
     }
 }	
