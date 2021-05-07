@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import XLPagerTabStrip
+import MessageUI
 
 class SettingViewController: UITableViewController {
     
@@ -24,13 +25,14 @@ class SettingViewController: UITableViewController {
     let defaults = UserDefaults.standard
     let disposeBag = DisposeBag()
     private let frequencyArray = ["440", "441", "442"]
+    private let toRecipients = ["324etsushi@gmail.com"]
+    private let mailSubject = "Feedback（SimpleTuner）"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //photoLibraryManager = PhotoLibraryManager(parentViewController: self)
         dataBind()
-        setupPickerView()
-        setupLabel()
+        setup()
     }
     
     func dataBind() {
@@ -40,27 +42,29 @@ class SettingViewController: UITableViewController {
         }).disposed(by: disposeBag)
     }
     
-    func setupPickerView() {
+    func setup() {
+        //view
         let width = self.view.frame.width
         let height = self.view.frame.height
         
         clearView.isUserInteractionEnabled = true
         clearView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapView)))
-        
         pickerView.frame = CGRect(x: 0, y: height, width: width, height: pickerViewHeight)
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.backgroundColor = UIColor.clear
         pickerView.setValue(UIColor.mainTextColor, forKey: "textColor")
         self.view.addSubview(pickerView)
-    }
-    
-    func setupLabel() {
+        
+        //label
         let baseFrequencyText = String(format: "%.0f", Pitch.baseFrequency)
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        
         baseFrequencyLable.text = baseFrequencyText + "Hz"
         appVersionLabel.text = version
+        
+        //notification
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.appBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -89,7 +93,27 @@ class SettingViewController: UITableViewController {
             default :
                 return
             }
+        } else if indexPath.section == 1 {
+            switch indexPath.row {
+            case 1:
+                guard let reviewURL = URL(string: "https://apps.apple.com/app/id1563149768?action=write-review") else {
+                    return
+                }
+                UIApplication.shared.open(reviewURL, options: [:], completionHandler: nil)
+            case 2:
+                if MFMailComposeViewController.canSendMail() == false {
+                    return
+                }
+                presentMailView()
+            default:
+                return
+            }
         }
+    }
+    
+    //レビューから戻ってきた際のCellのハイライト解除用
+    @objc func appBecomeActive(_ notification: Notification) {
+        deselctCell()
     }
     
     @objc func tapView(sender: UITapGestureRecognizer) {
@@ -105,8 +129,41 @@ class SettingViewController: UITableViewController {
         })
     }
     
+    func presentMailView() {
+        let mailViewController = MFMailComposeViewController()
+        mailViewController.mailComposeDelegate = self
+        mailViewController.setSubject(mailSubject)
+        mailViewController.setToRecipients(toRecipients)
+        self.present(mailViewController, animated: true, completion: nil)
+    }
+    
+    func deselctCell() {
+        guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else {
+            return
+        }
+        tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+
+extension SettingViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            print("##### Email send Cancelld #####")
+        case .sent:
+            print("##### Email sent successfully #####")
+        case .failed:
+            print("##### Email send faild #####")
+        case .saved:
+            print("##### Email saved #####")
+        }
+        controller.dismiss(animated: true, completion: {
+            self.deselctCell()
+        })
     }
 }
 
