@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import XLPagerTabStrip
+import MessageUI
 
 class SettingViewController: UITableViewController {
     
@@ -24,6 +25,8 @@ class SettingViewController: UITableViewController {
     let defaults = UserDefaults.standard
     let disposeBag = DisposeBag()
     private let frequencyArray = ["440", "441", "442"]
+    private let toRecipients = ["324etsushi@gmail.com"]
+    private let mailSubject = "Feedback（SimpleTuner）"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +63,7 @@ class SettingViewController: UITableViewController {
         appVersionLabel.text = version
         
         //notification
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.appDidBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.appBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
         
     }
     
@@ -97,6 +100,11 @@ class SettingViewController: UITableViewController {
                     return
                 }
                 UIApplication.shared.open(reviewURL, options: [:], completionHandler: nil)
+            case 2:
+                if MFMailComposeViewController.canSendMail() == false {
+                    return
+                }
+                presentMailView()
             default:
                 return
             }
@@ -104,11 +112,8 @@ class SettingViewController: UITableViewController {
     }
     
     //レビューから戻ってきた際のCellのハイライト解除用
-    @objc func appDidBecomeActive(_ notification: Notification) {
-        guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else {
-            return
-        }
-        tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+    @objc func appBecomeActive(_ notification: Notification) {
+        deselctCell()
     }
     
     @objc func tapView(sender: UITapGestureRecognizer) {
@@ -124,8 +129,41 @@ class SettingViewController: UITableViewController {
         })
     }
     
+    func presentMailView() {
+        let mailViewController = MFMailComposeViewController()
+        mailViewController.mailComposeDelegate = self
+        mailViewController.setSubject(mailSubject)
+        mailViewController.setToRecipients(toRecipients)
+        self.present(mailViewController, animated: true, completion: nil)
+    }
+    
+    func deselctCell() {
+        guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else {
+            return
+        }
+        tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+
+extension SettingViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            print("##### Email send Cancelld #####")
+        case .sent:
+            print("##### Email sent successfully #####")
+        case .failed:
+            print("##### Email send faild #####")
+        case .saved:
+            print("##### Email saved #####")
+        }
+        controller.dismiss(animated: true, completion: {
+            self.deselctCell()
+        })
     }
 }
 
