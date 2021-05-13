@@ -12,4 +12,5 @@ class TabbarCell: UICollectionViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconLabel: UILabel!
+    var mode: Mode?
 }

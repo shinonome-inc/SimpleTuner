@@ -35,12 +35,16 @@ class TunerViewController: UIViewController, TunerDelegate {
         SoundAnalizer.shared.tunerDelegate = self
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("TunerViewWillDisAppear")
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         Pitch.renewAll()
-        SoundAnalizer.shared.startTuner()
         baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
         //backgroundImageView.setImage()
-        print("strat tuner")
+        print("TunerViewDidAppear")
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,7 +89,7 @@ class TunerViewController: UIViewController, TunerDelegate {
     }
     
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double) {
-        guard amplitude > 0.2,
+        guard amplitude > 0.01,
               frequency > Pitch.all[0].frequency,
               frequency < Pitch.all[60].frequency,
               let scaleAffine = scaleAffine else {
@@ -107,7 +111,7 @@ class TunerViewController: UIViewController, TunerDelegate {
 
 extension TunerViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(title: "Tuner", image: UIImage(named: "tuningFork")?.withRenderingMode(.alwaysTemplate))
+        let info = IndicatorInfo(title: "Tuner", image: UIImage(named: "tuningFork")?.withRenderingMode(.alwaysTemplate), userInfo: Mode.tuner)
         return info
     }
 }
