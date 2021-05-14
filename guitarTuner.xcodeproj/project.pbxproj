@@ -37,7 +37,6 @@
 		78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E36056230A67750084DFA1 /* CircleLayer.swift */; };
 		78E4283A2313F2B100B02902 /* MetroUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E428392313F2B100B02902 /* MetroUI.swift */; };
 		78E63EF62266C97900D882CA /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E63EF52266C97900D882CA /* Pitch.swift */; };
-		78E6E740231125AC005B56CA /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6E73F231125AC005B56CA /* Metronome.swift */; };
 		78E6E74223112C9C005B56CA /* MetronomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E6E74123112C9C005B56CA /* MetronomeController.swift */; };
 		78E773E6225DFD85006C8C4B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E773E5225DFD85006C8C4B /* Note.swift */; };
 		78E9357B25CD3BCD00A75190 /* UnderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9357A25CD3BCD00A75190 /* UnderLineView.swift */; };
@@ -98,7 +97,6 @@
 		78E36056230A67750084DFA1 /* CircleLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLayer.swift; sourceTree = "<group>"; };
 		78E428392313F2B100B02902 /* MetroUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroUI.swift; sourceTree = "<group>"; };
 		78E63EF52266C97900D882CA /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
-		78E6E73F231125AC005B56CA /* Metronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
 		78E6E74123112C9C005B56CA /* MetronomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeController.swift; sourceTree = "<group>"; };
 		78E773E5225DFD85006C8C4B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		78E9357A25CD3BCD00A75190 /* UnderLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLineView.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				78702628225B591700E32781 /* SoundAnalizer.swift */,
-				78E6E73F231125AC005B56CA /* Metronome.swift */,
 				78E773E5225DFD85006C8C4B /* Note.swift */,
 				78E63EF52266C97900D882CA /* Pitch.swift */,
 				7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */,
@@ -431,7 +428,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78E6E740231125AC005B56CA /* Metronome.swift in Sources */,
 				782A79D22577E62A00E04949 /* TabBarController.swift in Sources */,
 				7822C0EE2257027B00361EC5 /* TunerViewController.swift in Sources */,
 				7890739C24739066008179EE /* BackgroundImageView.swift in Sources */,
@@ -639,7 +635,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.SimpleTuner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SimpleTuner;
@@ -663,7 +659,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.SimpleTuner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SimpleTuner;

@@ -21,15 +21,13 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var tempoSettingView: UIView!
     
-    let metronome = Metronome()
     let disposeBag = DisposeBag()
     let lineWidth: CGFloat = 2
     var tempoLabelFrame: CGRect?
-    var beatCounter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        metronome.delegate = self
+        SoundAnalizer.shared.metronomeDelegate = self
         
         tempoLabel.isUserInteractionEnabled = true
         tempoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedTempoLabel)))
@@ -43,27 +41,22 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         _ = self.initViewLayout
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        //backgroundImageView.setImage()
-    }
-    
     private lazy var initViewLayout : Void = {
         metroCountView.makeView()
         setupUIs()
     }()
     
     override func viewWillDisappear(_ animated: Bool) {
-        if metronome.isActivated == true {
-            metronome.isActivated = false
+        if SoundAnalizer.shared.metronomeIsActive == true {
+            SoundAnalizer.shared.stopMetro()
             startButton.setTitle("START", for: .normal)
             metroCountView.refresh()
-            beatCounter = 0
         }
     }
     
     func setupUIs() {
         //labels
-        let tempo = String(format: "%.0f", metronome.getTempo())
+        let tempo = String(format: "%.0f", SoundAnalizer.shared.getTempo())
         tempoLabel.text = tempo
         tempoLabelFrame = tempoLabel.frame
         
@@ -95,32 +88,31 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         UIView.animate(withDuration: 0.2, animations: {
             self.tempoSettingView.frame = CGRect(x: 0, y: height, width: width, height: height)
         })
-        metronome.setTenpo(settedTenpo: notification.object as! Double)
+        SoundAnalizer.shared.setTenpo(settedTenpo: notification.object as! Double)
     }
     
     @IBAction func tappedMinus(_ sender: Any) {
-        guard metronome.getTempo() > 1 else {
+        guard SoundAnalizer.shared.getTempo() > 1 else {
             return
         }
-        metronome.tempoMinus1()
+        SoundAnalizer.shared.tempoMinus1()
     }
     
     @IBAction func tappedPlus(_ sender: Any) {
-        guard metronome.getTempo() < 300 else {
+        guard SoundAnalizer.shared.getTempo() < 300 else {
             return
         }
-        metronome.tempoPlus1()
+        SoundAnalizer.shared.tempoPlus1()
     }
     
     @IBAction func tappedStart(_ sender: Any) {
-        if metronome.isActivated == false {
+        if SoundAnalizer.shared.metronomeIsActive == false {
             startButton.setTitle("STOP", for: .normal)
-            metronome.startMetro()
+            SoundAnalizer.shared.startMetro()
         } else {
             startButton.setTitle("START", for: .normal)
-            metronome.stopMetro()
+            SoundAnalizer.shared.stopMetro()
             metroCountView.refresh()
-            beatCounter = 0
         }
     }
     
@@ -132,12 +124,8 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         })
     }
     
-    func metronomeDidBeat() {
-        beatCounter += 1
-        metroCountView.circleLighting(beatCount: beatCounter)
-        if beatCounter >= metronome.getBeatNumber() {
-            beatCounter = 0
-        }
+    func metronomeDidBeat(currentBeat: Int) {
+        metroCountView.circleLighting(beatCount: currentBeat)
     }
     
     override func didReceiveMemoryWarning() {
@@ -147,7 +135,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
 
 extension MetronomeController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(title: "Metro", image: UIImage(named: "metronome")?.withRenderingMode(.alwaysTemplate))
+        let info = IndicatorInfo(title: "Metro", image: UIImage(named: "metronome")?.withRenderingMode(.alwaysTemplate), userInfo: Mode.metro)
         return info
     }
 }

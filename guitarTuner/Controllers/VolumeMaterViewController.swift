@@ -27,13 +27,12 @@ class VolumeMaterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SoundAnalizer.shared.volumeMaterDelegate = self
+        SoundAnalizer.shared.volumeMeterDelegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         dataBind()
-        SoundAnalizer.shared.startVolumeMater()
         print("volume mater start")
     }
     
@@ -51,8 +50,8 @@ class VolumeMaterViewController: UIViewController {
     }
 }
 
-extension VolumeMaterViewController: VolumeMaterDelegate {
-    func volumeMaterDidMesure(dB: Double) {
+extension VolumeMaterViewController: VolumeMeterDelegate {
+    func volumeMeterDidMesure(dB: Double) {
         if dB < 0 {
             amplitudeLabel.text = "0"
         } else {
@@ -71,7 +70,7 @@ extension VolumeMaterViewController: VolumeMaterDelegate {
 
 extension VolumeMaterViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(title: "Volume", image: UIImage(named: "volume")?.withRenderingMode(.alwaysTemplate))
+        let info = IndicatorInfo(title: "Volume", image: UIImage(named: "volume")?.withRenderingMode(.alwaysTemplate), userInfo: Mode.volume)
         return info
     }
 }
