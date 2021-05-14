@@ -24,7 +24,6 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     let disposeBag = DisposeBag()
     let lineWidth: CGFloat = 2
     var tempoLabelFrame: CGRect?
-    var beatCounter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +47,10 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     }()
     
     override func viewWillDisappear(_ animated: Bool) {
-        if SoundAnalizer.shared.isActivated == true {
-            SoundAnalizer.shared.isActivated = false
+        if SoundAnalizer.shared.metronomeIsActive == true {
+            SoundAnalizer.shared.stopMetro()
             startButton.setTitle("START", for: .normal)
             metroCountView.refresh()
-            beatCounter = 0
         }
     }
     
@@ -108,14 +106,13 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     }
     
     @IBAction func tappedStart(_ sender: Any) {
-        if SoundAnalizer.shared.isActivated == false {
+        if SoundAnalizer.shared.metronomeIsActive == false {
             startButton.setTitle("STOP", for: .normal)
             SoundAnalizer.shared.startMetro()
         } else {
             startButton.setTitle("START", for: .normal)
             SoundAnalizer.shared.stopMetro()
             metroCountView.refresh()
-            beatCounter = 0
         }
     }
     
@@ -127,12 +124,8 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         })
     }
     
-    func metronomeDidBeat() {
-        beatCounter += 1
-        metroCountView.circleLighting(beatCount: beatCounter)
-        if beatCounter >= SoundAnalizer.shared.getBeatNumber() {
-            beatCounter = 0
-        }
+    func metronomeDidBeat(currentBeat: Int) {
+        metroCountView.circleLighting(beatCount: currentBeat)
     }
     
     override func didReceiveMemoryWarning() {

@@ -15,7 +15,7 @@ protocol TunerDelegate: class {
 }
 
 protocol MetronomeDelegate: class {
-    func metronomeDidBeat()
+    func metronomeDidBeat(currentBeat: Int)
 }
 
 protocol VolumeMeterDelegate: class {
@@ -41,7 +41,7 @@ class SoundAnalizer {
     fileprivate let metronome: AKMetronome
     fileprivate let metronomeMixer: AKMixer
     fileprivate (set) var mode: Mode
-    var isActivated: Bool = false
+    var metronomeIsActive: Bool = false
     
     private init() {
         costomDispatchQueue = DispatchQueue(label: "com.gmail.324etsushi",qos: .userInteractive)
@@ -58,6 +58,9 @@ class SoundAnalizer {
         metronomeMixer = AKMixer(metronome)
         metronomeMixer.volume = 10
         mode = .none
+        metronome.callback = {
+            self.metronomeDelegate?.metronomeDidBeat(currentBeat: self.metronome.currentBeat)
+        }
     }
     
     //share method
@@ -134,16 +137,13 @@ class SoundAnalizer {
     
     //metronome method
     func startMetro() {
-        metronome.callback = {
-            self.metronomeDelegate?.metronomeDidBeat()
-        }
         metronome.start()
-        isActivated = true
+        metronomeIsActive = true
     }
     
     func stopMetro() {
         metronome.stop()
-        isActivated = false
+        metronomeIsActive = false
     }
     
     func tempoPlus1() {
