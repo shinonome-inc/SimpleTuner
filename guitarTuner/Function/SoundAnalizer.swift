@@ -143,6 +143,7 @@ class SoundAnalizer {
     
     func stopMetro() {
         metronome.stop()
+        metronome.reset()
         metronomeIsActive = false
     }
     

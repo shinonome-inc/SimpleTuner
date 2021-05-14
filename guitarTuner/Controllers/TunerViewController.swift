@@ -89,7 +89,7 @@ class TunerViewController: UIViewController, TunerDelegate {
     }
     
     func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double) {
-        guard amplitude > 0.01,
+        guard amplitude > 0.1,
               frequency > Pitch.all[0].frequency,
               frequency < Pitch.all[60].frequency,
               let scaleAffine = scaleAffine else {
