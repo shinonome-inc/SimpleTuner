@@ -14,15 +14,17 @@ class UserInfo {
     static let shared = UserInfo()
     private init() {
         let color = getColorUserDefaults(key: "baseColor")
+        let baseFrequency = UserDefaults.standard.double(forKey: "baseFrequency")
         self.color.accept(color)
+        self.baseFrequency.accept(baseFrequency)
     }
     
     private let color = BehaviorRelay<ThemeColor>(value: .blue)
-    private let baseFrequency = BehaviorRelay<Int>(value: 440)
+    private let baseFrequency = BehaviorRelay<Double>(value: 440)
     private let tempo = BehaviorRelay<Double>(value: 120)
     
     var colorEvent: Observable<ThemeColor> { return color.asObservable() }
-    var baseFrequencyEvent: Observable<Int> { return baseFrequency.asObservable() }
+    var baseFrequencyEvent: Observable<Double> { return baseFrequency.asObservable() }
     var tempoEvent: Observable<Double> { return tempo.asObservable() }
     
     func setColor(color: ThemeColor) {
@@ -30,8 +32,9 @@ class UserInfo {
         setColorUserDefaults(color: color, key: "baseColor")
     }
     
-    func setBaseFrequency(baseFrequency: Int) {
+    func setBaseFrequency(baseFrequency: Double) {
         self.baseFrequency.accept(baseFrequency)
+        UserDefaults.standard.setValue(baseFrequency, forKey: "baseFrequency")
     }
     
     func setTempo(tempo: Double) {
