@@ -35,18 +35,6 @@ class TunerViewController: UIViewController, TunerDelegate {
         SoundAnalizer.shared.tunerDelegate = self
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("TunerViewWillDisAppear")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        Pitch.renewAll()
-        baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
-        //backgroundImageView.setImage()
-        print("TunerViewDidAppear")
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         dataBind()
@@ -64,11 +52,15 @@ class TunerViewController: UIViewController, TunerDelegate {
             self.pitchView.line.backgroundColor = color.main.cgColor
             self.frequencyView.line.backgroundColor = color.main.cgColor
         }).disposed(by: disposeBag)
+        
+        UserInfo.shared.baseFrequencyEvent.subscribe(onNext: {
+            baseFrequency in
+            self.baseFrequencyLabel.text = String(format: "%.0f", baseFrequency) + "Hz"
+        }).disposed(by: disposeBag)
     }
    
     func setupUIs() {
         //labels
-        baseFrequencyLabel.text = String(format: "%.0f", Pitch.baseFrequency) + "Hz"
         noteTitleLabel.text = "Note"
         pitchTitleLabel.text = "Pitch"
         frequencyTitleLabel.text = "Frequency"
@@ -79,10 +71,12 @@ class TunerViewController: UIViewController, TunerDelegate {
         materView.center = CGPoint(x: materBaseView.center.x, y: materBaseView.frame.height)
         materView.makeMaterView()
         self.view.addSubview(materView)
+        self.view.sendSubviewToBack(materView)
         arrowView.frame.size = CGSize(width: materBaseView.frame.width, height: materBaseView.frame.width)
         arrowView.center = CGPoint(x: materBaseView.center.x, y: materBaseView.frame.height)
         arrowView.makeArrowLayer()
         self.view.addSubview(arrowView)
+        self.view.sendSubviewToBack(arrowView)
         noteView.drawUnderLine()
         pitchView.drawUnderLine()
         frequencyView.drawUnderLine()
@@ -102,6 +96,14 @@ class TunerViewController: UIViewController, TunerDelegate {
         pitchLabel.text = pitchFrequencyText
         noteLabel.text = "\(pitch.note)"
         arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine)
+    }
+    
+    @IBAction func tappedMinus(_ sender: Any) {
+        SoundAnalizer.shared.baseFrequencyMinus()
+    }
+    
+    @IBAction func tappedPlus(_ sender: Any) {
+        SoundAnalizer.shared.baseFrequencyPlus()
     }
     
     override func didReceiveMemoryWarning() {

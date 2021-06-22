@@ -40,7 +40,10 @@ class SoundAnalizer {
     fileprivate let amplitudeSilence: AKBooster
     fileprivate let metronome: AKMetronome
     fileprivate let metronomeMixer: AKMixer
-    fileprivate (set) var mode: Mode
+    
+    fileprivate (set) var mode: Mode = .none
+    fileprivate let baseFrequencyRange = 440.0 ..< 443.0
+    
     var metronomeIsActive: Bool = false
     
     private init() {
@@ -57,13 +60,13 @@ class SoundAnalizer {
         metronome.frequency2 = 1000
         metronomeMixer = AKMixer(metronome)
         metronomeMixer.volume = 10
-        mode = .none
         metronome.callback = {
             self.metronomeDelegate?.metronomeDidBeat(currentBeat: self.metronome.currentBeat)
         }
     }
     
     //share method
+    
     func start() {
         do{
             try AKManager.start()
@@ -133,6 +136,26 @@ class SoundAnalizer {
         print(frequency)
         
         self.tunerDelegate?.tunerDidMesure(pitch: pitch, distance: distance, amplitude: amplitude, frequency: frequency)
+    }
+    
+    func baseFrequencyPlus() {
+        guard baseFrequencyRange.contains(Pitch.baseFrequency + 1) else {
+            print("##### Over BaseFrequency Range #####")
+            return
+        }
+        Pitch.baseFrequency += 1
+        Pitch.renewAll()
+        UserInfo.shared.setBaseFrequency(baseFrequency: Pitch.baseFrequency)
+    }
+    
+    func baseFrequencyMinus() {
+        guard baseFrequencyRange.contains(Pitch.baseFrequency - 1) else {
+            print("##### Over BaseFrequency Range #####")
+            return
+        }
+        Pitch.baseFrequency -= 1
+        Pitch.renewAll()
+        UserInfo.shared.setBaseFrequency(baseFrequency: Pitch.baseFrequency)
     }
     
     //metronome method
