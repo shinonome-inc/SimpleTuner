@@ -1,6 +1,8 @@
-# SimpleTuner
+![titleh](https://user-images.githubusercontent.com/47075496/122844989-b8b0ea80-d33d-11eb-8de9-8b4d7b805b9d.jpg)   
 
-![titleh](https://user-images.githubusercontent.com/47075496/122844989-b8b0ea80-d33d-11eb-8de9-8b4d7b805b9d.jpg)    
+## Simple Tuner
+SimpleTuner はギターやベースだけでなく多くの楽器で使用可能なチューナーです．  
+シンプルかつ直感的なデザインにより素早く正確にチューニングできます．
 
 ## App URL
 本アプリはAppStoreで公開されており，iOS13以降を搭載したデバイスでインストールできます．　　
@@ -36,3 +38,13 @@ https://apps.apple.com/jp/app/simpletuner/id1563149768
 ## Author
 - [GitHub](https://github.com/Etsuwo)
 - [Twitter](https://twitter.com/OEtsushi)
+
+## Thank you 
+- [AudioKit](https://github.com/AudioKit/AudioKit)
+- [RxSwift](https://github.com/ReactiveX/RxSwift)
+- [XLPagerTabStrip](https://user-images.githubusercontent.com/47075496/122852251-47783400-d34b-11eb-8949-9cbd3fce63c5.png)
+
+<p align="center">
+  <a  href="https://github.com/AudioKit/AudioKit"><img src="https://user-images.githubusercontent.com/47075496/122851784-8bb70480-d34a-11eb-9f00-b01a4abfc323.png" width="80px;"/></a>
+  <a  href="https://github.com/xmartlabs/XLPagerTabStrip"><img src="https://user-images.githubusercontent.com/47075496/122852251-47783400-d34b-11eb-8949-9cbd3fce63c5.png" width="80px;"/></a>
+</p>
