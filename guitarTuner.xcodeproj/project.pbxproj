@@ -25,14 +25,12 @@
 		7830224825A5EF6400D95267 /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7830224725A5EF6400D95267 /* ThemeColor.swift */; };
 		7834A6F625F4F1E700BF1B58 /* TempoSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */; };
 		783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C81CD22C24757004FEB7E /* SettingViewController.swift */; };
-		7840B587235EFA3200F09325 /* 1598350-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7840B586235EFA3200F09325 /* 1598350-2.png */; };
 		785096AD257224FD00B2D074 /* VolumeMaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785096AC257224FD00B2D074 /* VolumeMaterViewController.swift */; };
 		78702629225B591700E32781 /* SoundAnalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78702628225B591700E32781 /* SoundAnalizer.swift */; };
 		78802448263E8AA800CB6D32 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78802447263E8AA800CB6D32 /* MessageUI.framework */; };
 		7883A343246124DF00C812C3 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */; };
 		7890739C24739066008179EE /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7890739B24739066008179EE /* BackgroundImageView.swift */; };
 		7899D34E25A2230E0003647D /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899D34D25A2230E0003647D /* extension.swift */; };
-		78C6CCC622DDA7400086CDD1 /* tunerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C6CCC522DDA7400086CDD1 /* tunerIcon.png */; };
 		78DB12E02306A399005F416D /* Mater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DB12DF2306A399005F416D /* Mater.swift */; };
 		78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E36056230A67750084DFA1 /* CircleLayer.swift */; };
 		78E4283A2313F2B100B02902 /* MetroUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E428392313F2B100B02902 /* MetroUI.swift */; };
@@ -85,14 +83,12 @@
 		7830224725A5EF6400D95267 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoSettingViewController.swift; sourceTree = "<group>"; };
 		783C81CD22C24757004FEB7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		7840B586235EFA3200F09325 /* 1598350-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1598350-2.png"; sourceTree = "<group>"; };
 		785096AC257224FD00B2D074 /* VolumeMaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMaterViewController.swift; sourceTree = "<group>"; };
 		78702628225B591700E32781 /* SoundAnalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAnalizer.swift; sourceTree = "<group>"; };
 		78802447263E8AA800CB6D32 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 		7890739B24739066008179EE /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
 		7899D34D25A2230E0003647D /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
-		78C6CCC522DDA7400086CDD1 /* tunerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tunerIcon.png; sourceTree = "<group>"; };
 		78DB12DF2306A399005F416D /* Mater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mater.swift; sourceTree = "<group>"; };
 		78E36056230A67750084DFA1 /* CircleLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLayer.swift; sourceTree = "<group>"; };
 		78E428392313F2B100B02902 /* MetroUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroUI.swift; sourceTree = "<group>"; };
@@ -130,6 +126,112 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A1B335E277E10E700EAB216 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				5A1B3363277E115300EAB216 /* Settings */,
+				5A1B3362277E113500EAB216 /* VolumeMeter */,
+				5A1B3361277E112300EAB216 /* Metronome */,
+				5A1B3360277E110600EAB216 /* Tuner */,
+				5A1B335F277E10F900EAB216 /* Tabbar */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		5A1B335F277E10F900EAB216 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				782A79D12577E62A00E04949 /* TabBarController.swift */,
+				78299D782607301A001FEB5C /* TabbarCell.xib */,
+				78299D8026073157001FEB5C /* TabbarCell.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		5A1B3360277E110600EAB216 /* Tuner */ = {
+			isa = PBXGroup;
+			children = (
+				7822C0ED2257027B00361EC5 /* TunerViewController.swift */,
+			);
+			path = Tuner;
+			sourceTree = "<group>";
+		};
+		5A1B3361277E112300EAB216 /* Metronome */ = {
+			isa = PBXGroup;
+			children = (
+				78E6E74123112C9C005B56CA /* MetronomeController.swift */,
+			);
+			path = Metronome;
+			sourceTree = "<group>";
+		};
+		5A1B3362277E113500EAB216 /* VolumeMeter */ = {
+			isa = PBXGroup;
+			children = (
+				785096AC257224FD00B2D074 /* VolumeMaterViewController.swift */,
+			);
+			path = VolumeMeter;
+			sourceTree = "<group>";
+		};
+		5A1B3363277E115300EAB216 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5A1B3366277E117D00EAB216 /* TempoSetting */,
+				5A1B3365277E116C00EAB216 /* SelectColor */,
+				5A1B3364277E116100EAB216 /* TOP */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		5A1B3364277E116100EAB216 /* TOP */ = {
+			isa = PBXGroup;
+			children = (
+				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
+			);
+			path = TOP;
+			sourceTree = "<group>";
+		};
+		5A1B3365277E116C00EAB216 /* SelectColor */ = {
+			isa = PBXGroup;
+			children = (
+				7812FB3325BABB7700190BC6 /* ColorCell.xib */,
+				7812FB3825BAC0AB00190BC6 /* ColorCell.swift */,
+				7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */,
+			);
+			name = SelectColor;
+			sourceTree = "<group>";
+		};
+		5A1B3366277E117D00EAB216 /* TempoSetting */ = {
+			isa = PBXGroup;
+			children = (
+				7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */,
+			);
+			path = TempoSetting;
+			sourceTree = "<group>";
+		};
+		5A1B3367277E121200EAB216 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7830223325A5BCE600D95267 /* UserInfo.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5A1B3368277E125B00EAB216 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7899D34D25A2230E0003647D /* extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5A1B3369277E129200EAB216 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				7830224725A5EF6400D95267 /* ThemeColor.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		7822C0DF2257027B00361EC5 = {
 			isa = PBXGroup;
 			children = (
@@ -156,15 +258,14 @@
 			isa = PBXGroup;
 			children = (
 				7822C0EB2257027B00361EC5 /* AppDelegate.swift */,
-				78358D8A24605C1C00B6E4D1 /* Controllers */,
+				5A1B3369277E129200EAB216 /* Util */,
 				78358D8B24605C7A00B6E4D1 /* Function */,
-				7830223325A5BCE600D95267 /* UserInfo.swift */,
-				7830224725A5EF6400D95267 /* ThemeColor.swift */,
-				7899D34D25A2230E0003647D /* extension.swift */,
+				78358D8C24605D3800B6E4D1 /* UI */,
+				5A1B3367277E121200EAB216 /* Data */,
+				5A1B3368277E125B00EAB216 /* Extension */,
+				5A1B335E277E10E700EAB216 /* Screen */,
+				78358D8A24605C1C00B6E4D1 /* StoryBoard */,
 				7822C0F22257027C00361EC5 /* Assets.xcassets */,
-				7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */,
-				78C6CCC522DDA7400086CDD1 /* tunerIcon.png */,
-				7840B586235EFA3200F09325 /* 1598350-2.png */,
 				7822C0F72257027C00361EC5 /* Info.plist */,
 			);
 			path = guitarTuner;
@@ -188,24 +289,13 @@
 			path = guitarTunerUITests;
 			sourceTree = "<group>";
 		};
-		78358D8A24605C1C00B6E4D1 /* Controllers */ = {
+		78358D8A24605C1C00B6E4D1 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				78358D8C24605D3800B6E4D1 /* UI */,
-				782A79D12577E62A00E04949 /* TabBarController.swift */,
-				7822C0ED2257027B00361EC5 /* TunerViewController.swift */,
-				78E6E74123112C9C005B56CA /* MetronomeController.swift */,
-				785096AC257224FD00B2D074 /* VolumeMaterViewController.swift */,
-				783C81CD22C24757004FEB7E /* SettingViewController.swift */,
-				7834A6F525F4F1E600BF1B58 /* TempoSettingViewController.swift */,
-				7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */,
+				7822C0F42257027C00361EC5 /* LaunchScreen.storyboard */,
 				7822C0EF2257027B00361EC5 /* Main.storyboard */,
-				7812FB3325BABB7700190BC6 /* ColorCell.xib */,
-				7812FB3825BAC0AB00190BC6 /* ColorCell.swift */,
-				78299D782607301A001FEB5C /* TabbarCell.xib */,
-				78299D8026073157001FEB5C /* TabbarCell.swift */,
 			);
-			path = Controllers;
+			path = StoryBoard;
 			sourceTree = "<group>";
 		};
 		78358D8B24605C7A00B6E4D1 /* Function */ = {
@@ -360,8 +450,6 @@
 				7822C0F32257027C00361EC5 /* Assets.xcassets in Resources */,
 				7822C0F12257027B00361EC5 /* Main.storyboard in Resources */,
 				7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */,
-				7840B587235EFA3200F09325 /* 1598350-2.png in Resources */,
-				78C6CCC622DDA7400086CDD1 /* tunerIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
