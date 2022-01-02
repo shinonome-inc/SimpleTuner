@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxRelay
 import XLPagerTabStrip
 import MessageUI
 
@@ -16,66 +17,45 @@ class SettingViewController: UITableViewController {
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var appVersionLabel: UILabel!
     
-    var photoLibraryManager: PhotoLibraryManager?
-    let defaults = UserDefaults.standard
-    let disposeBag = DisposeBag()
-    private let toRecipients = ["324etsushi@gmail.com"]
-    private let mailSubject = "Feedback（SimpleTuner）"
+    private let viewModel = SettingViewModel()
+    private let disposeBag = DisposeBag()
+    private var mailVC: MFMailComposeViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //photoLibraryManager = PhotoLibraryManager(parentViewController: self)
         dataBind()
+        viewModel.viewDidLoad()
         setup()
     }
     
     func dataBind() {
-        UserInfo.shared.colorEvent.subscribe(onNext: {
-            color in
-            self.colorLabel.text = color.name
-        }).disposed(by: disposeBag)
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.viewModel.onTapTableViewCell(indexPath: indexPath)
+            })
+            .disposed(by: disposeBag)
+        viewModel.viewState.themeColorEvent
+            .map{ $0.name }
+            .bind(to: colorLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.viewState.onTransitionMailEvent
+            .subscribe(onNext: { [weak self] mailVC in
+                self?.mailVC = mailVC
+                mailVC.mailComposeDelegate = self
+                self?.present(mailVC, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        NotificationCenter.default.rx
+            .notification(UIApplication.didBecomeActiveNotification, object: nil)
+            .subscribe(onNext: { [weak self] _ in
+                self?.deselectCell()
+            })
+            .disposed(by: disposeBag)
     }
     
     func setup() {
-        //label
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         appVersionLabel.text = version
-        
-        //notification
-        NotificationCenter.default.addObserver(self, selector: #selector(SettingViewController.appBecomeActive(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            switch indexPath.row {
-            case 1:
-                guard let reviewURL = URL(string: "https://apps.apple.com/app/id1563149768?action=write-review") else {
-                    return
-                }
-                UIApplication.shared.open(reviewURL, options: [:], completionHandler: nil)
-            case 2:
-                if MFMailComposeViewController.canSendMail() == false {
-                    return
-                }
-                presentMailView()
-            default:
-                return
-            }
-        }
-    }
-    
-    //レビューから戻ってきた際のCellのハイライト解除用
-    @objc func appBecomeActive(_ notification: Notification) {
-        deselectCell()
-    }
-    
-    func presentMailView() {
-        let mailViewController = MFMailComposeViewController()
-        mailViewController.mailComposeDelegate = self
-        mailViewController.setSubject(mailSubject)
-        mailViewController.setToRecipients(toRecipients)
-        self.present(mailViewController, animated: true, completion: nil)
     }
     
     func deselectCell() {
@@ -83,10 +63,6 @@ class SettingViewController: UITableViewController {
             return
         }
         tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }
 
@@ -105,16 +81,6 @@ extension SettingViewController: MFMailComposeViewControllerDelegate {
         controller.dismiss(animated: true, completion: {
             self.deselectCell()
         })
-    }
-}
-
-extension SettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-   
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
-            return
-        }
-        defaults.setUIImageToData(image: image, forKey: "backgroundImage")
     }
 }
 
