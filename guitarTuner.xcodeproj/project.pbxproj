@@ -16,6 +16,8 @@
 		5AA46C702781A8DC009287BE /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C6F2781A8DC009287BE /* DefaultsKey.swift */; };
 		5AA46C722781AB9A009287BE /* LocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C712781AB9A009287BE /* LocalDataStore.swift */; };
 		5AA46C752781B111009287BE /* TunerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C742781B111009287BE /* TunerViewModel.swift */; };
+		5AA46C7A2781D60B009287BE /* VolumeMeterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C792781D60B009287BE /* VolumeMeterViewModel.swift */; };
+		5AA46C7C2781DD65009287BE /* VolumeMeterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C7B2781DD65009287BE /* VolumeMeterBarView.swift */; };
 		5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5ACA3F542780C74900B7CC04 /* STKAudioKit */; };
 		7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */; };
 		7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812FB3325BABB7700190BC6 /* ColorCell.xib */; };
@@ -73,6 +75,8 @@
 		5AA46C6F2781A8DC009287BE /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
 		5AA46C712781AB9A009287BE /* LocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
 		5AA46C742781B111009287BE /* TunerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerViewModel.swift; sourceTree = "<group>"; };
+		5AA46C792781D60B009287BE /* VolumeMeterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMeterViewModel.swift; sourceTree = "<group>"; };
+		5AA46C7B2781DD65009287BE /* VolumeMeterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMeterBarView.swift; sourceTree = "<group>"; };
 		7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		7812FB3325BABB7700190BC6 /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		7812FB3825BAC0AB00190BC6 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				785096AC257224FD00B2D074 /* VolumeMaterViewController.swift */,
+				5AA46C792781D60B009287BE /* VolumeMeterViewModel.swift */,
+				5AA46C7B2781DD65009287BE /* VolumeMeterBarView.swift */,
 			);
 			path = VolumeMeter;
 			sourceTree = "<group>";
@@ -560,6 +566,7 @@
 				78E9357B25CD3BCD00A75190 /* UnderLineView.swift in Sources */,
 				78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */,
 				78299D8126073157001FEB5C /* TabbarCell.swift in Sources */,
+				5AA46C7C2781DD65009287BE /* VolumeMeterBarView.swift in Sources */,
 				7834A6F625F4F1E700BF1B58 /* TempoSettingViewController.swift in Sources */,
 				7830223425A5BCE600D95267 /* UserInfo.swift in Sources */,
 				7899D34E25A2230E0003647D /* extension.swift in Sources */,
@@ -577,6 +584,7 @@
 				78E4283A2313F2B100B02902 /* MetroUI.swift in Sources */,
 				5AA46C702781A8DC009287BE /* DefaultsKey.swift in Sources */,
 				7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */,
+				5AA46C7A2781D60B009287BE /* VolumeMeterViewModel.swift in Sources */,
 				7830224825A5EF6400D95267 /* ThemeColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
