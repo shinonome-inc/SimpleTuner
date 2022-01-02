@@ -10,12 +10,10 @@ import Foundation
 import AudioKit
 import AudioKitEX
 import STKAudioKit
+import RxSwift
+import RxRelay
 
-protocol MetronomeDelegate: class {
-    func metronomeDidBeat(currentBeat: Int)
-}
-
-class Metoronome {
+class Metronome {
     let engine = AudioEngine()
     let shaker = Shaker()
     var callbackInst = CallbackInstrument()
@@ -23,8 +21,19 @@ class Metoronome {
     let mixer = Mixer()
     var sequencer = Sequencer()
     private var data = ShakerMetronomeData()
+        
+    struct Publishers {
+        fileprivate let didStart = PublishRelay<Void>()
+        fileprivate let didStop = PublishRelay<Void>()
+        fileprivate let didChangeTempo = PublishRelay<Double>()
+        fileprivate let didBeat = PublishRelay<Int>()
+        var didStartEvent: Observable<Void> { return didStart.asObservable() }
+        var didStopEvent: Observable<Void> { return didStop.asObservable() }
+        var didChangeTempoEvent: Observable<Double> { return didChangeTempo.asObservable() }
+        var didBeatEvent: Observable<Int> { return didBeat.asObservable() }
+    }
     
-    weak var delegate: MetronomeDelegate?
+    let publishers = Publishers()
     
     struct ShakerMetronomeData {
         var isPlaying = false
@@ -45,7 +54,7 @@ class Metoronome {
 
         callbackInst = CallbackInstrument(midiCallback: { (_, beat, _) in
             self.data.currentBeat = Int(beat)
-            self.delegate?.metronomeDidBeat(currentBeat: Int(beat))
+            self.publishers.didBeat.accept(Int(beat))
             print(beat)
         })
 
@@ -85,6 +94,7 @@ class Metoronome {
             try engine.start()
             sequencer.play()
             data.isPlaying = true
+            publishers.didStart.accept(())
         } catch let err {
             print(err.localizedDescription)
         }
@@ -94,6 +104,7 @@ class Metoronome {
         sequencer.stop()
         engine.stop()
         data.isPlaying = false
+        publishers.didStop.accept(())
     }
     
     func isPlaying() -> Bool {
@@ -107,18 +118,21 @@ class Metoronome {
     func tempoPlus1() {
         data.tempo += 1
         sequencer.tempo = data.tempo
+        publishers.didChangeTempo.accept(data.tempo)
         UserInfo.shared.setTempo(tempo: data.tempo)
     }
     
     func tempoMinus1() {
         data.tempo -= 1
         sequencer.tempo = data.tempo
+        publishers.didChangeTempo.accept(data.tempo)
         UserInfo.shared.setTempo(tempo: data.tempo)
     }
     
     func setTenpo(settedTenpo: Double) {
         data.tempo = settedTenpo
         sequencer.tempo = data.tempo
+        publishers.didChangeTempo.accept(data.tempo)
         UserInfo.shared.setTempo(tempo: data.tempo)
     }
 }

@@ -16,11 +16,13 @@ class TempoSettingViewController: UIViewController {
     @IBOutlet weak var tempoLabel: UILabel!
     @IBOutlet weak var numberPadView: NumberPadView!
     
-    let disposeBag = DisposeBag()
+    private var tempo: Int!
+    private var dismissed: ((Double) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         numberPadView.delegate = self
+        tempoLabel.text = String(tempo)
     }
     
     override func viewDidLayoutSubviews() {
@@ -28,11 +30,9 @@ class TempoSettingViewController: UIViewController {
         numberPadView.makeView()
     }
     
-    func dataBind() {
-        UserInfo.shared.tempoEvent.subscribe(onNext: {
-            tempo in
-            self.tempoLabel.text = String(format: "%.0f", tempo)
-        }).disposed(by: disposeBag)
+    func configure(with tempo: Int, dismissed: ((Double)->())? = nil) {
+        self.tempo = tempo
+        self.dismissed = dismissed
     }
 }
 
@@ -74,6 +74,8 @@ extension TempoSettingViewController: NumberPadViewDelegate {
             return
         }
         numberPadView.firstTouch = true
-        NotificationCenter.default.post(name: .tappedSET, object: settedTempo)
+        self.dismiss(animated: true, completion: { [weak self] in
+            self?.dismissed?(settedTempo)
+        })
     }
 }

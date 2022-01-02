@@ -59,9 +59,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbq-Hx-a2V">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="167"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <color key="textColor" name="mainTextColor"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="nJw-By-z25" appends="YES" id="A67-E6-rmr"/>
+                                        </connections>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,9 +90,6 @@
                                             <color key="titleColor" name="mainTextColor"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="tappedPlus:" destination="N2Q-2H-uM0" eventType="touchUpInside" id="Xcd-Z3-2sw"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSn-mI-g1v">
                                         <rect key="frame" x="18.5" y="0.0" width="75.5" height="75"/>
@@ -100,9 +101,6 @@
                                         <state key="normal" title="-">
                                             <color key="titleColor" name="mainTextColor"/>
                                         </state>
-                                        <connections>
-                                            <action selector="tappedMinus:" destination="N2Q-2H-uM0" eventType="touchUpInside" id="x53-Kj-C01"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -126,9 +124,6 @@
                                             <color key="titleColor" name="mainTextColor"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="tappedStart:" destination="N2Q-2H-uM0" eventType="touchUpInside" id="CSO-8Y-7MC"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -139,13 +134,6 @@
                                     <constraint firstItem="TcY-lD-9cf" firstAttribute="width" secondItem="05P-IP-ixX" secondAttribute="width" multiplier="0.5" id="llI-Tf-fIy"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NVs-yD-5Mg">
-                                <rect key="frame" x="0.0" y="-107" width="375" height="725"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="VhJ-bD-EY4" kind="embed" id="6CR-YL-lB6"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OA1-wI-lF6"/>
                         <color key="backgroundColor" name="mainBackground"/>
@@ -181,11 +169,12 @@
                         <outlet property="plusButton" destination="7h1-Ke-V9I" id="wcY-nj-b1L"/>
                         <outlet property="startButton" destination="TcY-lD-9cf" id="TL5-vd-hFr"/>
                         <outlet property="tempoLabel" destination="gbq-Hx-a2V" id="X5o-gv-gXw"/>
-                        <outlet property="tempoSettingView" destination="NVs-yD-5Mg" id="aaz-RC-WdS"/>
+                        <outlet property="tempoLabelTapGestureRecognizer" destination="nJw-By-z25" id="a4g-dK-Fsb"/>
                         <outlet property="tempoView" destination="klD-e8-LJh" id="O62-Gi-qnG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjE-nA-2As" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nJw-By-z25"/>
             </objects>
             <point key="canvasLocation" x="1117.3913043478262" y="238.39285714285714"/>
         </scene>
@@ -821,16 +810,16 @@
         <!--Tempo Setting View Controller-->
         <scene sceneID="CRU-Ix-jCB">
             <objects>
-                <viewController storyboardIdentifier="TempoSettingViewController" id="VhJ-bD-EY4" customClass="TempoSettingViewController" customModule="guitarTuner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TempoSettingViewController" modalPresentationStyle="pageSheet" id="VhJ-bD-EY4" customClass="TempoSettingViewController" customModule="guitarTuner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XdI-ff-s6y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I98-DT-Dbs">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-RI-ni6">
-                                        <rect key="frame" x="0.0" y="40" width="375" height="105"/>
+                                        <rect key="frame" x="0.0" y="40" width="375" height="93.5"/>
                                         <color key="backgroundColor" name="mainBackground"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <color key="textColor" name="mainTextColor"/>
@@ -847,7 +836,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGW-Mx-B0x" customClass="NumberPadView" customModule="guitarTuner" customModuleProvider="target">
-                                <rect key="frame" x="16" y="145" width="343" height="580"/>
+                                <rect key="frame" x="16" y="133.5" width="343" height="533.5"/>
                                 <color key="backgroundColor" name="mainBackground"/>
                             </view>
                         </subviews>
