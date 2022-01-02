@@ -1,20 +1,4 @@
 PODS:
-  - AudioKit (5.1.0):
-    - AudioKit/C (= 5.1.0)
-    - AudioKit/Core (= 5.1.0)
-    - AudioKit/Soundpipe (= 5.1.0)
-    - AudioKit/Sporth (= 5.1.0)
-    - AudioKit/STK (= 5.1.0)
-  - AudioKit/C (5.1.0):
-    - AudioKit/Soundpipe
-    - AudioKit/Sporth
-    - AudioKit/STK
-  - AudioKit/Core (5.1.0):
-    - AudioKit/C
-  - AudioKit/Soundpipe (5.1.0)
-  - AudioKit/Sporth (5.1.0):
-    - AudioKit/Soundpipe
-  - AudioKit/STK (5.1.0)
   - CocoaLumberjack (3.7.4):
     - CocoaLumberjack/Core (= 3.7.4)
   - CocoaLumberjack/Core (3.7.4)
@@ -29,7 +13,6 @@ PODS:
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
-  - AudioKit
   - RxCocoa
   - RxSwift
   - SVGKit
@@ -37,7 +20,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - AudioKit
     - CocoaLumberjack
     - RxCocoa
     - RxRelay
@@ -46,7 +28,6 @@ SPEC REPOS:
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
-  AudioKit: 81246a4ccdd7ca3c6e0076f913070e90987b4369
   CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
@@ -54,6 +35,6 @@ SPEC CHECKSUMS:
   SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: 29ab639b946ce4135c0db92d4032df29b38d4a42
+PODFILE CHECKSUM: 0b3cbc8bd3c2cc90499a02a89755e13187760cf0
 
 COCOAPODS: 1.10.2

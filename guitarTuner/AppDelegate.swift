@@ -27,18 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }).disposed(by: disposeBag)
         navigationBar.tintColor = UIColor.white
         navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        AKSettings.playbackWhileMuted = true
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        if SoundAnalizer.shared.metronomeIsActive == true {
-            return
-        } else {
-            SoundAnalizer.shared.stop()
-        }
+//        if SoundAnalizer.shared.metronomeIsActive == true {
+//            return
+//        } else {
+//            SoundAnalizer.shared.stop()
+//        }
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -48,11 +47,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        if SoundAnalizer.shared.metronomeIsActive == true {
-            return
-        } else {
-            SoundAnalizer.shared.start()
-        }
+//        if SoundAnalizer.shared.metronomeIsActive == true {
+//            return
+//        } else {
+//            SoundAnalizer.shared.start()
+//        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

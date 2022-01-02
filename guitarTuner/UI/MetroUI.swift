@@ -41,14 +41,14 @@ class MetroCountView: UIView {
     
     func circleLighting(beatCount: Int) {
         let circles = [circle1, circle2, circle3, circle4, circle5, circle6]
-        for i in 0 ..< beatCount - 1 {
+        for i in 0 ..< beatCount {
             let circle = circles[i]
             circle.lightOff()
         }
-        if beatCount == 1 {
+        if beatCount == 0 {
             circles[beatNumber - 1].lightOff()
         }
-        let circle = circles[beatCount - 1]
+        let circle = circles[beatCount]
         circle.lighting(color: color)
     }
     

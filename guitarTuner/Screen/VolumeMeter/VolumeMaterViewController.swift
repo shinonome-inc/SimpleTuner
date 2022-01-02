@@ -28,6 +28,7 @@ class VolumeMaterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SoundAnalizer.shared.volumeMeterDelegate = self
+        SoundAnalizer.shared.mode = .volume
     }
     
     override func viewDidAppear(_ animated: Bool) {

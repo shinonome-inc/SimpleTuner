@@ -24,11 +24,12 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     let disposeBag = DisposeBag()
     let lineWidth: CGFloat = 2
     var tempoLabelFrame: CGRect?
+    private let metronome = Metoronome()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SoundAnalizer.shared.metronomeDelegate = self
-        
+        if SoundAnalizer.shared.isPlaying { SoundAnalizer.shared.stop() }
+        metronome.delegate = self
         tempoLabel.isUserInteractionEnabled = true
         tempoLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tappedTempoLabel)))
         NotificationCenter.default.addObserver(self, selector: #selector(finishTempoSetting(notification:)), name: .tappedSET, object: nil)
@@ -47,8 +48,8 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     }()
     
     override func viewWillDisappear(_ animated: Bool) {
-        if SoundAnalizer.shared.metronomeIsActive == true {
-            SoundAnalizer.shared.stopMetro()
+        if metronome.isPlaying() {
+            metronome.stop()
             startButton.setTitle("START", for: .normal)
             metroCountView.refresh()
         }
@@ -56,7 +57,7 @@ class MetronomeController: UIViewController, MetronomeDelegate {
     
     func setupUIs() {
         //labels
-        let tempo = String(format: "%.0f", SoundAnalizer.shared.getTempo())
+        let tempo = String(format: "%.0f", metronome.getTempo())
         tempoLabel.text = tempo
         tempoLabelFrame = tempoLabel.frame
         
@@ -88,30 +89,30 @@ class MetronomeController: UIViewController, MetronomeDelegate {
         UIView.animate(withDuration: 0.2, animations: {
             self.tempoSettingView.frame = CGRect(x: 0, y: height, width: width, height: height)
         })
-        SoundAnalizer.shared.setTenpo(settedTenpo: notification.object as! Double)
+        metronome.setTenpo(settedTenpo: notification.object as! Double)
     }
-    
+
     @IBAction func tappedMinus(_ sender: Any) {
-        guard SoundAnalizer.shared.getTempo() > 1 else {
+        guard metronome.getTempo() > 1 else {
             return
         }
-        SoundAnalizer.shared.tempoMinus1()
+        metronome.tempoMinus1()
     }
-    
+
     @IBAction func tappedPlus(_ sender: Any) {
-        guard SoundAnalizer.shared.getTempo() < 300 else {
+        guard metronome.getTempo() < 300 else {
             return
         }
-        SoundAnalizer.shared.tempoPlus1()
+        metronome.tempoPlus1()
     }
-    
+
     @IBAction func tappedStart(_ sender: Any) {
-        if SoundAnalizer.shared.metronomeIsActive == false {
+        if !metronome.isPlaying() {
             startButton.setTitle("STOP", for: .normal)
-            SoundAnalizer.shared.startMetro()
+            metronome.start()
         } else {
             startButton.setTitle("START", for: .normal)
-            SoundAnalizer.shared.stopMetro()
+            metronome.stop()
             metroCountView.refresh()
         }
     }

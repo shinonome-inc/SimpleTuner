@@ -30,7 +30,7 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
     }
     
     override func viewDidLoad() {
-        SoundAnalizer.shared.setMode(mode: .tuner)
+       // SoundAnalizer.shared.mode = .tuner
         if isInitBind {
             dataBind()
         }
@@ -79,7 +79,7 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
                 guard let mode = newCell.mode else {
                     return
                 }
-                SoundAnalizer.shared.setMode(mode: mode)
+                //SoundAnalizer.shared.setMode(mode: mode)
                 print("##### SoundAnalizer setted ######")
             }
         }

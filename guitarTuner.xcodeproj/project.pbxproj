@@ -3,11 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2A885E6BBB2DDAD8D3CFA49F /* Pods_guitarTuner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8DEAC7CC3ABC449088B71D /* Pods_guitarTuner.framework */; };
+		5A3786582780951C004341D7 /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3786572780951C004341D7 /* Metronome.swift */; };
+		5A37865B2780ABB4004341D7 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A37865A2780ABB4004341D7 /* AudioKit */; };
+		5A37865E2780AC2F004341D7 /* AudioKitEX in Frameworks */ = {isa = PBXBuildFile; productRef = 5A37865D2780AC2F004341D7 /* AudioKitEX */; };
+		5A3786612780AC57004341D7 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A3786602780AC57004341D7 /* SoundpipeAudioKit */; };
+		5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5ACA3F542780C74900B7CC04 /* STKAudioKit */; };
 		7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */; };
 		7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812FB3325BABB7700190BC6 /* ColorCell.xib */; };
 		7812FB3925BAC0AB00190BC6 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB3825BAC0AB00190BC6 /* ColorCell.swift */; };
@@ -60,6 +65,7 @@
 /* Begin PBXFileReference section */
 		1E8DEAC7CC3ABC449088B71D /* Pods_guitarTuner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_guitarTuner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		467535DACE0ADF3C5230F824 /* Pods-guitarTuner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-guitarTuner.release.xcconfig"; path = "Pods/Target Support Files/Pods-guitarTuner/Pods-guitarTuner.release.xcconfig"; sourceTree = "<group>"; };
+		5A3786572780951C004341D7 /* Metronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
 		7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		7812FB3325BABB7700190BC6 /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		7812FB3825BAC0AB00190BC6 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
@@ -104,6 +110,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A37865B2780ABB4004341D7 /* AudioKit in Frameworks */,
+				5A3786612780AC57004341D7 /* SoundpipeAudioKit in Frameworks */,
+				5A37865E2780AC2F004341D7 /* AudioKitEX in Frameworks */,
+				5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */,
 				78802448263E8AA800CB6D32 /* MessageUI.framework in Frameworks */,
 				2A885E6BBB2DDAD8D3CFA49F /* Pods_guitarTuner.framework in Frameworks */,
 			);
@@ -305,6 +315,7 @@
 				78E773E5225DFD85006C8C4B /* Note.swift */,
 				78E63EF52266C97900D882CA /* Pitch.swift */,
 				7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */,
+				5A3786572780951C004341D7 /* Metronome.swift */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -357,6 +368,12 @@
 			dependencies = (
 			);
 			name = guitarTuner;
+			packageProductDependencies = (
+				5A37865A2780ABB4004341D7 /* AudioKit */,
+				5A37865D2780AC2F004341D7 /* AudioKitEX */,
+				5A3786602780AC57004341D7 /* SoundpipeAudioKit */,
+				5ACA3F542780C74900B7CC04 /* STKAudioKit */,
+			);
 			productName = guitarTuner;
 			productReference = 7822C0E82257027B00361EC5 /* guitarTuner.app */;
 			productType = "com.apple.product-type.application";
@@ -429,6 +446,12 @@
 				Base,
 			);
 			mainGroup = 7822C0DF2257027B00361EC5;
+			packageReferences = (
+				5A3786592780ABB4004341D7 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				5A37865C2780AC2F004341D7 /* XCRemoteSwiftPackageReference "AudioKitEX" */,
+				5A37865F2780AC57004341D7 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
+				5ACA3F532780C74900B7CC04 /* XCRemoteSwiftPackageReference "STKAudioKit" */,
+			);
 			productRefGroup = 7822C0E92257027B00361EC5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -533,6 +556,7 @@
 				78E773E6225DFD85006C8C4B /* Note.swift in Sources */,
 				7812FB3925BAC0AB00190BC6 /* ColorCell.swift in Sources */,
 				78E63EF62266C97900D882CA /* Pitch.swift in Sources */,
+				5A3786582780951C004341D7 /* Metronome.swift in Sources */,
 				78DB12E02306A399005F416D /* Mater.swift in Sources */,
 				785096AD257224FD00B2D074 /* VolumeMaterViewController.swift in Sources */,
 				78E4283A2313F2B100B02902 /* MetroUI.swift in Sources */,
@@ -727,7 +751,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.SimpleTuner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SimpleTuner;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -751,7 +775,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.324etsushi.SimpleTuner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = SimpleTuner;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -878,6 +902,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A3786592780ABB4004341D7 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		5A37865C2780AC2F004341D7 /* XCRemoteSwiftPackageReference "AudioKitEX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKitEX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		5A37865F2780AC57004341D7 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/SoundpipeAudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		5ACA3F532780C74900B7CC04 /* XCRemoteSwiftPackageReference "STKAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/STKAudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A37865A2780ABB4004341D7 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A3786592780ABB4004341D7 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+		5A37865D2780AC2F004341D7 /* AudioKitEX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A37865C2780AC2F004341D7 /* XCRemoteSwiftPackageReference "AudioKitEX" */;
+			productName = AudioKitEX;
+		};
+		5A3786602780AC57004341D7 /* SoundpipeAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A37865F2780AC57004341D7 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
+			productName = SoundpipeAudioKit;
+		};
+		5ACA3F542780C74900B7CC04 /* STKAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5ACA3F532780C74900B7CC04 /* XCRemoteSwiftPackageReference "STKAudioKit" */;
+			productName = STKAudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7822C0E02257027B00361EC5 /* Project object */;
 }

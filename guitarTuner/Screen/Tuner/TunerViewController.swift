@@ -33,6 +33,8 @@ class TunerViewController: UIViewController, TunerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         SoundAnalizer.shared.tunerDelegate = self
+        SoundAnalizer.shared.mode = .tuner
+        SoundAnalizer.shared.start()
     }
     
     override func viewDidLayoutSubviews() {

@@ -13,7 +13,8 @@ class Pitch: CustomStringConvertible {
     let note: Note
     let octave: Int
     let frequency: Double
-    static var baseFrequency: Double = UserDefaults.standard.double(forKey: "baseFrequency")
+    //static var baseFrequency: Double = UserDefaults.standard.double(forKey: "baseFrequency")
+    static var baseFrequency: Double = 440
     
     private init(note: Note, octave: Int) {
         self.note = note
