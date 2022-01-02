@@ -61,22 +61,6 @@ class SoundAnalizer {
                 }
             }
         }
-//        costomDispatchQueue = DispatchQueue(label: "com.gmail.324etsushi",qos: .userInteractive)
-//        microphone = AKMicrophone()
-//        frequencyTracker = AKFrequencyTracker(microphone)
-//        frequencySilence = AKBooster(frequencyTracker, gain: 0)
-//        amplitudeTracker = AKAmplitudeTracker(microphone)
-//        amplitudeSilence = AKBooster(amplitudeTracker, gain: 0)
-//        metronome = AKMetronome()
-//        metronome.tempo = 120
-//        metronome.subdivision = 4
-//        metronome.frequency1 = 2000
-//        metronome.frequency2 = 1000
-//        metronomeMixer = AKMixer(metronome)
-//        metronomeMixer.volume = 10
-//        metronome.callback = {
-//            self.metronomeDelegate?.metronomeDidBeat(currentBeat: self.metronome.currentBeat)
-//        }
     }
     
     //share method
@@ -96,46 +80,6 @@ class SoundAnalizer {
         engine.stop()
         isPlaying = false
     }
-    
-//    func setMode(mode: Mode) {
-//        guard self.mode != mode else {
-//            print("##### mode is aleady setted #####")
-//            return
-//        }
-//        costomDispatchQueue.async {
-//            self.stop()
-//            self.mode = mode
-//            switch mode {
-//            case .tuner:
-//                AKManager.output = self.frequencySilence
-//                print("##### Mode Tuner #####")
-//            case .metro:
-//                AKManager.output = self.metronomeMixer
-//                print("##### Mode Metro #####")
-//            case .volume:
-//                AKManager.output = self.amplitudeSilence
-//                print("##### Mode Volume #####")
-//            case .none:
-//                self.stop()
-//                print("##### Mode None #####")
-//                return
-//            }
-//            self.start()
-//        }
-//        timerValidation(mode: mode)
-//    }
-//
-//    func timerValidation(mode :Mode) {
-//        timer?.invalidate()
-//        switch mode {
-//        case .tuner:
-//            self.timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SoundAnalizer.tick), userInfo: nil, repeats: true)
-//        case .volume:
-//            self.timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(SoundAnalizer.getAmplitude), userInfo: nil, repeats: true)
-//        default:
-//            return
-//        }
-//    }
     
     func didTrackFrequency(frequency: Double, amplitude: Double) {
         let pitch = Pitch.nearest(frequency)
@@ -162,41 +106,6 @@ class SoundAnalizer {
         Pitch.renewAll()
         UserInfo.shared.setBaseFrequency(baseFrequency: Pitch.baseFrequency)
     }
-    
-    //metronome method
-//    func startMetro() {
-//        metronome.start()
-//        metronomeIsActive = true
-//    }
-//    
-//    func stopMetro() {
-//        metronome.stop()
-//        metronome.reset()
-//        metronomeIsActive = false
-//    }
-//    
-//    func tempoPlus1() {
-//        metronome.tempo += 1
-//        UserInfo.shared.setTempo(tempo: metronome.tempo)
-//    }
-//    
-//    func tempoMinus1() {
-//        metronome.tempo -= 1
-//        UserInfo.shared.setTempo(tempo: metronome.tempo)
-//    }
-//    
-//    func setTenpo(settedTenpo: Double) {
-//        metronome.tempo = settedTenpo
-//        UserInfo.shared.setTempo(tempo: metronome.tempo)
-//    }
-//    
-//    func getTempo() ->Double{
-//        return metronome.tempo
-//    }
-//    
-//    func getBeatNumber() ->Int{
-//        return metronome.subdivision
-//    }
     
     private func didTrackAmplitude(amplitude: Double) {
         let base = 0.0001
