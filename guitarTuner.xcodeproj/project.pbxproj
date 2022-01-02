@@ -15,6 +15,7 @@
 		5AA46C6E2781A868009287BE /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5AA46C6D2781A868009287BE /* SwiftyUserDefaults */; };
 		5AA46C702781A8DC009287BE /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C6F2781A8DC009287BE /* DefaultsKey.swift */; };
 		5AA46C722781AB9A009287BE /* LocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C712781AB9A009287BE /* LocalDataStore.swift */; };
+		5AA46C752781B111009287BE /* TunerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C742781B111009287BE /* TunerViewModel.swift */; };
 		5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5ACA3F542780C74900B7CC04 /* STKAudioKit */; };
 		7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */; };
 		7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812FB3325BABB7700190BC6 /* ColorCell.xib */; };
@@ -71,6 +72,7 @@
 		5A3786572780951C004341D7 /* Metronome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
 		5AA46C6F2781A8DC009287BE /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
 		5AA46C712781AB9A009287BE /* LocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
+		5AA46C742781B111009287BE /* TunerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerViewModel.swift; sourceTree = "<group>"; };
 		7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		7812FB3325BABB7700190BC6 /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		7812FB3825BAC0AB00190BC6 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				7822C0ED2257027B00361EC5 /* TunerViewController.swift */,
+				5AA46C742781B111009287BE /* TunerViewModel.swift */,
 			);
 			path = Tuner;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				7834A6F625F4F1E700BF1B58 /* TempoSettingViewController.swift in Sources */,
 				7830223425A5BCE600D95267 /* UserInfo.swift in Sources */,
 				7899D34E25A2230E0003647D /* extension.swift in Sources */,
+				5AA46C752781B111009287BE /* TunerViewModel.swift in Sources */,
 				783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */,
 				7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */,
 				5AA46C722781AB9A009287BE /* LocalDataStore.swift in Sources */,

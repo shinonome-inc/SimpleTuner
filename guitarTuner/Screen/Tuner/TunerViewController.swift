@@ -9,8 +9,10 @@
 import UIKit
 import XLPagerTabStrip
 import RxSwift
+import RxRelay
+import RxCocoa
 
-class TunerViewController: UIViewController, TunerDelegate {
+class TunerViewController: UIViewController {
 
     @IBOutlet weak var baseFrequencyLabel: UILabel!
     @IBOutlet weak var noteTitleLabel: UILabel!
@@ -23,7 +25,10 @@ class TunerViewController: UIViewController, TunerDelegate {
     @IBOutlet weak var frequencyView: UnderLineView!
     @IBOutlet weak var noteView: UnderLineView!
     @IBOutlet weak var materBaseView: UIView!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     
+    private let viewModel = TunerViewModel()
     var scaleAffine: CGAffineTransform?
     let lineWidth: CGFloat = 2
     let disposeBag = DisposeBag()
@@ -32,15 +37,18 @@ class TunerViewController: UIViewController, TunerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        SoundAnalizer.shared.tunerDelegate = self
-        SoundAnalizer.shared.mode = .tuner
-        SoundAnalizer.shared.start()
+        dataBind()
+        viewModel.viewDidLoad()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        dataBind()
         _ = self.initViewLayout
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.startTuner()
     }
     
     private lazy var initViewLayout : Void = {
@@ -48,17 +56,47 @@ class TunerViewController: UIViewController, TunerDelegate {
     }()
     
     func dataBind() {
-        UserInfo.shared.colorEvent.subscribe(onNext: {
-            color in
-            self.noteView.line.backgroundColor = color.main.cgColor
-            self.pitchView.line.backgroundColor = color.main.cgColor
-            self.frequencyView.line.backgroundColor = color.main.cgColor
-        }).disposed(by: disposeBag)
-        
-        UserInfo.shared.baseFrequencyEvent.subscribe(onNext: {
-            baseFrequency in
-            self.baseFrequencyLabel.text = String(format: "%.0f", baseFrequency) + "Hz"
-        }).disposed(by: disposeBag)
+        plusButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.onTapPlusButton()
+            })
+            .disposed(by: disposeBag)
+        minusButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.onTapMinusButton()
+            })
+            .disposed(by: disposeBag)
+        viewModel.viewState.themeColorEvent
+            .subscribe(onNext: { [weak self] color in
+                self?.noteView.lineColor = color.main
+                self?.pitchView.lineColor = color.main
+                self?.frequencyView.lineColor = color.main
+            })
+            .disposed(by: disposeBag)
+        viewModel.viewState.baseFrequencyEvent
+            .map{ String(format: "%.0f", $0) + "Hz" }
+            .bind(to: baseFrequencyLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.viewState.pitchFrequencyEvent
+            .map{ String(format: "%.1f", $0) }
+            .bind(to: pitchLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.viewState.frequencyEvent
+            .map{ String(format: "%.1f", $0) }
+            .bind(to: frequencyLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.viewState.noteEvent
+            .map{ "\($0)" }
+            .bind(to: noteLabel.rx.text)
+            .disposed(by: disposeBag)
+        viewModel.viewState.onMoveArrowViewEvent
+            .subscribe(onNext: { [weak self] (pitch, frequency) in
+                guard let scaleAffine = self?.scaleAffine else {
+                    return
+                }
+                self?.arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine)
+            })
+            .disposed(by: disposeBag)
     }
    
     func setupUIs() {
@@ -82,34 +120,6 @@ class TunerViewController: UIViewController, TunerDelegate {
         noteView.drawUnderLine()
         pitchView.drawUnderLine()
         frequencyView.drawUnderLine()
-    }
-    
-    func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double) {
-        guard amplitude > 0.1,
-              frequency > Pitch.all[0].frequency,
-              frequency < Pitch.all[60].frequency,
-              let scaleAffine = scaleAffine else {
-            return
-        }
-        
-        let frequencyText = String(format: "%.1f", frequency)
-        let pitchFrequencyText = String(format: "%.1f", pitch.frequency)
-        frequencyLabel.text = frequencyText
-        pitchLabel.text = pitchFrequencyText
-        noteLabel.text = "\(pitch.note)"
-        arrowView.moveArrowLayer(pitch: pitch, frequency: frequency, scaleAffine: scaleAffine)
-    }
-    
-    @IBAction func tappedMinus(_ sender: Any) {
-        SoundAnalizer.shared.baseFrequencyMinus()
-    }
-    
-    @IBAction func tappedPlus(_ sender: Any) {
-        SoundAnalizer.shared.baseFrequencyPlus()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }
 
