@@ -20,6 +20,8 @@
 		5AA46C7C2781DD65009287BE /* VolumeMeterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C7B2781DD65009287BE /* VolumeMeterBarView.swift */; };
 		5AA46C7E2781E1F6009287BE /* MetronomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C7D2781E1F6009287BE /* MetronomeViewModel.swift */; };
 		5AA46C802781F948009287BE /* NumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C7F2781F948009287BE /* NumberPadView.swift */; };
+		5AA46C822781FA83009287BE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C812781FA83009287BE /* UIColor+Extension.swift */; };
+		5AA46C842781FACB009287BE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C832781FACB009287BE /* UIView+Extension.swift */; };
 		5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5ACA3F542780C74900B7CC04 /* STKAudioKit */; };
 		7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */; };
 		7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812FB3325BABB7700190BC6 /* ColorCell.xib */; };
@@ -43,7 +45,7 @@
 		78802448263E8AA800CB6D32 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78802447263E8AA800CB6D32 /* MessageUI.framework */; };
 		7883A343246124DF00C812C3 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */; };
 		7890739C24739066008179EE /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7890739B24739066008179EE /* BackgroundImageView.swift */; };
-		7899D34E25A2230E0003647D /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899D34D25A2230E0003647D /* extension.swift */; };
+		7899D34E25A2230E0003647D /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899D34D25A2230E0003647D /* CALayer+Extension.swift */; };
 		78DB12E02306A399005F416D /* Mater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DB12DF2306A399005F416D /* Mater.swift */; };
 		78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E36056230A67750084DFA1 /* CircleLayer.swift */; };
 		78E4283A2313F2B100B02902 /* MetroCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E428392313F2B100B02902 /* MetroCountView.swift */; };
@@ -81,6 +83,8 @@
 		5AA46C7B2781DD65009287BE /* VolumeMeterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMeterBarView.swift; sourceTree = "<group>"; };
 		5AA46C7D2781E1F6009287BE /* MetronomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeViewModel.swift; sourceTree = "<group>"; };
 		5AA46C7F2781F948009287BE /* NumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadView.swift; sourceTree = "<group>"; };
+		5AA46C812781FA83009287BE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		5AA46C832781FACB009287BE /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		7812FB3325BABB7700190BC6 /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		7812FB3825BAC0AB00190BC6 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
@@ -109,7 +113,7 @@
 		78802447263E8AA800CB6D32 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 		7890739B24739066008179EE /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
-		7899D34D25A2230E0003647D /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		7899D34D25A2230E0003647D /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		78DB12DF2306A399005F416D /* Mater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mater.swift; sourceTree = "<group>"; };
 		78E36056230A67750084DFA1 /* CircleLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLayer.swift; sourceTree = "<group>"; };
 		78E428392313F2B100B02902 /* MetroCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroCountView.swift; sourceTree = "<group>"; };
@@ -249,7 +253,9 @@
 		5A1B3368277E125B00EAB216 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7899D34D25A2230E0003647D /* extension.swift */,
+				7899D34D25A2230E0003647D /* CALayer+Extension.swift */,
+				5AA46C812781FA83009287BE /* UIColor+Extension.swift */,
+				5AA46C832781FACB009287BE /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -572,15 +578,17 @@
 				78E9357B25CD3BCD00A75190 /* UnderLineView.swift in Sources */,
 				78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */,
 				5AA46C802781F948009287BE /* NumberPadView.swift in Sources */,
+				5AA46C822781FA83009287BE /* UIColor+Extension.swift in Sources */,
 				78299D8126073157001FEB5C /* TabbarCell.swift in Sources */,
 				5AA46C7C2781DD65009287BE /* VolumeMeterBarView.swift in Sources */,
 				7834A6F625F4F1E700BF1B58 /* TempoSettingViewController.swift in Sources */,
 				7830223425A5BCE600D95267 /* UserInfo.swift in Sources */,
-				7899D34E25A2230E0003647D /* extension.swift in Sources */,
+				7899D34E25A2230E0003647D /* CALayer+Extension.swift in Sources */,
 				5AA46C752781B111009287BE /* TunerViewModel.swift in Sources */,
 				783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */,
 				7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */,
 				5AA46C722781AB9A009287BE /* LocalDataStore.swift in Sources */,
+				5AA46C842781FACB009287BE /* UIView+Extension.swift in Sources */,
 				78E6E74223112C9C005B56CA /* MetronomeController.swift in Sources */,
 				78E773E6225DFD85006C8C4B /* Note.swift in Sources */,
 				7812FB3925BAC0AB00190BC6 /* ColorCell.swift in Sources */,
