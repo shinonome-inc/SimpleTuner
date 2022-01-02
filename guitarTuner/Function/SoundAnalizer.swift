@@ -10,23 +10,11 @@ import Foundation
 import AudioKit
 import AudioKitEX
 import SoundpipeAudioKit
+import RxSwift
  
-protocol TunerDelegate: class {
-    //pitchは一番近い音階、distanceは実際の周波数とその音階の周波数との差、amplitudeは音量
-    func tunerDidMesure(pitch: Pitch, distance: Double, amplitude: Double, frequency: Double)
-}
-
-protocol VolumeMeterDelegate: class {
-    func volumeMeterDidMesure(dB: Double)
-}
-
 class SoundAnalizer {
     
     static let shared = SoundAnalizer()
-    
-    weak var tunerDelegate: TunerDelegate?
-    weak var volumeMeterDelegate: VolumeMeterDelegate?
-    weak var metronomeDelegate: MetronomeDelegate?
     
     fileprivate var timer: Timer?
     private let engine = AudioEngine()
@@ -38,6 +26,9 @@ class SoundAnalizer {
     fileprivate let baseFrequencyRange = 440.0 ..< 443.0
     
     var isPlaying = false
+    
+    let tunerPublisher = PublishSubject<(Pitch, Double, Double, Double)>()
+    let volumeMeterPublisher = PublishSubject<Double>()
     
     private init() {
         guard let input = engine.input else {
@@ -84,7 +75,7 @@ class SoundAnalizer {
     func didTrackFrequency(frequency: Double, amplitude: Double) {
         let pitch = Pitch.nearest(frequency)
         let distance = frequency - pitch.frequency
-        self.tunerDelegate?.tunerDidMesure(pitch: pitch, distance: distance, amplitude: amplitude, frequency: frequency)
+        tunerPublisher.on(.next((pitch, distance, amplitude, frequency)))
     }
     
     func baseFrequencyPlus() {
@@ -114,7 +105,7 @@ class SoundAnalizer {
             print("amplitude is 0 ")
             return
         }
-        self.volumeMeterDelegate?.volumeMeterDidMesure(dB: dB)
+        volumeMeterPublisher.on(.next(dB))
     }
 }	
 
