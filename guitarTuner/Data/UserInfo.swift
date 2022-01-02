@@ -29,8 +29,8 @@ class UserInfo {
     var tempoEvent: Observable<Double> { return tempo.asObservable() }
     
     func setColor(color: ThemeColor) {
-        self.color.accept(color)
         localDataStore.themeColor = color
+        self.color.accept(color)
     }
     
     func setBaseFrequency(baseFrequency: Double) {

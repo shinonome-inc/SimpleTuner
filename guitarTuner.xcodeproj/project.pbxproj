@@ -25,6 +25,7 @@
 		5AA46C862781FBB9009287BE /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C852781FBB9009287BE /* SettingViewModel.swift */; };
 		5AA46C8827820008009287BE /* SettingTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C8727820008009287BE /* SettingTableSection.swift */; };
 		5AA46C8A27820227009287BE /* MFMailComposeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C8927820227009287BE /* MFMailComposeViewController+Extension.swift */; };
+		5AA46C8C27820622009287BE /* SelectColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C8B27820622009287BE /* SelectColorViewModel.swift */; };
 		5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5ACA3F542780C74900B7CC04 /* STKAudioKit */; };
 		7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */; };
 		7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812FB3325BABB7700190BC6 /* ColorCell.xib */; };
@@ -91,6 +92,7 @@
 		5AA46C852781FBB9009287BE /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		5AA46C8727820008009287BE /* SettingTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableSection.swift; sourceTree = "<group>"; };
 		5AA46C8927820227009287BE /* MFMailComposeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MFMailComposeViewController+Extension.swift"; sourceTree = "<group>"; };
+		5AA46C8B27820622009287BE /* SelectColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewModel.swift; sourceTree = "<group>"; };
 		7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		7812FB3325BABB7700190BC6 /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		7812FB3825BAC0AB00190BC6 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				7812FB3325BABB7700190BC6 /* ColorCell.xib */,
 				7812FB3825BAC0AB00190BC6 /* ColorCell.swift */,
 				7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */,
+				5AA46C8B27820622009287BE /* SelectColorViewModel.swift */,
 			);
 			name = SelectColor;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				78E63EF62266C97900D882CA /* Pitch.swift in Sources */,
 				5A3786582780951C004341D7 /* Metronome.swift in Sources */,
 				78DB12E02306A399005F416D /* Mater.swift in Sources */,
+				5AA46C8C27820622009287BE /* SelectColorViewModel.swift in Sources */,
 				785096AD257224FD00B2D074 /* VolumeMaterViewController.swift in Sources */,
 				78E4283A2313F2B100B02902 /* MetroCountView.swift in Sources */,
 				5AA46C702781A8DC009287BE /* DefaultsKey.swift in Sources */,

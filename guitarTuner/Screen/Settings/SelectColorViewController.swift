@@ -13,56 +13,50 @@ class SelectColorViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var baseColor: ThemeColor = .blue
-    let disposeBag = DisposeBag()
+    private let viewModel = SelectColorViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         dataBind()
+        viewModel.viewDidLoad()
     }
     
     func dataBind() {
-        UserInfo.shared.colorEvent.subscribe(onNext: {
-            color in
-            self.baseColor = color
-            self.tableView.reloadData()
-        }).disposed(by: disposeBag)
+        viewModel.viewState.themeColorEvent
+            .subscribe(onNext: { [weak self] color in
+                self?.navigationController?.navigationBar.barTintColor = color.tab
+                self?.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.viewModel.onTapTableViewCell(indexPath: indexPath)
+            })
+            .disposed(by: disposeBag)
     }
     
     func setupTableView() {
-        tableView.register(UINib(nibName: "ColorCell", bundle: nil), forCellReuseIdentifier: "ColorCell")
-        tableView.delegate = self
+        tableView.register(UINib(nibName: ColorCell.identifier, bundle: nil), forCellReuseIdentifier: ColorCell.identifier)
         tableView.dataSource = self
     }
 }
 
-extension SelectColorViewController: UITableViewDelegate, UITableViewDataSource {
+extension SelectColorViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ThemeColor.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath) as! ColorCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ColorCell.identifier, for: indexPath) as! ColorCell
         guard let color = ThemeColor.init(rawValue: indexPath.row) else {
             return cell
         }
-        if indexPath.row == baseColor.rawValue {
-            cell.checkImageView.isHidden = false
-        } else {
-            cell.checkImageView.isHidden = true
-        }
+        cell.checkImageView.isHidden = indexPath.row != viewModel.themeColor.rawValue
         cell.colorLabel.text = color.name
         cell.mainColorView.backgroundColor = color.main
         cell.subColorView.backgroundColor = color.sub
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let color = ThemeColor.init(rawValue: indexPath.row) else {
-            return
-        }
-        UserInfo.shared.setColor(color: color)
-        self.navigationController?.navigationBar.barTintColor = color.tab
     }
 }

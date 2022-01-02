@@ -16,6 +16,8 @@ class ColorCell: UITableViewCell {
     @IBOutlet weak var subColorView: UIView!
     @IBOutlet weak var checkImageView: UIImageView!
     
+    static let identifier = "ColorCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
