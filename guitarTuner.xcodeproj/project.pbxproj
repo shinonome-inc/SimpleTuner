@@ -12,6 +12,7 @@
 		5A37865B2780ABB4004341D7 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A37865A2780ABB4004341D7 /* AudioKit */; };
 		5A37865E2780AC2F004341D7 /* AudioKitEX in Frameworks */ = {isa = PBXBuildFile; productRef = 5A37865D2780AC2F004341D7 /* AudioKitEX */; };
 		5A3786612780AC57004341D7 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A3786602780AC57004341D7 /* SoundpipeAudioKit */; };
+		5AA46C6E2781A868009287BE /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = 5AA46C6D2781A868009287BE /* SwiftyUserDefaults */; };
 		5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5ACA3F542780C74900B7CC04 /* STKAudioKit */; };
 		7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */; };
 		7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812FB3325BABB7700190BC6 /* ColorCell.xib */; };
@@ -112,6 +113,7 @@
 			files = (
 				5A37865B2780ABB4004341D7 /* AudioKit in Frameworks */,
 				5A3786612780AC57004341D7 /* SoundpipeAudioKit in Frameworks */,
+				5AA46C6E2781A868009287BE /* SwiftyUserDefaults in Frameworks */,
 				5A37865E2780AC2F004341D7 /* AudioKitEX in Frameworks */,
 				5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */,
 				78802448263E8AA800CB6D32 /* MessageUI.framework in Frameworks */,
@@ -373,6 +375,7 @@
 				5A37865D2780AC2F004341D7 /* AudioKitEX */,
 				5A3786602780AC57004341D7 /* SoundpipeAudioKit */,
 				5ACA3F542780C74900B7CC04 /* STKAudioKit */,
+				5AA46C6D2781A868009287BE /* SwiftyUserDefaults */,
 			);
 			productName = guitarTuner;
 			productReference = 7822C0E82257027B00361EC5 /* guitarTuner.app */;
@@ -451,6 +454,7 @@
 				5A37865C2780AC2F004341D7 /* XCRemoteSwiftPackageReference "AudioKitEX" */,
 				5A37865F2780AC57004341D7 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
 				5ACA3F532780C74900B7CC04 /* XCRemoteSwiftPackageReference "STKAudioKit" */,
+				5AA46C6C2781A868009287BE /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
 			);
 			productRefGroup = 7822C0E92257027B00361EC5 /* Products */;
 			projectDirPath = "";
@@ -928,6 +932,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		5AA46C6C2781A868009287BE /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		5ACA3F532780C74900B7CC04 /* XCRemoteSwiftPackageReference "STKAudioKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/STKAudioKit.git";
@@ -953,6 +965,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5A37865F2780AC57004341D7 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
 			productName = SoundpipeAudioKit;
+		};
+		5AA46C6D2781A868009287BE /* SwiftyUserDefaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5AA46C6C2781A868009287BE /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */;
+			productName = SwiftyUserDefaults;
 		};
 		5ACA3F542780C74900B7CC04 /* STKAudioKit */ = {
 			isa = XCSwiftPackageProductDependency;
