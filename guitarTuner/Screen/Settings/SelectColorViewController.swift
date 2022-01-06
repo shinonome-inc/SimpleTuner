@@ -26,7 +26,7 @@ class SelectColorViewController: UIViewController {
     func dataBind() {
         viewModel.viewState.themeColorEvent
             .subscribe(onNext: { [weak self] color in
-                self?.navigationController?.navigationBar.barTintColor = color.tab
+                self?.navigationController?.navigationBar.updateColorAppearance(color: color.tab)
                 self?.tableView.reloadData()
             })
             .disposed(by: disposeBag)

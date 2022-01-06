@@ -31,7 +31,6 @@ class UserInfo {
     func setColor(color: ThemeColor) {
         localDataStore.themeColor = color
         self.color.accept(color)
-        NotificationCenter.default.post(name: .didChangeThemeColor, object: nil)
     }
     
     func setBaseFrequency(baseFrequency: Double) {

@@ -12,20 +12,19 @@ import RxSwift
 
 extension AppDelegate {
     
-    func observeThemeColorChange() {
-        NotificationCenter.default.addObserver(self, selector: #selector(setupAppNavigationController), name: .didChangeThemeColor, object: nil)
-    }
-    
-    @objc func setupAppNavigationController() {
+    func setupAppNavigationController() {
         let color = LocalDataStore().themeColor.tab
         if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = color
             appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().tintColor = UIColor.white
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
             UINavigationBar.appearance().standardAppearance = appearance
+            
         } else {
+            UINavigationBar.appearance().tintColor = UIColor.white
             UINavigationBar.appearance().barTintColor = color
             UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         }
