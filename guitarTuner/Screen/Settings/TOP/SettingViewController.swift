@@ -86,7 +86,7 @@ extension SettingViewController: MFMailComposeViewControllerDelegate {
 
 extension SettingViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(title: "Settings", image: UIImage(named: "cog")?.withRenderingMode(.alwaysTemplate), userInfo: Mode.none)
+        let info = IndicatorInfo(title: "Settings", image: UIImage(named: "cog")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }

@@ -30,7 +30,6 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
     }
     
     override func viewDidLoad() {
-       // SoundAnalizer.shared.mode = .tuner
         if isInitBind {
             dataBind()
         }
@@ -42,7 +41,6 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
         UserInfo.shared.colorEvent.subscribe(onNext: {
             color in
             self.themeColor = color
-            //場合分けしないとviewDidLoadで無限ループする
             if self.isInitBind {
                 self.isInitBind = false
             } else {
@@ -75,13 +73,6 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
             newCell.iconImageView.tintColor = self?.themeColor.sub
             newCell.iconLabel.textColor = self?.themeColor.sub
             self?.navigationItem.title = newCell.iconLabel.text
-            if (progressPercentage == 1) {
-                guard let mode = newCell.mode else {
-                    return
-                }
-                //SoundAnalizer.shared.setMode(mode: mode)
-                print("##### SoundAnalizer setted ######")
-            }
         }
     }
     
@@ -101,7 +92,6 @@ class TabBarController: BaseButtonBarPagerTabStripViewController<TabbarCell> {
         cell.iconImageView.image = indicatorInfo.image?.withRenderingMode(.alwaysTemplate)
         cell.iconLabel.textColor = iconDisabledColor
         cell.iconLabel.text = indicatorInfo.title?.trimmingCharacters(in: .whitespacesAndNewlines)
-        cell.mode = indicatorInfo.userInfo as? Mode
         if cell.isSelected {
             cell.iconImageView.tintColor = themeColor.sub
             cell.iconLabel.textColor = themeColor.sub

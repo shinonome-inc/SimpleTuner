@@ -54,7 +54,7 @@ class VolumeMaterViewController: UIViewController {
 
 extension VolumeMaterViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(title: "Volume", image: UIImage(named: "volume")?.withRenderingMode(.alwaysTemplate), userInfo: Mode.volume)
+        let info = IndicatorInfo(title: "Volume", image: UIImage(named: "volume")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }

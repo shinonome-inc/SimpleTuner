@@ -26,6 +26,8 @@
 		5AA46C8827820008009287BE /* SettingTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C8727820008009287BE /* SettingTableSection.swift */; };
 		5AA46C8A27820227009287BE /* MFMailComposeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C8927820227009287BE /* MFMailComposeViewController+Extension.swift */; };
 		5AA46C8C27820622009287BE /* SelectColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA46C8B27820622009287BE /* SelectColorViewModel.swift */; };
+		5AC15F082786ABAE0007B304 /* VolumeMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC15F072786ABAE0007B304 /* VolumeMeter.swift */; };
+		5AC15F0A2786B8930007B304 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC15F092786B8930007B304 /* Tuner.swift */; };
 		5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5ACA3F542780C74900B7CC04 /* STKAudioKit */; };
 		7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */; };
 		7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812FB3325BABB7700190BC6 /* ColorCell.xib */; };
@@ -93,6 +95,8 @@
 		5AA46C8727820008009287BE /* SettingTableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableSection.swift; sourceTree = "<group>"; };
 		5AA46C8927820227009287BE /* MFMailComposeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MFMailComposeViewController+Extension.swift"; sourceTree = "<group>"; };
 		5AA46C8B27820622009287BE /* SelectColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewModel.swift; sourceTree = "<group>"; };
+		5AC15F072786ABAE0007B304 /* VolumeMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMeter.swift; sourceTree = "<group>"; };
+		5AC15F092786B8930007B304 /* Tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
 		7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		7812FB3325BABB7700190BC6 /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		7812FB3825BAC0AB00190BC6 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
@@ -356,6 +360,8 @@
 				78E63EF52266C97900D882CA /* Pitch.swift */,
 				7883A342246124DF00C812C3 /* PhotoLibraryManager.swift */,
 				5A3786572780951C004341D7 /* Metronome.swift */,
+				5AC15F072786ABAE0007B304 /* VolumeMeter.swift */,
+				5AC15F092786B8930007B304 /* Tuner.swift */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 			files = (
 				782A79D22577E62A00E04949 /* TabBarController.swift in Sources */,
 				7822C0EE2257027B00361EC5 /* TunerViewController.swift in Sources */,
+				5AC15F082786ABAE0007B304 /* VolumeMeter.swift in Sources */,
 				7890739C24739066008179EE /* BackgroundImageView.swift in Sources */,
 				5AA46C8A27820227009287BE /* MFMailComposeViewController+Extension.swift in Sources */,
 				5AA46C8827820008009287BE /* SettingTableSection.swift in Sources */,
@@ -591,6 +598,7 @@
 				78702629225B591700E32781 /* SoundAnalizer.swift in Sources */,
 				78E9357B25CD3BCD00A75190 /* UnderLineView.swift in Sources */,
 				78E36057230A67750084DFA1 /* CircleLayer.swift in Sources */,
+				5AC15F0A2786B8930007B304 /* Tuner.swift in Sources */,
 				5AA46C802781F948009287BE /* NumberPadView.swift in Sources */,
 				5AA46C822781FA83009287BE /* UIColor+Extension.swift in Sources */,
 				78299D8126073157001FEB5C /* TabbarCell.swift in Sources */,

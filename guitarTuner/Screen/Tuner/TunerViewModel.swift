@@ -28,7 +28,7 @@ final class TunerViewModel {
     }
     
     private let disposeBag = DisposeBag()
-    private let tuner = SoundAnalizer.shared
+    private let tuner = Tuner()
     let viewState = ViewState()
     
     init() {
@@ -64,20 +64,18 @@ final class TunerViewModel {
     }
     
     func startTuner() {
-        tuner.mode = .tuner
-        tuner.start()
+        tuner.analyzer.start()
     }
     
     func stopTuner() {
-        tuner.stop()
+        tuner.analyzer.stop()
     }
     
     func onTapPlusButton() {
-        tuner.baseFrequencyPlus()
+        tuner.addBaseFrequency()
     }
     
     func onTapMinusButton() {
-        tuner.baseFrequencyMinus()
+        tuner.subBaseFrequency()
     }
-    
 }

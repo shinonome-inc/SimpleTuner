@@ -20,7 +20,7 @@ final class VolumeMeterViewModel {
     }
     
     private let disposeBag = DisposeBag()
-    private let volumeMeter = SoundAnalizer.shared
+    private let volumeMeter = VolumeMeter()
     let viewState = ViewState()
     
     init() {
@@ -43,11 +43,10 @@ final class VolumeMeterViewModel {
     }
     
     func startVolumeMeter() {
-        volumeMeter.mode = .volume
-        volumeMeter.start()
+        volumeMeter.analyzer.start()
     }
     
     func stopVolumeMeter() {
-        volumeMeter.stop()
+        volumeMeter.analyzer.stop()
     }
 }

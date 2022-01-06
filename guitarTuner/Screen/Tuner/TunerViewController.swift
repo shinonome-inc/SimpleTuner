@@ -125,7 +125,7 @@ class TunerViewController: UIViewController {
 
 extension TunerViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let info = IndicatorInfo(title: "Tuner", image: UIImage(named: "tuningFork")?.withRenderingMode(.alwaysTemplate), userInfo: Mode.tuner)
+        let info = IndicatorInfo(title: "Tuner", image: UIImage(named: "tuningFork")?.withRenderingMode(.alwaysTemplate))
         return info
     }
 }
