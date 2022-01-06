@@ -29,6 +29,8 @@
 		5AC15F082786ABAE0007B304 /* VolumeMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC15F072786ABAE0007B304 /* VolumeMeter.swift */; };
 		5AC15F0A2786B8930007B304 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC15F092786B8930007B304 /* Tuner.swift */; };
 		5ACA3F552780C74900B7CC04 /* STKAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5ACA3F542780C74900B7CC04 /* STKAudioKit */; };
+		5AE9F84A27871B6B00F625B9 /* AppDelegate+Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9F84927871B6B00F625B9 /* AppDelegate+Global.swift */; };
+		5AE9F84C2787215200F625B9 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE9F84B2787215200F625B9 /* NotificationName.swift */; };
 		7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */; };
 		7812FB3425BABB7700190BC6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812FB3325BABB7700190BC6 /* ColorCell.xib */; };
 		7812FB3925BAC0AB00190BC6 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7812FB3825BAC0AB00190BC6 /* ColorCell.swift */; };
@@ -94,6 +96,8 @@
 		5AA46C8B27820622009287BE /* SelectColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewModel.swift; sourceTree = "<group>"; };
 		5AC15F072786ABAE0007B304 /* VolumeMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeMeter.swift; sourceTree = "<group>"; };
 		5AC15F092786B8930007B304 /* Tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
+		5AE9F84927871B6B00F625B9 /* AppDelegate+Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Global.swift"; sourceTree = "<group>"; };
+		5AE9F84B2787215200F625B9 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		7812FB2B25BABA7B00190BC6 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		7812FB3325BABB7700190BC6 /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		7812FB3825BAC0AB00190BC6 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 				5AA46C712781AB9A009287BE /* LocalDataStore.swift */,
 				78E773E5225DFD85006C8C4B /* Note.swift */,
 				78E63EF52266C97900D882CA /* Pitch.swift */,
+				5AE9F84B2787215200F625B9 /* NotificationName.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -333,6 +338,15 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		5AE9F84827871B5300F625B9 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				7822C0EB2257027B00361EC5 /* AppDelegate.swift */,
+				5AE9F84927871B6B00F625B9 /* AppDelegate+Global.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
 		7822C0DF2257027B00361EC5 = {
 			isa = PBXGroup;
 			children = (
@@ -358,7 +372,7 @@
 		7822C0EA2257027B00361EC5 /* guitarTuner */ = {
 			isa = PBXGroup;
 			children = (
-				7822C0EB2257027B00361EC5 /* AppDelegate.swift */,
+				5AE9F84827871B5300F625B9 /* AppDelegate */,
 				5A1B3369277E129200EAB216 /* Util */,
 				78358D8B24605C7A00B6E4D1 /* Function */,
 				78358D8C24605D3800B6E4D1 /* UI */,
@@ -642,6 +656,7 @@
 				5AA46C7C2781DD65009287BE /* VolumeMeterBarView.swift in Sources */,
 				7834A6F625F4F1E700BF1B58 /* TempoSettingViewController.swift in Sources */,
 				7830223425A5BCE600D95267 /* UserInfo.swift in Sources */,
+				5AE9F84A27871B6B00F625B9 /* AppDelegate+Global.swift in Sources */,
 				5AA46C752781B111009287BE /* TunerViewModel.swift in Sources */,
 				783C81CE22C24757004FEB7E /* SettingViewController.swift in Sources */,
 				7822C0EC2257027B00361EC5 /* AppDelegate.swift in Sources */,
@@ -659,6 +674,7 @@
 				78E4283A2313F2B100B02902 /* MetroCountView.swift in Sources */,
 				5AA46C702781A8DC009287BE /* DefaultsKey.swift in Sources */,
 				7812FB2C25BABA7B00190BC6 /* SelectColorViewController.swift in Sources */,
+				5AE9F84C2787215200F625B9 /* NotificationName.swift in Sources */,
 				5AA46C7E2781E1F6009287BE /* MetronomeViewModel.swift in Sources */,
 				5AA46C7A2781D60B009287BE /* VolumeMeterViewModel.swift in Sources */,
 				7830224825A5EF6400D95267 /* ThemeColor.swift in Sources */,

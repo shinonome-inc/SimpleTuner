@@ -14,19 +14,9 @@ import AudioKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var photoLibraryImage: UIImage!
-    let defaults = UserDefaults.standard
-    let disposeBag = DisposeBag()
-    let navigationBar = UINavigationBar.appearance()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        UserInfo.shared.colorEvent.subscribe(onNext: {
-            color in
-            self.navigationBar.barTintColor = color.tab
-        }).disposed(by: disposeBag)
-        navigationBar.tintColor = UIColor.white
-        navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        setupAppNavigationController()
         return true
     }
 
