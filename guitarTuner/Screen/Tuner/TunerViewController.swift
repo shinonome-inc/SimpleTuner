@@ -117,9 +117,6 @@ class TunerViewController: UIViewController {
         arrowView.makeArrowLayer()
         self.view.addSubview(arrowView)
         self.view.sendSubviewToBack(arrowView)
-        noteView.drawUnderLine()
-        pitchView.drawUnderLine()
-        frequencyView.drawUnderLine()
     }
 }
 

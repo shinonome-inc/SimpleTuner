@@ -51,7 +51,6 @@ class MetronomeController: UIViewController {
         startButton.layer.borderWidth = 1.0
         startButton.layer.cornerRadius = startButton.frame.height / 4
         startButton.setTitle("START", for: .normal)
-        tempoView.drawUnderLine()
     }
     
     func dataBind() {

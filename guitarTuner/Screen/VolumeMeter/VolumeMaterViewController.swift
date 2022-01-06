@@ -14,8 +14,10 @@ class VolumeMaterViewController: UIViewController {
     
     @IBOutlet weak var volumeMeterBarView: VolumeMeterBarView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabelView: UnderLineView!
     @IBOutlet weak var amplitudeLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
+    @IBOutlet weak var unitLableView: UnderLineView!
     
     private let viewModel = VolumeMeterViewModel()
     let disposeBag = DisposeBag()
@@ -34,7 +36,8 @@ class VolumeMaterViewController: UIViewController {
     func dataBind() {
         viewModel.viewState.themeColorEvent
             .subscribe(onNext: { [weak self] color in
-                self?.drawLabelUnderLine(color: color.main)
+                self?.titleLabelView.lineColor = color.main
+                self?.unitLableView.lineColor = color.main
                 self?.volumeMeterBarView.soundBarColor = color.sub
             })
             .disposed(by: disposeBag)
@@ -44,11 +47,6 @@ class VolumeMaterViewController: UIViewController {
                 self?.volumeMeterBarView.lightingSoundbars(amplitude: amplitude)
             })
             .disposed(by: disposeBag)
-    }
-    
-    func drawLabelUnderLine(color: UIColor) {
-        titleLabel.layer.addSublayer(CALayer.drawUnderLine(lineColor: color, UI: titleLabel))
-        unitLabel.layer.addSublayer(CALayer.drawUnderLine(lineColor: color, UI: unitLabel))
     }
 }
 

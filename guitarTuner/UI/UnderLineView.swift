@@ -10,16 +10,30 @@ import UIKit
 
 class UnderLineView: UIView {
     
-    let line = CALayer()
-    let lineWidth: CGFloat = 2
+    private let line = UIView()
+    private let lineWidth: CGFloat = 2
     var lineColor: UIColor = UIColor.clear {
         didSet {
-            line.backgroundColor = lineColor.cgColor
+            line.backgroundColor = lineColor
         }
     }
     
-    func drawUnderLine() {
-        line.frame = CGRect(x: 0.0, y: (self.frame.size.height) - lineWidth, width: (self.frame.size.width), height: lineWidth)
-        self.layer.addSublayer(line)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        drawUnderLine()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        drawUnderLine()
+    }
+    
+    private func drawUnderLine() {
+        self.addSubview(line)
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.heightAnchor.constraint(equalToConstant: lineWidth).isActive = true
+        line.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        line.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        line.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
 }
